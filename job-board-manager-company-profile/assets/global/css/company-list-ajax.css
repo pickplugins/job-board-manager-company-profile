@@ -1,0 +1,20 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+#company-list{}
+	
+#company-list .item {
+  background: none repeat scroll 0 0 rgb(241, 241, 241);
+  border-bottom: 1px solid rgb(221, 221, 221);
+  cursor: pointer;
+  display: block;
+  padding: 4px 10px;
+  width: auto;
+}
+	
+
+	/*
+#uploaded-image-container img {
+	width:150px;
+}	*/

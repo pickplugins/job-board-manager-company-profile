@@ -1,0 +1,31 @@
+@charset "utf-8";
+/* CSS Document */
+.company-submit-form #file-upload-container #file-uploader {
+  background: rgb(53, 202, 130) none repeat scroll 0 0;
+  color: rgb(255, 255, 255);
+  display: inline-block;
+  margin: 10px 0 0;
+  padding: 3px 12px;
+  text-decoration: none;
+}
+
+.company-list{}
+.company-list .single{}
+
+.company-list .single img {
+  border-radius: 0;
+  box-shadow: none;
+  height: auto;
+  width: 50px;
+}
+
+
+
+
+
+
+
+
+
+
+

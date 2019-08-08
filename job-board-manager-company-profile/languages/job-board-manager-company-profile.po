@@ -1,0 +1,486 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Job Board Manager - Company Profile\n"
+"POT-Creation-Date: 2017-03-30 11:29+0600\n"
+"PO-Revision-Date: 2017-03-30 11:42+0600\n"
+"Last-Translator: \n"
+"Language-Team: PickPlugins\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.12\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: templates\n"
+"X-Poedit-SearchPath-1: includes\n"
+
+#: includes/class-frontend-form-edit-company.php:32
+#, php-format
+msgid "Please <a href=\"%s\">login</a> to continue !"
+msgstr ""
+
+#: includes/class-frontend-form-edit-company.php:89
+msgid "Company Submited"
+msgstr ""
+
+#: includes/class-frontend-form-edit-company.php:90
+msgid "Submission Status: "
+msgstr ""
+
+#: includes/class-frontend-form-edit-company.php:156
+msgid "Something error"
+msgstr ""
+
+#: includes/class-frontend-form-edit-company.php:172
+#: includes/class-functions.php:26
+msgid "Company Title"
+msgstr "কোম্পানী শিরোনাম"
+
+#: includes/class-frontend-form-edit-company.php:178
+msgid "Company Content"
+msgstr ""
+
+#: includes/class-frontend-form-edit-company.php:337
+msgid "Upload"
+msgstr ""
+
+#: includes/class-frontend-form-edit-company.php:392
+#: templates/company-single-reviews.php:96 templates/company-submit.php:428
+msgid "Submit"
+msgstr ""
+
+#: includes/class-functions.php:25
+msgid "Write company title here"
+msgstr ""
+
+#: includes/class-functions.php:27
+msgid "Company title here"
+msgstr ""
+
+#: includes/class-functions.php:39
+msgid "Company Descriptions"
+msgstr ""
+
+#: includes/class-functions.php:40
+msgid "Write company descriptions here"
+msgstr ""
+
+#: includes/class-functions.php:54
+msgid "Thumbnail"
+msgstr ""
+
+#: includes/class-functions.php:55
+msgid "Job Featured Image, uplaod single image only"
+msgstr ""
+
+#: includes/class-functions.php:72 includes/class-post-types.php:72
+msgid "Company Category"
+msgstr ""
+
+#: includes/class-functions.php:73
+msgid "Select company category."
+msgstr ""
+
+#: includes/class-functions.php:105
+msgid "reCaptcha"
+msgstr ""
+
+#: includes/class-functions.php:106
+msgid "reCaptcha test."
+msgstr ""
+
+#: includes/class-functions.php:119
+msgid "Company Info"
+msgstr ""
+
+#: includes/class-functions.php:120
+msgid "Company Information details"
+msgstr ""
+
+#: includes/class-functions.php:129 includes/class-post-meta.php:39
+msgid "Company Tagline"
+msgstr ""
+
+#: includes/class-functions.php:130
+msgid "Company tagline here"
+msgstr ""
+
+#: includes/class-functions.php:141 includes/class-post-meta.php:47
+msgid "Company Mission"
+msgstr ""
+
+#: includes/class-functions.php:142
+msgid "Company mission details here"
+msgstr ""
+
+#: includes/class-functions.php:154 includes/class-post-meta.php:55
+msgid "Country"
+msgstr ""
+
+#: includes/class-functions.php:156 includes/class-post-meta.php:56
+msgid "Country, ex: Bangladesh"
+msgstr ""
+
+#: includes/class-functions.php:168 includes/class-post-meta.php:64
+msgid "City"
+msgstr ""
+
+#: includes/class-functions.php:169 includes/class-post-meta.php:65
+msgid "Company City, ex: Dhaka"
+msgstr ""
+
+#: includes/class-functions.php:180
+msgid "Headquarter Address"
+msgstr ""
+
+#: includes/class-functions.php:181
+msgid "Headquarter address here"
+msgstr ""
+
+#: includes/class-functions.php:194 includes/class-post-meta.php:80
+msgid "Address"
+msgstr ""
+
+#: includes/class-functions.php:195 includes/class-post-meta.php:81
+msgid "Full Address, ex: House No: 254, Road: 5, Mirpur-12, Dhaka"
+msgstr ""
+
+#: includes/class-functions.php:206 includes/class-post-meta.php:89
+msgid "Company Logo"
+msgstr ""
+
+#: includes/class-functions.php:207
+msgid "Add company logo."
+msgstr ""
+
+#: includes/class-functions.php:219
+msgid "More Info"
+msgstr ""
+
+#: includes/class-functions.php:220
+msgid "More Information details."
+msgstr ""
+
+#: includes/class-functions.php:228 includes/class-post-meta.php:103
+msgid "Website"
+msgstr ""
+
+#: includes/class-functions.php:229
+msgid "Company Website URL."
+msgstr ""
+
+#: includes/class-functions.php:239 includes/class-post-meta.php:111
+msgid "Founded"
+msgstr ""
+
+#: includes/class-functions.php:240
+msgid "Company founded year."
+msgstr ""
+
+#: includes/class-functions.php:250 includes/class-post-meta.php:119
+msgid "Yearly Revenue"
+msgstr ""
+
+#: includes/class-functions.php:251
+msgid "Yearly Revenue ($)."
+msgstr ""
+
+#: includes/class-functions.php:261
+msgid "Total Emplyee"
+msgstr ""
+
+#: includes/class-functions.php:262
+msgid "Total Emplyee Size."
+msgstr ""
+
+#: includes/class-post-meta.php:72
+msgid "Headquarters Address"
+msgstr ""
+
+#: includes/class-post-meta.php:73
+msgid "Company City, ex: Dhaka, Bangladesh"
+msgstr ""
+
+#: includes/class-post-meta.php:88
+msgid "Logo"
+msgstr ""
+
+#: includes/class-post-meta.php:104
+msgid "Website URL"
+msgstr ""
+
+#: includes/class-post-meta.php:112
+msgid "founded"
+msgstr ""
+
+#: includes/class-post-meta.php:120
+msgid "Yearly Revenue ($)"
+msgstr ""
+
+#: includes/class-post-meta.php:127
+msgid "Size"
+msgstr ""
+
+#: includes/class-post-meta.php:128
+msgid "Emplyee Size"
+msgstr ""
+
+#: includes/class-post-meta.php:135
+msgid "Type"
+msgstr ""
+
+#: includes/class-post-meta.php:136
+msgid "Company Type"
+msgstr ""
+
+#: includes/class-post-meta.php:372
+msgid "Company Data"
+msgstr ""
+
+#: includes/class-post-types.php:25 includes/class-post-types.php:26
+msgid "Company"
+msgstr ""
+
+#: includes/class-post-types.php:35 includes/class-post-types.php:87
+#, php-format
+msgid "All %s"
+msgstr ""
+
+#: includes/class-post-types.php:36
+msgid "Add New"
+msgstr ""
+
+#: includes/class-post-types.php:37
+#, php-format
+msgid "Add %s"
+msgstr ""
+
+#: includes/class-post-types.php:38
+msgid "Edit"
+msgstr ""
+
+#: includes/class-post-types.php:39 includes/class-post-types.php:90
+#, php-format
+msgid "Edit %s"
+msgstr ""
+
+#: includes/class-post-types.php:40
+#, php-format
+msgid "New %s"
+msgstr ""
+
+#: includes/class-post-types.php:41 includes/class-post-types.php:42
+#, php-format
+msgid "View %s"
+msgstr ""
+
+#: includes/class-post-types.php:43 includes/class-post-types.php:86
+#, php-format
+msgid "Search %s"
+msgstr ""
+
+#: includes/class-post-types.php:44
+#, php-format
+msgid "No %s found"
+msgstr ""
+
+#: includes/class-post-types.php:45
+#, php-format
+msgid "No %s found in trash"
+msgstr ""
+
+#: includes/class-post-types.php:46 includes/class-post-types.php:88
+#, php-format
+msgid "Parent %s"
+msgstr ""
+
+#: includes/class-post-types.php:48
+#, php-format
+msgid "This is where you can create and manage %s."
+msgstr ""
+
+#: includes/class-post-types.php:73
+msgid "Company Categories"
+msgstr ""
+
+#: includes/class-post-types.php:89
+#, php-format
+msgid "Parent %s:"
+msgstr ""
+
+#: includes/class-post-types.php:91
+#, php-format
+msgid "Update %s"
+msgstr ""
+
+#: includes/class-post-types.php:92
+#, php-format
+msgid "Add New %s"
+msgstr ""
+
+#: includes/class-post-types.php:93
+#, php-format
+msgid "New %s Name"
+msgstr ""
+
+#: includes/class-settings.php:24
+msgid "Settings"
+msgstr ""
+
+#: includes/class-settings.php:40
+msgid "Company Profile"
+msgstr ""
+
+#: includes/class-settings.php:45 includes/class-settings.php:46
+msgid "Default company logo"
+msgstr ""
+
+#: includes/class-settings.php:56 includes/class-settings.php:57
+msgid "Company linked at archive page"
+msgstr ""
+
+#: includes/class-settings.php:60 includes/class-settings.php:69
+msgid "Yes"
+msgstr ""
+
+#: includes/class-settings.php:60 includes/class-settings.php:69
+msgid "No"
+msgstr ""
+
+#: includes/class-settings.php:65 includes/class-settings.php:66
+msgid "Company linked at single page"
+msgstr ""
+
+#: includes/functions.php:17
+msgid "Company profile"
+msgstr ""
+
+#: includes/functions.php:21
+msgid "Remove input fields for company submit form"
+msgstr ""
+
+#: includes/functions.php:28
+msgid "Single company page showing 404 error"
+msgstr ""
+
+#: includes/functions.php:34
+msgid "Single company page style broken"
+msgstr ""
+
+#: includes/functions.php:104
+msgid "You already submitted a reviews"
+msgstr ""
+
+#: includes/functions.php:113
+msgid "Review submitted."
+msgstr ""
+
+#: includes/functions.php:170
+msgid "Unfollow"
+msgstr ""
+
+#: includes/functions.php:173
+msgid "Follow"
+msgstr ""
+
+#: includes/functions.php:260
+msgid "Please login first."
+msgstr ""
+
+#: includes/functions.php:316 includes/functions.php:322
+msgid "Nothing found"
+msgstr ""
+
+#: templates/company-single-job-list.php:11
+#, php-format
+msgid "Jobs available from - %s"
+msgstr ""
+
+#: templates/company-single-meta.php:36
+msgid "Address:"
+msgstr ""
+
+#: templates/company-single-meta.php:40
+msgid "Website:"
+msgstr ""
+
+#: templates/company-single-meta.php:55
+msgid "Type:"
+msgstr ""
+
+#: templates/company-single-meta.php:60
+msgid "Founded:"
+msgstr ""
+
+#: templates/company-single-meta.php:65
+msgid "Size:"
+msgstr ""
+
+#: templates/company-single-meta.php:69
+msgid "Revenue:"
+msgstr ""
+
+#: templates/company-single-meta.php:80
+msgid "Mission:"
+msgstr ""
+
+#: templates/company-single-reviews.php:80
+msgid "Rate"
+msgstr ""
+
+#: templates/company-single-reviews.php:92
+msgid "Comments"
+msgstr ""
+
+#: templates/company-single-reviews.php:104
+#, php-format
+msgid "Please <a href=\"%s\">login</a> to submit reviews"
+msgstr ""
+
+#: templates/company-single-template-functions.php:79
+msgid "Related Company"
+msgstr ""
+
+#: templates/company-submit.php:27
+#, php-format
+msgid "Please <a href=\"%s\">login</a> to submit job."
+msgstr ""
+
+#: templates/company-submit.php:99 templates/company-submit.php:105
+#: templates/company-submit.php:112 templates/company-submit.php:125
+msgid "missing"
+msgstr ""
+
+#: templates/company-submit.php:172
+msgid "Company Submitted successfully."
+msgstr ""
+
+#: templates/company-submit.php:387
+msgid "Cancel"
+msgstr ""
+
+#: templates/company-submit.php:388
+msgid "current step:"
+msgstr ""
+
+#: templates/company-submit.php:389
+msgid "Pagination"
+msgstr ""
+
+#: templates/company-submit.php:390
+msgid "Finish"
+msgstr ""
+
+#: templates/company-submit.php:391
+msgid "Next"
+msgstr ""
+
+#: templates/company-submit.php:392
+msgid "Previous"
+msgstr ""
+
+#: templates/company-submit.php:393
+msgid "Loading ..."
+msgstr ""

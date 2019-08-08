@@ -1,0 +1,22 @@
+/*
+Admin css
+*/
+
+
+#company_metabox {
+  background: #f1f1f1 none repeat scroll 0 0;
+  border: medium none;
+  box-shadow: none;
+}
+
+#company_metabox .hndle {
+  background: rgb(96, 173, 252) none repeat scroll 0 0;
+  color: rgb(255, 255, 255);
+}
+
+#company_metabox .handlediv{
+  color: rgb(255, 255, 255);
+}
+
+
+

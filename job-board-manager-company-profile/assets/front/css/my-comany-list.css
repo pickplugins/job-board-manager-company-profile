@@ -1,0 +1,68 @@
+@charset "utf-8";
+/* CSS Document */
+
+.my-comany-list{}
+
+.my-comany-list .item {
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+}
+.my-comany-list .item .thumb {
+  display: inline-block;
+  height: 80px;
+  overflow: hidden;
+  vertical-align: top;
+  width: 80px;
+}
+
+.my-comany-list .item .details {
+  display: inline-block;
+  margin-left: 15px;
+}
+
+.my-comany-list .item .details .item-title {
+  display: block;
+  font-size: 15px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.my-comany-list .item .details .edit-link {
+  display: block;
+}
+
+
+
+.my-comany-list .paginate {
+  margin: 30px 0;
+  text-align: center;
+}
+
+.my-comany-list .paginate .page-numbers {
+  background: #f0f0f0 none repeat scroll 0 0;
+  border: 1px solid #ddd;
+  color: #999;
+  font-size: 17px;
+  padding: 5px 10px;
+  text-decoration: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
