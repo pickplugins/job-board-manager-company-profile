@@ -13,7 +13,7 @@ class class_job_bm_cp_upgrade{
     public function __construct(){
 
 
-		add_action( 'admin_notices', array( $this, 'notice_upgrade_company_logo' ) );
+		//add_action( 'admin_notices', array( $this, 'notice_upgrade_company_logo' ) );
 
 
    		}

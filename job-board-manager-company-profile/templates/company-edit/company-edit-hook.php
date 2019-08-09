@@ -649,22 +649,22 @@ add_action('job_bm_company_edited', 'job_bm_company_edited_redirect', 99999, 2);
 
 function job_bm_company_edited_redirect($company_id, $post_data){
 
-    $job_bm_redirect_preview_link 	= get_option('job_bm_redirect_preview_link');
+    $job_bm_company_edit_redirect 	= get_option('job_bm_company_edit_redirect');
 
 
 
 
-    if(!empty($job_bm_redirect_preview_link)):
+    if(!empty($job_bm_company_edit_redirect)):
 
-        if($job_bm_redirect_preview_link =='company_preview'){
+        if($job_bm_company_edit_redirect =='company_preview'){
             $redirect_page_url = get_preview_post_link($company_id);
         }
-        elseif($job_bm_redirect_preview_link =='company_link'){
+        elseif($job_bm_company_edit_redirect =='company_link'){
             $redirect_page_url = get_permalink($company_id);
         }
         else{
             $job_bm_company_login_page_id 	= get_option('job_bm_company_login_page_id');
-            $redirect_page_url 					= get_permalink($job_bm_company_login_page_id);
+            $redirect_page_url 					= get_permalink($job_bm_company_login_page_id).'?tabs=my_companies';
         }
 
         ?>

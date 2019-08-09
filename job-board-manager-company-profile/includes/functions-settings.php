@@ -213,6 +213,7 @@ if(!function_exists('job_bm_settings_tabs_content_pages_company')) {
 
         $settings_tabs_field = new settings_tabs_field();
 
+        $job_bm_company_submit_page_id = get_option('job_bm_company_submit_page_id');
 
         $job_bm_company_edit_page_id = get_option('job_bm_company_edit_page_id');
 
@@ -224,6 +225,24 @@ if(!function_exists('job_bm_settings_tabs_content_pages_company')) {
             <p class="description section-description"><?php echo __('Choose option for pages.', 'job-board-manager'); ?></p>
 
             <?php
+
+
+            $args = array(
+                'id'		=> 'job_bm_company_submit_page_id',
+                //'parent'		=> '',
+                'title'		=> __('Company submit page','job-board-manager'),
+                'details'	=> __('Choose the page for company submit page, where the shortcode <code>[job_bm_company_submit_form]</code> used.','job-board-manager'),
+                'type'		=> 'select',
+                //'multiple'		=> true,
+                'value'		=> $job_bm_company_submit_page_id,
+                'default'		=> '',
+                'args'		=> job_bm_page_list_id(),
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+
+
 
             $args = array(
                 'id'		=> 'job_bm_company_edit_page_id',
@@ -263,9 +282,34 @@ if(!function_exists('job_bm_settings_save_company')) {
     function job_bm_settings_save_company($tab){
 
 
-        $job_bm_company_edit_page_id = isset($_POST['job_bm_company_edit_page_id']) ? sanitize_text_field($_POST['job_bm_company_edit_page_id']) : '';
+        $job_bm_company_submit_page_id = isset($_POST['job_bm_company_submit_page_id']) ? sanitize_text_field($_POST['job_bm_company_submit_page_id']) : '';
+        update_option('job_bm_company_submit_page_id', $job_bm_company_submit_page_id);
 
+        $job_bm_company_edit_page_id = isset($_POST['job_bm_company_edit_page_id']) ? sanitize_text_field($_POST['job_bm_company_edit_page_id']) : '';
         update_option('job_bm_company_edit_page_id', $job_bm_company_edit_page_id);
+
+
+        $job_bm_company_submit_account_required = isset($_POST['job_bm_company_submit_account_required']) ? sanitize_text_field($_POST['job_bm_company_submit_account_required']) : '';
+        update_option('job_bm_company_submit_account_required', $job_bm_company_submit_account_required);
+
+        $job_bm_company_submit_recaptcha = isset($_POST['job_bm_company_submit_recaptcha']) ? sanitize_text_field($_POST['job_bm_company_submit_recaptcha']) : '';
+        update_option('job_bm_company_submit_recaptcha', $job_bm_company_submit_recaptcha);
+
+        $job_bm_company_submit_post_status = isset($_POST['job_bm_company_submit_post_status']) ? sanitize_text_field($_POST['job_bm_company_submit_post_status']) : '';
+        update_option('job_bm_company_submit_post_status', $job_bm_company_submit_post_status);
+
+        $job_bm_company_submit_redirect = isset($_POST['job_bm_company_submit_redirect']) ? sanitize_text_field($_POST['job_bm_company_submit_redirect']) : '';
+        update_option('job_bm_company_submit_redirect', $job_bm_company_submit_redirect);
+
+
+        $job_bm_company_edit_recaptcha = isset($_POST['job_bm_company_edit_recaptcha']) ? sanitize_text_field($_POST['job_bm_company_edit_recaptcha']) : '';
+        update_option('job_bm_company_edit_recaptcha', $job_bm_company_edit_recaptcha);
+
+        $job_bm_company_edit_post_status = isset($_POST['job_bm_company_edit_post_status']) ? sanitize_text_field($_POST['job_bm_company_edit_post_status']) : '';
+        update_option('job_bm_company_edit_post_status', $job_bm_company_edit_post_status);
+
+        $job_bm_company_edit_redirect = isset($_POST['job_bm_company_edit_redirect']) ? sanitize_text_field($_POST['job_bm_company_edit_redirect']) : '';
+        update_option('job_bm_company_edit_redirect', $job_bm_company_edit_redirect);
 
 
 

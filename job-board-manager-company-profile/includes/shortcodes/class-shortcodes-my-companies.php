@@ -36,7 +36,7 @@ class class_job_bm_shortcodes_my_companies{
 
         //wp_localize_script('job-bm-my-jobs', 'job_bm_ajax', array( 'job_bm_ajaxurl' => admin_url( 'admin-ajax.php')));
 
-        wp_enqueue_script('job-bm-my-my-companies');
+        //wp_enqueue_script('job-bm-my-my-companies');
         wp_enqueue_style('job-bm-my-my-companies');
 
         //wp_enqueue_script('job-bm-my-jobs');

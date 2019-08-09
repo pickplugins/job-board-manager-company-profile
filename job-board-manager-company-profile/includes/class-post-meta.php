@@ -13,8 +13,8 @@ class class_job_bm_cp_post_meta{
 	public function __construct(){
 
 		//meta box action for "company"
-		add_action('add_meta_boxes', array($this, 'meta_boxes_company'));
-		add_action('save_post', array($this, 'meta_boxes_company_save'));
+		//add_action('add_meta_boxes', array($this, 'meta_boxes_company'));
+		//add_action('save_post', array($this, 'meta_boxes_company_save'));
 
 		}
 		

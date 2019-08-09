@@ -37,10 +37,10 @@ class JobBoardManagerCompanyProfile{
 
 
 
-        //require_once( plugin_dir_path( __FILE__ ) . 'includes/shortcodes/class-shortcodes-comany-submit.php');
+    //require_once( plugin_dir_path( __FILE__ ) . 'includes/shortcodes/class-shortcodes-comany-submit.php');
     //require_once( plugin_dir_path( __FILE__ ) . 'includes/shortcodes/class-shortcodes-comany-edit.php');
     require_once( plugin_dir_path( __FILE__ ) . 'includes/shortcodes/class-shortcodes-my-comany-list.php');
-        require_once( plugin_dir_path( __FILE__ ) . 'includes/shortcodes/class-shortcodes-my-companies.php');
+    require_once( plugin_dir_path( __FILE__ ) . 'includes/shortcodes/class-shortcodes-my-companies.php');
 
 
 
@@ -126,6 +126,7 @@ class JobBoardManagerCompanyProfile{
 		wp_enqueue_style('job_bm_cp_company_single', job_bm_cp_plugin_url.'assets/front/css/company-single.css');
         wp_enqueue_style('my-comany-list', job_bm_cp_plugin_url.'assets/front/css/my-comany-list.css');
 
+        wp_enqueue_style('job-bm-my-companies', job_bm_cp_plugin_url.'assets/front/css/my-companies.css');
 
 
 
