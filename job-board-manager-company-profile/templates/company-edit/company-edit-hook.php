@@ -9,9 +9,9 @@ add_action('job_bm_company_edit_form', 'job_bm_company_edit_form_title', 0);
 
 function job_bm_company_edit_form_title($company_id){
 
-    $job_post = get_post($company_id);
+    $company_post = get_post($company_id);
 
-    $post_title = isset($_POST['post_title']) ? sanitize_text_field($_POST['post_title']) : "";
+    $post_title = isset($_POST['post_title']) ? sanitize_text_field($_POST['post_title']) : $company_post->post_title;
 
     ?>
     <div class="form-field-wrap">
@@ -32,9 +32,11 @@ add_action('job_bm_company_edit_form', 'job_bm_company_edit_form_content', 10);
 
 function job_bm_company_edit_form_content($company_id){
 
+    $company_post = get_post($company_id);
+
     $field_id = 'post_content';
     $allowed_html = apply_filters('job_bm_company_edit_allowed_html_tags', array());
-    $post_content = isset($_POST['post_content']) ? wp_kses($_POST['post_content'], $allowed_html) : "";
+    $post_content = isset($_POST['post_content']) ? wp_kses($_POST['post_content'], $allowed_html) : $company_post->post_content;
 
 
     ?>
@@ -43,7 +45,7 @@ function job_bm_company_edit_form_content($company_id){
         <div class="field-input">
             <?php
             ob_start();
-            wp_editor( $post_content, $field_id, $settings = array('textarea_name'=>$field_id,
+            wp_editor( esc_html($post_content), $field_id, $settings = array('textarea_name'=>$field_id,
                 'media_buttons'=>false,'wpautop'=>true,'editor_height'=>'200px', ) );
             echo ob_get_clean();
 
@@ -65,7 +67,14 @@ add_action('job_bm_company_edit_form', 'job_bm_company_edit_form_categories', 20
 
 function job_bm_company_edit_form_categories($company_id){
 
-    $company_category = isset($_POST['company_category']) ? sanitize_text_field($_POST['company_category']) : "";
+    $company_categories = get_the_terms($company_id, 'company_category');
+
+
+    //var_dump($company_categories);
+
+    $company_category_id = isset($company_categories[0]->term_id) ? $company_categories[0]->term_id : '';
+
+    $company_category = isset($_POST['company_category']) ? sanitize_text_field($_POST['company_category']) : $company_category_id;
 
     $categories = get_terms( array(
         'taxonomy' => 'company_category',
@@ -148,7 +157,9 @@ add_action('job_bm_company_edit_form', 'job_bm_company_edit_form_tagline', 30);
 
 function job_bm_company_edit_form_tagline($company_id){
 
-    $job_bm_cp_tagline = isset($_POST['job_bm_cp_tagline']) ? sanitize_text_field($_POST['job_bm_cp_tagline']) : "";
+    $job_bm_cp_tagline = get_post_meta($company_id, 'job_bm_cp_tagline', true);
+
+    $job_bm_cp_tagline = isset($_POST['job_bm_cp_tagline']) ? sanitize_text_field($_POST['job_bm_cp_tagline']) : $job_bm_cp_tagline;
 
     ?>
     <div class="form-field-wrap">
@@ -171,7 +182,9 @@ add_action('job_bm_company_edit_form', 'job_bm_company_edit_form_mission', 30);
 
 function job_bm_company_edit_form_mission($company_id){
 
-    $job_bm_cp_mission = isset($_POST['job_bm_cp_mission']) ? sanitize_text_field($_POST['job_bm_cp_mission']) : "";
+    $job_bm_cp_mission = get_post_meta($company_id, 'job_bm_cp_mission', true);
+
+    $job_bm_cp_mission = isset($_POST['job_bm_cp_mission']) ? sanitize_text_field($_POST['job_bm_cp_mission']) : $job_bm_cp_mission;
 
     ?>
     <div class="form-field-wrap">
@@ -193,10 +206,12 @@ add_action('job_bm_company_edit_form', 'job_bm_company_edit_form_country', 30);
 
 function job_bm_company_edit_form_country($company_id){
 
+    $job_bm_cp_country = get_post_meta($company_id, 'job_bm_cp_country', true);
+
     $class_job_bm_cp_functions = new class_job_bm_cp_functions();
     $job_bm_cp_country_list = $class_job_bm_cp_functions->job_bm_cp_country_list();
 
-    $job_bm_cp_country = isset($_POST['job_bm_cp_country']) ? sanitize_text_field($_POST['job_bm_cp_country']) : "";
+    $job_bm_cp_country = isset($_POST['job_bm_cp_country']) ? sanitize_text_field($_POST['job_bm_cp_country']) : $job_bm_cp_country;
 
 
     ?>
@@ -230,7 +245,9 @@ add_action('job_bm_company_edit_form', 'job_bm_company_edit_form_city', 30);
 
 function job_bm_company_edit_form_city($company_id){
 
-    $job_bm_cp_city = isset($_POST['job_bm_cp_city']) ? sanitize_text_field($_POST['job_bm_cp_city']) : "";
+    $job_bm_cp_city = get_post_meta($company_id, 'job_bm_cp_city', true);
+
+    $job_bm_cp_city = isset($_POST['job_bm_cp_city']) ? sanitize_text_field($_POST['job_bm_cp_city']) : $job_bm_cp_city;
 
     ?>
     <div class="form-field-wrap ">
@@ -250,7 +267,9 @@ add_action('job_bm_company_edit_form', 'job_bm_company_edit_form_address', 30);
 
 function job_bm_company_edit_form_address($company_id){
 
-    $job_bm_cp_address = isset($_POST['job_bm_cp_address']) ? sanitize_text_field($_POST['job_bm_cp_address']) : "";
+    $job_bm_cp_address = get_post_meta($company_id, 'job_bm_cp_address', true);
+
+    $job_bm_cp_address = isset($_POST['job_bm_cp_address']) ? sanitize_text_field($_POST['job_bm_cp_address']) : $job_bm_cp_address;
 
     ?>
     <div class="form-field-wrap " >
@@ -269,7 +288,10 @@ function job_bm_company_edit_form_address($company_id){
 add_action('job_bm_company_edit_form', 'job_bm_company_edit_form_logo', 30);
 function job_bm_company_edit_form_logo($company_id){
 
-    $job_bm_cp_logo = isset($_POST['job_bm_cp_logo']) ? sanitize_text_field($_POST['job_bm_cp_logo']) : job_bm_plugin_url."assets/front/images/placeholder.png";
+    $job_bm_cp_logo = get_post_meta($company_id, 'job_bm_cp_logo', true);
+    $job_bm_cp_logo = !empty($job_bm_cp_logo) ? $job_bm_cp_logo : job_bm_plugin_url."assets/front/images/placeholder.png";
+
+    $job_bm_cp_logo = isset($_POST['job_bm_cp_logo']) ? sanitize_text_field($_POST['job_bm_cp_logo']) : $job_bm_cp_logo;
 
     ?>
     <div class="form-field-wrap job-bm-media-upload">
@@ -298,7 +320,9 @@ add_action('job_bm_company_edit_form', 'job_bm_company_edit_form_website', 30);
 
 function job_bm_company_edit_form_website($company_id){
 
-    $job_bm_cp_website = isset($_POST['job_bm_cp_website']) ? sanitize_text_field($_POST['job_bm_cp_website']) : "";
+    $job_bm_cp_website = get_post_meta($company_id, 'job_bm_cp_website', true);
+
+    $job_bm_cp_website = isset($_POST['job_bm_cp_website']) ? sanitize_text_field($_POST['job_bm_cp_website']) : $job_bm_cp_website;
 
     ?>
     <div class="form-field-wrap " >
@@ -318,7 +342,9 @@ add_action('job_bm_company_edit_form', 'job_bm_company_edit_form_founded', 30);
 
 function job_bm_company_edit_form_founded($company_id){
 
-    $job_bm_cp_founded = isset($_POST['job_bm_cp_founded']) ? sanitize_text_field($_POST['job_bm_cp_founded']) : "";
+    $job_bm_cp_founded = get_post_meta($company_id, 'job_bm_cp_founded', true);
+
+    $job_bm_cp_founded = isset($_POST['job_bm_cp_founded']) ? sanitize_text_field($_POST['job_bm_cp_founded']) : $job_bm_cp_founded;
 
     ?>
     <div class="form-field-wrap" >
@@ -340,7 +366,9 @@ add_action('job_bm_company_edit_form', 'job_bm_company_edit_form_size', 30);
 
 function job_bm_company_edit_form_size($company_id){
 
-    $job_bm_cp_size = isset($_POST['job_bm_cp_size']) ? sanitize_text_field($_POST['job_bm_cp_size']) : "";
+    $job_bm_cp_size = get_post_meta($company_id, 'job_bm_cp_size', true);
+
+    $job_bm_cp_size = isset($_POST['job_bm_cp_size']) ? sanitize_text_field($_POST['job_bm_cp_size']) : $job_bm_cp_size;
 
     ?>
     <div class="form-field-wrap">
@@ -430,7 +458,7 @@ function job_bm_company_edit_form_submit($company_id){
 
 /* Process the submitted data  */
 
-add_action('job_bm_company_edit_data', 'job_bm_company_edit_data');
+add_action('job_bm_company_edit_data', 'job_bm_company_edit_data', 99, 2);
 
 function job_bm_company_edit_data($company_id, $post_data){
 
@@ -514,16 +542,16 @@ function job_bm_company_edit_data($company_id, $post_data){
         $allowed_html = array();
 
         $post_title = isset($post_data['post_title']) ? $post_data['post_title'] :'';
-        $post_content = isset($post_data['post_content']) ? wp_kses($post_data['post_content'], $allowed_html) : "";
+        $post_content = isset($post_data['post_content']) ? wp_kses_post($post_data['post_content'], $allowed_html) :
+            "";
 
 
-        $company_id = wp_insert_post(
+        wp_update_post(
             array(
+                'ID'    => $company_id,
                 'post_title'    => $post_title,
                 'post_content'  => $post_content,
-                'post_status'   => $job_bm_submitted_job_status,
-                'post_type'   	=> 'company',
-                'post_author'   => $user_id,
+
             )
         );
 
@@ -604,7 +632,7 @@ function job_bm_company_edited_message($company_id, $post_data){
 
     ?>
     <div class="job-submitted success">
-        <?php echo apply_filters('job_bm_company_edited_thank_you', _e('Thanks for submit your company, we will review soon.', 'job-board-manager')); ?>
+        <?php echo apply_filters('job_bm_company_edited_thank_you', _e('Thanks for update your company.', 'job-board-manager')); ?>
     </div>
     <?php
 
@@ -628,10 +656,10 @@ function job_bm_company_edited_redirect($company_id, $post_data){
 
     if(!empty($job_bm_redirect_preview_link)):
 
-        if($job_bm_redirect_preview_link =='job_preview'){
+        if($job_bm_redirect_preview_link =='company_preview'){
             $redirect_page_url = get_preview_post_link($company_id);
         }
-        elseif($job_bm_redirect_preview_link =='job_link'){
+        elseif($job_bm_redirect_preview_link =='company_link'){
             $redirect_page_url = get_permalink($company_id);
         }
         else{

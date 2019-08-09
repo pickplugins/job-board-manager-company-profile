@@ -11,7 +11,7 @@ class class_job_bm_cp_shortcodes_comany_edit{
 	
     public function __construct(){
 		
-		add_shortcode( 'company_edit_form', array( $this, 'company_edit_display' ) );
+		//add_shortcode( 'job_bm_company_edit_form', array( $this, 'company_edit_display' ) );
 
    		}
 

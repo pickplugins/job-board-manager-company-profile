@@ -32,10 +32,17 @@ class JobBoardManagerCompanyProfile{
     require_once( job_bm_cp_plugin_dir . 'includes/class-upgrade.php');
 
 
-	
-	//require_once( plugin_dir_path( __FILE__ ) . 'includes/shortcodes/class-shortcodes-comany-submit.php');
+    require_once( job_bm_cp_plugin_dir . 'includes/class-post-meta-company.php');
+    require_once( job_bm_cp_plugin_dir . 'includes/class-post-meta-company-hook.php');
+
+
+
+        //require_once( plugin_dir_path( __FILE__ ) . 'includes/shortcodes/class-shortcodes-comany-submit.php');
     //require_once( plugin_dir_path( __FILE__ ) . 'includes/shortcodes/class-shortcodes-comany-edit.php');
     require_once( plugin_dir_path( __FILE__ ) . 'includes/shortcodes/class-shortcodes-my-comany-list.php');
+        require_once( plugin_dir_path( __FILE__ ) . 'includes/shortcodes/class-shortcodes-my-companies.php');
+
+
 
 	
 	//require_once( plugin_dir_path( __FILE__ ) . 'includes/class-frontend-form-edit-company.php');		
@@ -43,7 +50,10 @@ class JobBoardManagerCompanyProfile{
 
 	// Function's
 	require_once( plugin_dir_path( __FILE__ ) . 'includes/functions.php');
-	require_once( plugin_dir_path( __FILE__ ) . 'templates/company-single-template-functions.php');	
+	require_once( plugin_dir_path( __FILE__ ) . 'templates/company-single-template-functions.php');
+
+	require_once( plugin_dir_path( __FILE__ ) . 'includes/functions-dashboard.php');
+    require_once( plugin_dir_path( __FILE__ ) . 'includes/functions-settings.php');
 
 
 

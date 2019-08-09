@@ -7,8 +7,8 @@ class class_job_bm_cp_shortcodes{
 		
 		add_shortcode( 'company_list', array( $this, 'job_bm_cp_companylist_display' ) );	
 		//add_shortcode( 'company_job_list', array( $this, 'job_bm_cp_job_list' ) );		
-        add_shortcode( 'company_submit_form', array( $this, 'company_submit_display' ) );
-        add_shortcode( 'company_edit_form', array( $this, 'company_edit_display' ) );
+        add_shortcode( 'job_bm_company_submit_form', array( $this, 'company_submit_display' ) );
+        add_shortcode( 'job_bm_company_edit_form', array( $this, 'company_edit_display' ) );
 
    		}
 
@@ -51,7 +51,7 @@ class class_job_bm_cp_shortcodes{
 
 
         if(!isset($_GET['company_id'])):
-            return apply_filters('job_bm_company_edit_invalid_id_text', sprintf(__('Company id is invalid. please go to %s » <a href="%s">My Companies</a> see your companies.', 'job-board-manager'), '<strong>'.$dashboard_page_title.'</strong>',$dashboard_page_url.'?tabs=my_jobs'));
+            return apply_filters('job_bm_company_edit_invalid_id_text', sprintf(__('Company id is invalid. please go to %s » <a href="%s">My Companies</a> see your companies.', 'job-board-manager'), '<strong>'.$dashboard_page_title.'</strong>',$dashboard_page_url.'?tabs=my_companies'));
         endif;
 
         $company_id = sanitize_text_field($_GET['company_id']);

@@ -345,7 +345,7 @@ function job_bm_company_submit_form_size(){
         <div class="field-title"><?php esc_html_e('Company worker size','job-board-manager'); ?></div>
         <div class="field-input">
             <input placeholder="12" type="text" value="<?php echo $job_bm_cp_size; ?>" name="job_bm_cp_size">
-            <p class="field-details"><?php esc_html_e('Write company worker szie','job-board-manager');
+            <p class="field-details"><?php esc_html_e('Write company worker size','job-board-manager');
                 ?></p>
         </div>
     </div>
