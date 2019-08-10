@@ -50,7 +50,6 @@ if(!function_exists('job_bm_my_companies_list')):
 
     function job_bm_my_companies_list(){
         ?>
-        <div class="job-bm-my-jobs">
 
             <?php
 
@@ -100,7 +99,7 @@ if(!function_exists('job_bm_my_companies_list')):
                 );
 
                 ?>
-                <div class="job-list">
+                <div class="companies-list">
                     <?php
 
                     $class_job_bm_functions = new class_job_bm_functions();
@@ -156,7 +155,6 @@ if(!function_exists('job_bm_my_companies_list')):
 
             ?>
 
-        </div>
         <?php
 
     }
@@ -211,7 +209,7 @@ if(!function_exists('job_bm_my_companies_loop_header')){
                 <?php endif; ?>
 
 
-                <span class="job-delete delete-job" job-id="<?php echo $company_id; ?>" title="<?php echo __('Company trash.', 'job-board-manager'); ?>"><i class="far fa-trash-alt"></i></span>
+                <span class="company-delete" job-id="<?php echo $company_id; ?>" title="<?php echo __('Company trash.', 'job-board-manager'); ?>"><i class="far fa-trash-alt"></i></span>
                 <span class="job-featured <?php echo $featured_class; ?>" title="<?php echo ($featured=='yes') ?  __('Featured company.', 'job-board-manager') : 'Not featured'; ?>"><i class="fas fa-star"></i></span>
 
                 <span class="job-hired" title="<?php echo __('Company size.', 'job-board-manager'); ?>"><i class="fas fa-user-tie"></i> <?php echo $job_bm_cp_size; ?></span>

@@ -4,22 +4,22 @@
 
 
 
-/* my-companies */
+/* job-bm-my-companies */
 
 
-.my-companies {
+.job-bm-my-companies {
 
 }
 
 
 
 
-.my-companies .nav-head{
+.job-bm-my-companies .nav-head{
     margin-bottom: 20px;
 }
 
 
-.my-companies .submit-company{
+.job-bm-my-companies .submit-company{
     display: inline-block;
     border: 1px solid #ddd;
     padding: 0px 8px;
@@ -33,17 +33,17 @@
 }
 
 
-.my-companies .my-job-card{
+.job-bm-my-companies .my-job-card{
     margin-bottom: 20px;
     padding-bottom: 20px;
     border-bottom: 1px dashed #ddd;
 }
-.my-companies .my-job-card .card-top{
+.job-bm-my-companies .my-job-card .card-top{
     background: #44aefba8;
     padding: 10px 10px;
 }
 
-.my-companies .my-job-card .job-id{
+.job-bm-my-companies .my-job-card .job-id{
     margin-right: 20px;
     min-width: 50px;
     display: inline-block;
@@ -51,7 +51,7 @@
 }
 
 
-.my-companies .my-job-card .job-edit{
+.job-bm-my-companies .my-job-card .job-edit{
     display: inline-block;
     margin: 0 2px;
     padding: 0 7px;
@@ -59,14 +59,14 @@
     border-radius: 3px;
     cursor: pointer;
 }
-.my-companies .my-job-card .job-edit:hover{
+.job-bm-my-companies .my-job-card .job-edit:hover{
     background: #37cd9d;
     color: #fff;
 }
 
 
 
-.my-companies .my-job-card .job-delete{
+.job-bm-my-companies .my-job-card .company-delete{
     display: inline-block;
     margin: 0 2px;
     padding: 0 7px;
@@ -74,14 +74,14 @@
     border-radius: 3px;
     cursor: pointer;
 }
-.my-companies .my-job-card .job-delete:hover{
+.job-bm-my-companies .my-job-card .company-delete:hover{
     background: #ff5d3d;
     color: #fff;
 
 
 }
 
-.my-companies .my-job-card .job-featured{
+.job-bm-my-companies .my-job-card .job-featured{
     display: inline-block;
     margin: 0 2px;
     padding: 0 7px;
@@ -90,7 +90,7 @@
     cursor: pointer;
 }
 
-.my-companies .my-job-card .job-featured.featured{
+.job-bm-my-companies .my-job-card .job-featured.featured{
     background: #f9a913;
     color: #fff;
 }
@@ -98,7 +98,7 @@
 
 
 
-.my-companies .my-job-card .job-application{
+.job-bm-my-companies .my-job-card .job-application{
     display: inline-block;
     margin: 0 2px;
     padding: 0 7px;
@@ -109,7 +109,7 @@
 }
 
 
-.my-companies .my-job-card .job-hired{
+.job-bm-my-companies .my-job-card .job-hired{
     display: inline-block;
     margin: 0 2px;
     padding: 0 7px;
@@ -121,16 +121,16 @@
 
 
 
-.my-companies .my-job-card .card-body{
+.job-bm-my-companies .my-job-card .card-body{
     padding: 10px;
     background: #f5f5f5;
 }
 
-.my-companies .my-job-card .card-body .meta{
+.job-bm-my-companies .my-job-card .card-body .meta{
     display: block;
 }
 
-.my-companies .my-job-card .card-body .job-link{
+.job-bm-my-companies .my-job-card .card-body .job-link{
     display: block;
     text-decoration: none;
 }
@@ -143,26 +143,26 @@
 
 
 
-.my-companies .single {
+.job-bm-my-companies .single {
     border-bottom: 1px solid rgb(221, 221, 221);
     padding: 10px 0;
 }
 
 
-.my-companies .single .title {
+.job-bm-my-companies .single .title {
     display: inline-block;
     font-size: 15px;
     margin: 5px 0;
     text-decoration: none;
 }
 
-.my-companies .single .meta {
+.job-bm-my-companies .single .meta {
     display: block;
     margin: 5px 15px 5px 0;
     vertical-align: top;
 }
 
-.my-companies .single .edit-link {
+.job-bm-my-companies .single .edit-link {
     background: #37cd9d none repeat scroll 0 0;
     color: #fff;
     display: inline-block;
@@ -176,7 +176,7 @@
     border-radius: 3px;
 }
 
-.my-companies .single .delete-job {
+.job-bm-my-companies .single .delete-job {
     background: #ff5d3d none repeat scroll 0 0;
     color: #fff;
     cursor: pointer;
@@ -190,18 +190,18 @@
 
 
 
-.my-companies .paginate {
+.job-bm-my-companies .paginate {
     margin: 30px 0;
     text-align: center;
 }
-.my-companies .paginate .page-numbers{
+.job-bm-my-companies .paginate .page-numbers{
     background: #f0f0f0 none repeat scroll 0 0;
     color: #999;
     padding: 7px 13px;
     text-decoration: none;
 }
 
-.my-companies .paginate .current {
+.job-bm-my-companies .paginate .current {
     border: medium none;
 }
 

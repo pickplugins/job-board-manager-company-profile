@@ -23,7 +23,7 @@ class class_job_bm_cp_post_types{
 		return;
 
 		$singular  = __( 'Company', 'job-board-manager-company-profile' );
-		$plural    = __( 'Company', 'job-board-manager-company-profile' );
+		$plural    = __( 'Companies', 'job-board-manager-company-profile' );
 	 
 	 
 		register_post_type( "company",

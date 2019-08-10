@@ -396,10 +396,10 @@ add_action('job_bm_company_edit_form', 'job_bm_company_edit_form_recaptcha', 60)
 
 function job_bm_company_edit_form_recaptcha($company_id){
 
-    $job_bm_reCAPTCHA_enable		= get_option('job_bm_reCAPTCHA_enable');
+    $job_bm_company_edit_recaptcha		= get_option('job_bm_company_edit_recaptcha');
     $job_bm_reCAPTCHA_site_key		        = get_option('job_bm_reCAPTCHA_site_key');
 
-    if($job_bm_reCAPTCHA_enable != 'yes'){
+    if($job_bm_company_edit_recaptcha != 'yes'){
         return;
     }
 
@@ -462,11 +462,11 @@ add_action('job_bm_company_edit_data', 'job_bm_company_edit_data', 99, 2);
 
 function job_bm_company_edit_data($company_id, $post_data){
 
-    $job_bm_reCAPTCHA_enable		    = get_option('job_bm_reCAPTCHA_enable');
-    $job_bm_account_required_post_job 	= get_option('job_bm_account_required_post_job', 'yes');
-    $job_bm_submitted_job_status 		= get_option('job_bm_submitted_job_status', 'pending' );
-    $job_bm_company_login_page_id           = get_option('job_bm_company_login_page_id');
-    $dashboard_page_url                 = get_permalink($job_bm_company_login_page_id);
+    $job_bm_company_edit_recaptcha		    = get_option('job_bm_company_edit_recaptcha');
+    $job_bm_company_submit_account_required 	= get_option('job_bm_company_submit_account_required', 'yes');
+    $job_bm_company_edit_post_status 		= get_option('job_bm_company_edit_post_status', 'pending' );
+    $job_bm_job_login_page_id           = get_option('job_bm_job_login_page_id');
+    $dashboard_page_url                 = get_permalink($job_bm_job_login_page_id);
 
 
     if ( is_user_logged_in() ) {
@@ -512,12 +512,12 @@ function job_bm_company_edit_data($company_id, $post_data){
         $error->add( 'job_bm_cp_logo', __( 'ERROR: Company logo is empty.', 'job-board-manager' ) );
     }
 
-    if(empty($post_data['g-recaptcha-response']) && $job_bm_reCAPTCHA_enable =='yes'){
+    if(empty($post_data['g-recaptcha-response']) && $job_bm_company_edit_recaptcha =='yes'){
 
         $error->add( 'g-recaptcha-response', __( 'ERROR: reCaptcha test failed.', 'job-board-manager' ) );
     }
 
-    if($job_bm_account_required_post_job == 'yes' && !is_user_logged_in()){
+    if($job_bm_company_submit_account_required == 'yes' && !is_user_logged_in()){
 
         $error->add( 'login',  sprintf (__('ERROR: Please <a target="_blank" href="%s">login</a> to submit question.',
             'job-board-manager'), $dashboard_page_url ));
@@ -551,6 +551,8 @@ function job_bm_company_edit_data($company_id, $post_data){
                 'ID'    => $company_id,
                 'post_title'    => $post_title,
                 'post_content'  => $post_content,
+                'post_status'  => $job_bm_company_edit_post_status,
+
 
             )
         );
@@ -663,8 +665,8 @@ function job_bm_company_edited_redirect($company_id, $post_data){
             $redirect_page_url = get_permalink($company_id);
         }
         else{
-            $job_bm_company_login_page_id 	= get_option('job_bm_company_login_page_id');
-            $redirect_page_url 					= get_permalink($job_bm_company_login_page_id).'?tabs=my_companies';
+            $job_bm_job_login_page_id 	= get_option('job_bm_job_login_page_id');
+            $redirect_page_url 					= get_permalink($job_bm_job_login_page_id).'?tabs=my_companies';
         }
 
         ?>

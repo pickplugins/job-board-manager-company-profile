@@ -28,8 +28,8 @@ class JobBoardManagerCompanyProfile{
 	require_once( job_bm_cp_plugin_dir . 'includes/class-post-meta.php');
 	require_once( job_bm_cp_plugin_dir . 'includes/class-shortcodes.php');
 	require_once( job_bm_cp_plugin_dir . 'includes/class-functions.php');
-	require_once( job_bm_cp_plugin_dir . 'includes/class-settings.php');
-    require_once( job_bm_cp_plugin_dir . 'includes/class-upgrade.php');
+	//require_once( job_bm_cp_plugin_dir . 'includes/class-settings.php');
+    //require_once( job_bm_cp_plugin_dir . 'includes/class-upgrade.php');
 
 
     require_once( job_bm_cp_plugin_dir . 'includes/class-post-meta-company.php');
@@ -37,10 +37,8 @@ class JobBoardManagerCompanyProfile{
 
 
 
-    //require_once( plugin_dir_path( __FILE__ ) . 'includes/shortcodes/class-shortcodes-comany-submit.php');
-    //require_once( plugin_dir_path( __FILE__ ) . 'includes/shortcodes/class-shortcodes-comany-edit.php');
-    require_once( plugin_dir_path( __FILE__ ) . 'includes/shortcodes/class-shortcodes-my-comany-list.php');
-    require_once( plugin_dir_path( __FILE__ ) . 'includes/shortcodes/class-shortcodes-my-companies.php');
+
+    //require_once( plugin_dir_path( __FILE__ ) . 'includes/shortcodes/class-shortcodes-my-companies.php');
 
 
 
@@ -50,7 +48,7 @@ class JobBoardManagerCompanyProfile{
 
 	// Function's
 	require_once( plugin_dir_path( __FILE__ ) . 'includes/functions.php');
-	require_once( plugin_dir_path( __FILE__ ) . 'templates/company-single-template-functions.php');
+	require_once( plugin_dir_path( __FILE__ ) . 'templates/company-single/company-single-template-functions.php');
 
 	require_once( plugin_dir_path( __FILE__ ) . 'includes/functions-dashboard.php');
     require_once( plugin_dir_path( __FILE__ ) . 'includes/functions-settings.php');
@@ -70,7 +68,10 @@ class JobBoardManagerCompanyProfile{
 	
 	
 	public function load_textdomain() {
-	  load_plugin_textdomain( 'job-board-manager-company-profile', false, plugin_basename( dirname( __FILE__ ) ) . '/languages/' );
+        $locale = apply_filters( 'plugin_locale', get_locale(), 'job-board-manager-company-profile' );
+        load_textdomain('job-board-manager-company-profile', WP_LANG_DIR .'/job-board-manager-company-profile/job-board-manager-company-profile-'. $locale .'.mo' );
+
+        load_plugin_textdomain( 'job-board-manager-company-profile', false, plugin_basename( dirname( __FILE__ ) ) . '/languages/' );
 	}
 	
 	
@@ -126,7 +127,8 @@ class JobBoardManagerCompanyProfile{
 		wp_enqueue_style('job_bm_cp_company_single', job_bm_cp_plugin_url.'assets/front/css/company-single.css');
         wp_enqueue_style('my-comany-list', job_bm_cp_plugin_url.'assets/front/css/my-comany-list.css');
 
-        wp_enqueue_style('job-bm-my-companies', job_bm_cp_plugin_url.'assets/front/css/my-companies.css');
+        wp_register_style('job-bm-my-companies', job_bm_cp_plugin_url.'assets/front/css/my-companies.css');
+        wp_register_script('job-bm-my-companies', job_bm_cp_plugin_url.'assets/front/js/scripts-my-companies.js');
 
 
 

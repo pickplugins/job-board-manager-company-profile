@@ -12,68 +12,71 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 
 
 
-add_filter( 'job_bm_settings_section_pages', 'job_bm_settings_section_pages_company_function', 99, 1 );
-function job_bm_settings_section_pages_company_function($section_options){
 
-    $section_options['job_bm_company_edit_page_id'] = array(
-        'css_class'=>'job_bm_company_edit_page_id',
-        'title'=>__('Company edit page','job-board-manager-company-profile'),
-        'option_details'=>__('Company edit page id','job-board-manager-company-profile'),
-        'input_type'=>'select',
-        'input_values'=>'',
-        'input_args'=>job_bm_page_list_id(),
-    );
 
-    return $section_options;
+
+
+
+
+function job_bm_ajax_delete_company_by_id() {
+
+    $job_bm_can_user_delete_jobs = get_option('job_bm_can_user_delete_jobs');
+
+    $html = '';
+
+
+    if($job_bm_can_user_delete_jobs=='no'){
+
+        $html.= '<i class="fa fa-exclamation-circle"></i> '.__('You are not authorized to delete this job.','job-board-manager');
+
+    }
+    else{
+
+        $company_id = (int)sanitize_text_field($_POST['company_id']);
+
+        $current_user_id = get_current_user_id();
+
+        $post_data = get_post($company_id, ARRAY_A);
+
+        $author_id = $post_data['post_author'];
+
+        if( $current_user_id == $author_id ){
+
+            if(wp_trash_post($company_id)){
+                $html.=	'<i class="fa fa-check"></i> '.__('Company Deleted.','job-board-manager');
+                $response['is_deleted'] = 'yes';
+
+                do_action('job_bm_job_trash', $company_id);
+
+            }
+            else{
+                $html.=	'<i class="fa fa-exclamation-circle"></i> '.__('Something going wrong.','job-board-manager');
+                $response['is_deleted'] = 'no';
+            }
+        }
+
+        else{
+
+            $html.=	'<i class="fa fa-exclamation-circle"></i> '.__('You are not authorized to delete this company.','job-board-manager');
+            $response['is_deleted'] = 'no';
+        }
+    }
+
+    $response['html'] = $html;
+
+    echo json_encode($response);
+
+    //echo $html;
+
+    die();
 }
 
+add_action('wp_ajax_job_bm_ajax_delete_company_by_id', 'job_bm_ajax_delete_company_by_id');
+//add_action('wp_ajax_nopriv_job_bm_ajax_delete_job_by_id', 'job_bm_ajax_delete_job_by_id');
 
 
 
 
-
-
-
-function job_bm_filters_faq_company_profile($faq){
-	
-	$faq['company_profile'] = array(
-	
-								'title'=>__('Company profile', 'job-board-manager-company-profile'),
-								'items'=>array(
-								
-												array(
-													'question'=>__('Remove input fields for company submit form', 'job-board-manager-company-profile'),
-													'answer_url'=>'https://goo.gl/DntSAv',
-						
-													),
-	
-								
-												array(
-													'question'=>__('Single company page showing 404 error', 'job-board-manager-company-profile'),
-													'answer_url'=>'https://goo.gl/iYeDDg',
-						
-													),	
-	
-												array(
-													'question'=>__('Single company page style broken', 'job-board-manager-company-profile'),
-													'answer_url'=>'https://goo.gl/HDiJrp',
-						
-													),		
-	
-	
-												),
-	
-									
-									);
-	
-	
-	
-	return $faq;
-	
-	
-	}
-
-add_filter('job_bm_filters_faq','job_bm_filters_faq_company_profile');
 
 
 
