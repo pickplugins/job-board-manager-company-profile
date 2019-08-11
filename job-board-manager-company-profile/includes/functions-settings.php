@@ -347,19 +347,19 @@ if(!function_exists('job_bm_settings_tabs_right_panel_company')) {
 
         <h3>Shortcodes</h3>
         <p>
-            <code>[job_bm_company_submit_form]</code> <br> Display company submit form, <a href="https://www.pickplugins.com/demo/job-board-manager/company-submit/">Demo</a>
+            <code>[job_bm_company_submit_form]</code> <br> Display company submit form, <br><a href="https://www.pickplugins.com/demo/job-board-manager/company-submit/">Demo</a>
         </p>
 
         <p>
-            <code>[job_bm_company_edit_form]</code> <br> Display company edit form. <a href="https://www.pickplugins
+            <code>[job_bm_company_edit_form]</code> <br> Display company edit form. <br><a href="https://www.pickplugins
             .com/demo/job-board-manager/company-edit/">Demo</a>
         </p>
 
         <p>
-            <code>[job_bm_my_companies]</code> <br> Display company created by logged-in user.
+            <code>[job_bm_my_companies]</code> <br> Display company created by logged-in user.<br><a href="http://www.pickplugins.com/demo/job-board-manager/job-dashboard/?tabs=my_companies">Demo</a>
         </p>
         <p>
-            <code>[job_bm_company_list]</code> <br> Display list of company with jobs. <a href="http://www.pickplugins.com/demo/job-board-manager/company-list/">Demo</a>
+            <code>[job_bm_company_list]</code> <br> Display list of company with jobs. <br><a href="http://www.pickplugins.com/demo/job-board-manager/company-list/">Demo</a>
         </p>
 
 
