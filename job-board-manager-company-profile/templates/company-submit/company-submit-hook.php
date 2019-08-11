@@ -619,17 +619,17 @@ add_action('job_bm_company_submitted', 'job_bm_company_submitted_redirect', 9999
 
 function job_bm_company_submitted_redirect($company_id, $post_data){
 
-    $job_bm_redirect_preview_link 	= get_option('job_bm_redirect_preview_link');
+    $job_bm_company_submit_redirect 	= get_option('job_bm_company_submit_redirect');
 
 
 
 
-    if(!empty($job_bm_redirect_preview_link)):
+    if(!empty($job_bm_company_submit_redirect)):
 
-        if($job_bm_redirect_preview_link =='job_preview'){
+        if($job_bm_company_submit_redirect =='company_preview'){
             $redirect_page_url = get_preview_post_link($company_id);
         }
-        elseif($job_bm_redirect_preview_link =='job_link'){
+        elseif($job_bm_company_submit_redirect =='company_link'){
             $redirect_page_url = get_permalink($company_id);
         }
         else{

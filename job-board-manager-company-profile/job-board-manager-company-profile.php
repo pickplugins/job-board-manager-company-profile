@@ -38,7 +38,7 @@ class JobBoardManagerCompanyProfile{
 
 
 
-    //require_once( plugin_dir_path( __FILE__ ) . 'includes/shortcodes/class-shortcodes-my-companies.php');
+    require_once( job_bm_cp_plugin_dir . 'templates/company-single/company-single-hook.php');
 
 
 
@@ -48,7 +48,7 @@ class JobBoardManagerCompanyProfile{
 
 	// Function's
 	require_once( plugin_dir_path( __FILE__ ) . 'includes/functions.php');
-	require_once( plugin_dir_path( __FILE__ ) . 'templates/company-single/company-single-template-functions.php');
+	//require_once( plugin_dir_path( __FILE__ ) . 'templates/company-single/company-single-template-functions.php');
 
 	require_once( plugin_dir_path( __FILE__ ) . 'includes/functions-dashboard.php');
     require_once( plugin_dir_path( __FILE__ ) . 'includes/functions-settings.php');
@@ -130,6 +130,7 @@ class JobBoardManagerCompanyProfile{
         wp_register_style('job-bm-my-companies', job_bm_cp_plugin_url.'assets/front/css/my-companies.css');
         wp_register_script('job-bm-my-companies', job_bm_cp_plugin_url.'assets/front/js/scripts-my-companies.js');
 
+        wp_register_style('job-bm-company-list', job_bm_cp_plugin_url.'assets/front/css/company-list.css');
 
 
 

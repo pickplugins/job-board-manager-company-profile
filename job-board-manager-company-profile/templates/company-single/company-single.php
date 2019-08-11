@@ -1,26 +1,19 @@
 <?php
-/*
-* @Author 		ParaTheme
-* Copyright: 	2015 ParaTheme
-*/
-
 if ( ! defined('ABSPATH')) exit;  // if direct access 
 
-		get_header();
+$company_id = get_the_ID();
 
-		do_action('job_bm_action_before_company_single');
 
-		while ( have_posts() ) : the_post(); 
-		?>
-        <div itemscope itemtype="http://schema.org/Organization" id="company-single-<?php the_ID(); ?>" <?php post_class('company-single entry-content'); ?>>
-        <?php
-			do_action('job_bm_action_company_single_main');
-		?>
-        </div>
-		<?php
-		endwhile;
-        do_action('job_bm_action_after_company_single');
-        //do_action('job_bm_action_after_company_related');
+do_action('job_bm_before_company_single', $company_id);
 
-		get_footer();
-		
+?>
+<div itemscope itemtype="http://schema.org/Organization" id="company-single-<?php the_ID(); ?>" class="company-single">
+
+<?php
+        do_action('job_bm_company_single', $company_id);
+    ?>
+</div>
+<?php
+do_action('job_bm_after_company_single', $company_id);
+
+

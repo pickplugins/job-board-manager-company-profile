@@ -3,7 +3,7 @@
 	Donate link: http://pickplugins.com
 	Tags:  Company Profile, Job Board Manager, Job Board, Job, Job Poster, job manager, job, job list, job listing, Job Listings, job lists, job management, job manager,
 	Requires at least: 4.1
-	Tested up to: 4.7
+	Tested up to: 5.2
 	Stable tag: 2.0.10
 	License: GPLv2 or later
 	License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -61,6 +61,16 @@ Plugin is translation ready, you can contribute in translation. please contact w
 
 
 == Changelog ==
+
+	= 2.0.10 =
+    * 10/08/2019 - update - action hook removed 'job_bm_action_before_company_single' and alter by
+    job_bm_before_company_single
+
+   * 10/08/2019 - update - action hook removed 'job_bm_action_company_single_main' and alter by
+   job_bm_company_single_main
+
+   * 10/08/2019 - update - action hook removed 'job_bm_action_after_company_single' and alter by
+   job_bm_after_company_single
 
 
 	= 2.0.10 =

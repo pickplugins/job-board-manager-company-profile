@@ -323,3 +323,50 @@ if(!function_exists('job_bm_settings_save_company')) {
 
     }
 }
+
+
+/*Right panel*/
+
+add_action('job_bm_settings_tabs_right_panel_company', 'job_bm_settings_tabs_right_panel_company');
+
+if(!function_exists('job_bm_settings_tabs_right_panel_company')) {
+    function job_bm_settings_tabs_right_panel_company($id){
+
+        ?>
+        <h3>Help & Support</h3>
+        <p>Please read documentation for customize Job Board Manger - Company Profile</p>
+        <a target="_blank" class="button" href="https://www.pickplugins.com/documentation/job-board-manager-company-profile/?ref=dashboard">Documentation</a>
+
+        <p>If you found any issue could not manage to solve yourself, please let us know and post your issue on forum.</p>
+        <a target="_blank" class="button" href="https://www.pickplugins.com/forum/?ref=dashboard">Create Ticket</a>
+
+        <h3>Write Reviews</h3>
+        <p>If you found Job Board Manger - Company Profile help you to build something useful, please help us by
+            providing your feedback and five star reviews on plugin page.</p>
+        <a target="_blank" class="button" href="https://wordpress.org/support/plugin/job-board-manager-company-profile/reviews/#new-post">Rate Us <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></a>
+
+        <h3>Shortcodes</h3>
+        <p>
+            <code>[job_bm_company_submit_form]</code> <br> Display company submit form, <a href="https://www.pickplugins.com/demo/job-board-manager/company-submit/">Demo</a>
+        </p>
+
+        <p>
+            <code>[job_bm_company_edit_form]</code> <br> Display company edit form. <a href="https://www.pickplugins
+            .com/demo/job-board-manager/company-edit/">Demo</a>
+        </p>
+
+        <p>
+            <code>[job_bm_my_companies]</code> <br> Display company created by logged-in user.
+        </p>
+        <p>
+            <code>[job_bm_company_list]</code> <br> Display list of company with jobs. <a href="http://www.pickplugins.com/demo/job-board-manager/company-list/">Demo</a>
+        </p>
+
+
+
+
+
+        <?php
+
+    }
+}

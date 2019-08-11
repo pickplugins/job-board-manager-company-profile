@@ -1,0 +1,37 @@
+@charset "utf-8";
+/* CSS Document */
+
+.job-bm-company-list {
+
+}
+.job-bm-company-list a{
+  text-decoration: none;
+}
+
+
+.job-bm-company-list .list-item{
+  margin-bottom: 20px;
+}
+.company-thumbnail{
+  width: 50px;
+  height: 50px;
+  float: left;
+}
+
+.company-details {
+  margin-left: 70px;
+}
+
+.company-name{}
+
+
+.company-jobs{}
+
+.company-jobs li{
+  margin-left: 15px;
+}
+
+
+
+
+
