@@ -52,6 +52,7 @@ class JobBoardManagerCompanyProfile{
 
 	require_once( plugin_dir_path( __FILE__ ) . 'includes/functions-dashboard.php');
     require_once( plugin_dir_path( __FILE__ ) . 'includes/functions-settings.php');
+        require_once( plugin_dir_path( __FILE__ ) . 'includes/functions-filter-hook.php');
 
 
 

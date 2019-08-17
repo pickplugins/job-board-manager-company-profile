@@ -52,11 +52,10 @@ jQuery(document).ready(function($)
 							{	
 								company = $.parseJSON(data);
 
-								$('#job_bm_location').val(company.job_bm_cp_city);
+								$('#job_bm_location').val(company.job_bm_cp_city);								
 								$('#job_bm_address').val(company.job_bm_cp_address);
-								$('input[name="job_bm_company_logo"]').val(company.job_bm_cp_logo);
+								$('#file_job_bm_company_logo').val(company.job_bm_cp_logo);								
 								$('#job_bm_company_website').val(company.job_bm_cp_website);
-								$('.media-preview').attr('src',company.job_bm_cp_logo);
 								
 								
 							}

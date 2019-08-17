@@ -365,17 +365,15 @@ add_action('wp_ajax_nopriv_job_bm_cp_ajax_job_company_list', 'job_bm_cp_ajax_job
 
 
 	function job_bm_cp_ajax_company_info_by_id(){
-        $company = array();
-
+		
 		$company_id = (int)$_POST['company_id'];
-        $company['post_title'] = get_the_title($company_id);
-        $company['job_bm_cp_city'] = get_post_meta($company_id,'job_bm_cp_city',true);
-        $company['job_bm_cp_address'] = get_post_meta($company_id,'job_bm_cp_address',true);
-        $company['job_bm_cp_website'] = get_post_meta($company_id,'job_bm_cp_website',true);
-        $company['job_bm_cp_logo'] = get_post_meta($company_id,'job_bm_cp_logo',true);
-
-
-		echo json_encode($company);
+		
+		$comapny['job_bm_cp_city'] = get_post_meta($company_id,'job_bm_cp_city',true);
+		$comapny['job_bm_cp_address'] = get_post_meta($company_id,'job_bm_cp_address',true);
+		$comapny['job_bm_cp_logo'] = get_post_meta($company_id,'job_bm_cp_logo',true);		
+		$comapny['job_bm_cp_website'] = get_post_meta($company_id,'job_bm_cp_website',true);					
+		
+		echo json_encode($comapny);
 
 		die();
 		}

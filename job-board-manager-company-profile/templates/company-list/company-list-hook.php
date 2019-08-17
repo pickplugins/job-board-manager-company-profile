@@ -5,12 +5,13 @@ add_action('job_bm_company_list','job_bm_company_list_main');
 
 if(!function_exists('job_bm_company_list_main')):
 
-    function job_bm_company_list_main(){
+    function job_bm_company_list_main($atts){
 
-        $post_per_page = 4;
-        $allow_empty_job_showing = '';
-        $max_job_count =3;
-        $display_pagination = '';
+        $max_job_count = isset($atts['max_job']) ? $atts['max_job'] : 3;
+
+
+        $post_per_page = 10;
+        $allow_empty_job_showing = true;
 
         if ( get_query_var('paged') ) {
 
@@ -55,8 +56,7 @@ if(!function_exists('job_bm_company_list_main')):
                         'meta_query' => $meta_query,
                     ) );
 
-                if ( $allow_empty_job_showing == 'false' )
-                {
+                if ( $allow_empty_job_showing == false ){
                     if ( $wp_query_custom->found_posts < 1 )
                         continue;
                 }
@@ -68,11 +68,29 @@ if(!function_exists('job_bm_company_list_main')):
                         <?php
 
                         $job_bm_cp_logo = get_post_meta(get_the_ID(),'job_bm_cp_logo', true);
-                        if(empty($job_bm_cp_logo)){
 
-                            $job_bm_cp_logo = job_bm_cp_plugin_url.'assets/global/images/company.png';
 
+                        if(is_serialized($job_bm_cp_logo)){
+
+                            $job_bm_cp_logo = unserialize($job_bm_cp_logo);
+                            if(!empty($job_bm_cp_logo[0])){
+                                $job_bm_cp_logo = $job_bm_cp_logo[0];
+                                $job_bm_cp_logo = wp_get_attachment_url($job_bm_cp_logo);
+
+                                if($job_bm_cp_logo == false){
+                                    $job_bm_cp_logo = job_bm_cp_plugin_url.'assets/global/images/company.png';
+
+                                }
+
+                            }
+                            else{
+                                $job_bm_cp_logo = job_bm_cp_plugin_url.'assets/global/images/company.png';
+                            }
                         }
+
+
+
+                        //var_dump($job_bm_cp_logo);
 
                         ?>
                         <div class="company-thumbnail">
@@ -125,24 +143,22 @@ if(!function_exists('job_bm_company_list_main')):
 
             endwhile;
 
-            if($display_pagination == 'yes'){
 
-                ?>
-                <div class="paginate">
-                <?php
-                $big = 999999999; // need an unlikely integer
-                echo paginate_links( array(
-                    'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
-                    'format' => '?paged=%#%',
-                    'current' => max( 1, $paged ),
-                    'total' => $wp_query->max_num_pages
-                ) );
+            ?>
+            <div class="paginate">
+            <?php
+            $big = 999999999; // need an unlikely integer
+            echo paginate_links( array(
+                'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+                'format' => '?paged=%#%',
+                'current' => max( 1, $paged ),
+                'total' => $wp_query->max_num_pages
+            ) );
 
-                ?>
-                </div>
-                <?php
+            ?>
+            </div>
+            <?php
 
-            }
 
 
 
@@ -162,7 +178,26 @@ endif;
 
 
 
+add_action('job_bm_company_list','job_bm_company_list_style');
 
+if(!function_exists('job_bm_company_list_style')){
+    function job_bm_company_list_style($atts){
+
+        $column = isset($atts['column']) ? $atts['column'] : 2;
+
+        ?>
+        <style type="text/css">
+            .job-bm-company-list .list-item{
+                width: <?php echo 93/$column ?>%;
+                display: inline-block;
+                vertical-align: top;
+            }
+        </style>
+        <?php
+
+
+    }
+}
 
 
 

@@ -137,20 +137,26 @@ class class_job_bm_company_shortcodes{
 
         $atts = shortcode_atts(
             array(
-                //'themes' => 'flat',
-                'display_edit' => 'yes',
-                'display_delete' => 'yes',
+                'column' => 2,
+                'max_job' => 3,
+
             ), $atts);
 
-        $display_edit = $atts['display_edit'];
-        $display_delete = $atts['display_delete'];
 
         include( job_bm_cp_plugin_dir . 'templates/company-list/company-list-hook.php');
 
 
         ob_start();
 
-        include( job_bm_cp_plugin_dir . 'templates/company-list/company-list.php');
+        do_action('job_bm_company_list_before', $atts);
+        ?>
+        <div class="job-bm-company-list">
+            <?php
+            do_action('job_bm_company_list', $atts);
+            ?>
+        </div>
+        <?php
+        do_action('job_bm_company_list_after', $atts);
 
         //wp_localize_script('job-bm-my-companies', 'job_bm_ajax', array( 'job_bm_ajaxurl' => admin_url( 'admin-ajax
         //.php')));

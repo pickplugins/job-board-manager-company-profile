@@ -115,37 +115,34 @@ jQuery(document).ready(function($)
 		
 		
 		
+		$("#job_bm_company_name").attr('autocomplete','off');		
 		$("#job_bm_company_name").wrap("<div id='company-name-wrapper'></div>");
 		
+		$("#company-name-wrapper").append("<div id='company-list'></div>");		
 
-
-		$(document).on('keyup', 'input[name="job_bm_company_name"]', function(){
-			$(this).attr('autocomplete','off');
-			$(this).after("<div id='company-list'>hello</div>");
+		$(document).on('keyup', '#job_bm_company_name', function()
+			{
 				
-			var name = $(this).val();
-
-			console.log(name);
-
-
-			if(name=='' || name == null){
-					$("#company-list").html('<div value="" class="item">Start Typing...<div>');
-				}
-			else{
-
-				$.ajax(
-					{
-				type: 'POST',
-				context: this,
-				url:job_bm_cp_ajax.job_bm_cp_ajaxurl,
-				data: {"action": "job_bm_cp_ajax_job_company_list", "name":name,},
-				success: function(data)
+				var name = $(this).val();
+				
+				if(name=='' || name == null){
+						$("#company-list").html('<div value="" class="item">Start Typing...<div>');
+					}
+				else{
+					
+					$.ajax(
 						{
-							$("#company-list").html(data);
-						}
-					});
-
-				}
+					type: 'POST',
+					context: this,
+					url:job_bm_cp_ajax.job_bm_cp_ajaxurl,
+					data: {"action": "job_bm_cp_ajax_job_company_list", "name":name,},
+					success: function(data)
+							{	
+								$("#company-list").html(data);	
+							}
+						});
+					
+					}
 				
 			})
 
@@ -172,12 +169,11 @@ jQuery(document).ready(function($)
 
 								$('#job_bm_location').val(company.job_bm_cp_city);								
 								$('#job_bm_address').val(company.job_bm_cp_address);
-								$('input[name="job_bm_company_logo"]').val(company.job_bm_cp_logo);
-								$('#job_bm_company_website').val(company.job_bm_cp_website);
-								$('.media-preview').attr('src',company.job_bm_cp_logo);
-
-
-
+								$('#file_job_bm_company_logo').val(company.job_bm_cp_logo);								
+								$('#job_bm_company_website').val(company.job_bm_cp_website);								
+																
+																
+								
 							}
 						});
 				
