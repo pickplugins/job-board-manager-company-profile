@@ -2,8 +2,21 @@
 /* CSS Document */
 
 .company-single{}
+.company-single .company-cover{
+  max-height: 220px;
+  overflow: hidden;
+}
+.company-single .company-cover img{
+  width: 100%;
+  height: auto;
+}
 
-.company-single .company-header{}
+
+
+.company-single .company-header{
+  background: #efefef;
+  padding: 15px 15px;
+}
 
 .company-single .company-header .thumb {
   margin-bottom: 20px;
@@ -14,13 +27,15 @@
   box-shadow: none;
 }
 
+
+
+
 .company-single .company-header .logo {
   display: inline-block;
-  height: 60px;
-  margin-right: 15px;
+  height: 80px;
   overflow: hidden;
-  vertical-align: top;
-  width: 60px;
+  width: 80px;
+  float: left;
 }
 
 
@@ -30,6 +45,20 @@
   height: auto;
   width: 100%;
 }
+
+.company-single .header-intro{
+  margin-left:90px;
+}
+
+.company-name{
+  font-size: 18px;
+  font-weight: bold;
+}
+.company-tagline{}
+.company-local{}
+
+
+
 
 .company-single .company-header .name {
   display: inline-block;

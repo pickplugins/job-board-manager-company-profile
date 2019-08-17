@@ -11,13 +11,6 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 
 
 
-
-
-
-
-
-
-
 function job_bm_ajax_delete_company_by_id() {
 
     $job_bm_can_user_delete_jobs = get_option('job_bm_can_user_delete_jobs');

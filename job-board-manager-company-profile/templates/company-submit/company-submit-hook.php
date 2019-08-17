@@ -289,6 +289,31 @@ function job_bm_company_submit_form_logo(){
 }
 
 
+add_action('job_bm_company_submit_form', 'job_bm_company_submit_form_cover', 30);
+function job_bm_company_submit_form_cover(){
+
+    $job_bm_company_cover = isset($_POST['job_bm_company_cover']) ? sanitize_text_field($_POST['job_bm_company_cover']) : job_bm_plugin_url."assets/front/images/placeholder.png";
+
+    ?>
+    <div class="form-field-wrap job-bm-media-upload">
+        <div class="field-title"><?php esc_html_e('Company cover image','job-board-manager'); ?></div>
+        <div class="field-input">
+            <div class="media-preview-wrap" style="">
+                <img class="media-preview" src="<?php echo $job_bm_company_cover; ?>" style="width:100%;box-shadow: none;"/>
+            </div>
+
+            <input placeholder="" type="text" value="<?php echo $job_bm_company_cover; ?>" name="job_bm_cp_logo">
+            <span class="media-upload " id=""><?php echo __('Upload','job-board-manager');?></span>
+            <!--            <span class="media-clear" id="">--><?php //echo __('Clear','job-board-manager');?><!--</span>-->
+
+            <p class="field-details"><?php esc_html_e('Upload company cover image','job-board-manager');
+                ?></p>
+        </div>
+    </div>
+    <?php
+}
+
+
 
 
 
@@ -567,6 +592,7 @@ function job_bm_company_submitted_save_data($company_id, $post_data){
     $job_bm_cp_founded = isset($post_data['job_bm_cp_founded']) ? sanitize_text_field($post_data['job_bm_cp_founded']) : "";
     $job_bm_cp_size = isset($post_data['job_bm_cp_size']) ? sanitize_text_field($post_data['job_bm_cp_size']) : "";
     $job_bm_cp_logo = isset($post_data['job_bm_cp_logo']) ? sanitize_text_field($post_data['job_bm_cp_logo']) : "";
+    $job_bm_company_cover = isset($post_data['job_bm_company_cover']) ? esc_url_raw($post_data['job_bm_company_cover']) : "";
 
 
 
@@ -581,10 +607,9 @@ function job_bm_company_submitted_save_data($company_id, $post_data){
     update_post_meta($company_id, 'job_bm_cp_address', $job_bm_cp_address);
     update_post_meta($company_id, 'job_bm_cp_website', $job_bm_cp_website);
     update_post_meta($company_id, 'job_bm_cp_founded', $job_bm_cp_founded);
-
     update_post_meta($company_id, 'job_bm_cp_size', $job_bm_cp_size);
-
     update_post_meta($company_id, 'job_bm_cp_logo', $job_bm_cp_logo);
+    update_post_meta($company_id, 'job_bm_company_cover', $job_bm_company_cover);
 
 
 }

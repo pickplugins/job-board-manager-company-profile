@@ -34,7 +34,25 @@ add_filter( 'the_content', 'job_bm_single_company' );
 
 
 
+add_action('job_bm_company_single', 'job_bm_company_single_cover');
 
+if(!function_exists('job_bm_company_single_cover')){
+    function job_bm_company_single_cover($company_id){
+
+        $job_bm_company_cover = get_post_meta($company_id, 'job_bm_company_cover', true);
+        $thumb = wp_get_attachment_image_src( get_post_thumbnail_id(get_the_ID()), 'full' );
+        $thumb_url = isset($thumb['0']) ? $thumb['0'] : '';
+
+        $job_bm_company_cover = !empty($job_bm_company_cover) ? $job_bm_company_cover : $thumb_url;
+
+        ?>
+        <div class="company-cover">
+            <img src="<?php echo esc_url_raw($job_bm_company_cover); ?>">
+        </div>
+        <?php
+
+    }
+}
 
 
 
@@ -51,53 +69,61 @@ if(!function_exists('job_bm_company_single_header')){
         $job_bm_cp_country = get_post_meta($company_id, 'job_bm_cp_country', true);
         $job_bm_cp_tagline = get_post_meta($company_id, 'job_bm_cp_tagline', true);
 
+        ?>
+        <div class="company-header">
+            <?php
+            do_action('job_bm_company_single_header_top', $company_id);
 
 
-        $header_html = '';
-        echo '<div class="company-header">';
+            if(!empty($job_bm_cp_logo)){
 
-        $thumb = wp_get_attachment_image_src( get_post_thumbnail_id(get_the_ID()), 'full' );
-        $thumb_url = $thumb['0'];
+                $job_bm_default_company_logo = get_option('job_bm_default_company_logo');
 
-        if(!empty($thumb_url)){
-            $header_html .= '<div class="thumb"><img src="'.$thumb_url.'" /></div>';
-        }
+                if(is_serialized($job_bm_cp_logo)){
 
-        if(!empty($job_bm_cp_logo)){
-
-            $job_bm_default_company_logo = get_option('job_bm_default_company_logo');
-
-            if(is_serialized($job_bm_cp_logo)){
-
-                $job_bm_cp_logo = unserialize($job_bm_cp_logo);
-                if(!empty($job_bm_cp_logo[0])){
-                    $job_bm_cp_logo = $job_bm_cp_logo[0];
-                    $job_bm_cp_logo = wp_get_attachment_url($job_bm_cp_logo);
+                    $job_bm_cp_logo = unserialize($job_bm_cp_logo);
+                    if(!empty($job_bm_cp_logo[0])){
+                        $job_bm_cp_logo = $job_bm_cp_logo[0];
+                        $job_bm_cp_logo = wp_get_attachment_url($job_bm_cp_logo);
+                    }
+                    else{
+                        $job_bm_cp_logo = $job_bm_default_company_logo;
+                    }
                 }
-                else{
-                    $job_bm_cp_logo = $job_bm_default_company_logo;
-                }
+
+
+
+                ?>
+                <div class="logo"><img src="<?php echo $job_bm_cp_logo; ?>" /></div>
+                <?php
+
             }
 
 
 
-            $header_html .= '<div class="logo"><img src="'.$job_bm_cp_logo.'" /></div>';
 
-        }
+            if(!empty($company_post_data->post_title)){
 
+                ?>
+                <div class="header-intro">
+                    <div class="company-name"><?php echo $company_post_data->post_title; ?></div>
+                    <div class="company-tagline"><?php echo $job_bm_cp_tagline; ?></div>
+                    <div class="company-local"><?php echo $job_bm_cp_country; ?> <i class="fa fa-angle-right"></i> <?php echo $job_bm_cp_city; ?></div>
 
-
-
-        if(!empty($company_post_data->post_title)){
-            $header_html .= '<h1 itemprop="name" class="name">'.$company_post_data->post_title.'<span class="tagline">'.$job_bm_cp_tagline.'</span><span class="local">'.$job_bm_cp_country.' <i class="fa fa-angle-right"></i> '.$job_bm_cp_city.'</span></h1>';
-            $header_html .= '';
-
-        }
-
-        echo apply_filters('job_bm_cp_filter_company_single_header',$header_html);
+                </div>
 
 
-        echo '</div>'; // .company-header
+
+                <?php
+
+            }
+
+
+            do_action('job_bm_company_single_header_bottom', $company_id);
+
+        ?>
+        </div>
+        <?php
 
 
     }
@@ -107,7 +133,66 @@ if(!function_exists('job_bm_company_single_header')){
 
 
 
+add_action('job_bm_company_single_header_top', 'job_bm_company_single_header_top_follower');
 
+if(!function_exists('job_bm_company_single_header_top_follower')){
+    function job_bm_company_single_header_top_follower($company_id){
+
+        $follower_id = get_current_user_id();
+
+        global $wpdb;
+        $table = $wpdb->prefix . "job_bm_cp_follow";
+
+        $html = '';
+
+
+        $html.= '<div class="follow">';
+
+        $is_follow_query = $wpdb->get_results("SELECT * FROM $table WHERE company_id = '$company_id' AND follower_id = '$follower_id'", ARRAY_A);
+        $is_follow = $wpdb->num_rows;
+        if($is_follow > 0 ){
+
+            $follow_text = __('Unfollow', 'job-board-manager-company-profile');
+        }
+        else{
+            $follow_text = __('Follow', 'job-board-manager-company-profile');
+        }
+
+
+        $html.= '<span company_id="'.get_the_ID().'" class="follow-button">'.$follow_text.'</span>';
+
+
+
+        $follower_query = $wpdb->get_results("SELECT * FROM $table WHERE company_id = '$company_id' ORDER BY id DESC LIMIT 10");
+
+        $html.= '<div class="follower-list">';
+
+        if(!empty($follower_query))
+        foreach( $follower_query as $follower ){
+            $follower_id = $follower->follower_id;
+            $user = get_user_by( 'id', $follower_id );
+
+            //var_dump($user);
+            if(!empty($user->display_name)){
+                $html .= '<div title="'.$user->display_name.'" class="follower follower-'.$follower_id.'">';
+                $html .= get_avatar( $follower_id, 50 );
+                $html .= '</div>';
+            }
+
+
+        }
+
+        $html.= '</div>';
+
+        $html.= '<div class="status"></div>';
+        $html.= '</div>';
+
+        echo $html;
+
+
+
+    }
+}
 
 
 
@@ -236,22 +321,6 @@ if(!function_exists('job_bm_company_single_reviews')){
 
 
 
-add_action('job_bm_company_single', 'job_bm_company_single_meta');
-
-if(!function_exists('job_bm_company_single_meta')){
-    function job_bm_company_single_meta($company_id){
-
-
-
-
-
-    }
-}
-
-
-
-
-
 
 add_action('job_bm_company_single', 'job_bm_company_single_tabs');
 
@@ -262,21 +331,21 @@ if(!function_exists('job_bm_company_single_tabs')){
 
         $company_tabs[] = array(
             'id' => 'description',
-            'title' => sprintf(__('%s Descriptions','job-board-manager'),'<i class="fas fa-list-ul"></i>'),
+            'title' => sprintf(__('%s Descriptions','job-board-manager'),'<i class="fas fa-file-signature"></i>'),
             'priority' => 1,
             'active' => true,
         );
 
         $company_tabs[] = array(
             'id' => 'jobs',
-            'title' => sprintf(__('%s Jobs','job-board-manager'),'<i class="far fa-copy"></i>'),
+            'title' => sprintf(__('%s Jobs','job-board-manager'),'<i class="fas fa-briefcase"></i>'),
             'priority' => 2,
             'active' => false,
         );
 
         $company_tabs[] = array(
             'id' => 'reviews',
-            'title' => sprintf(__('%s Reviews','job-board-manager'),'<i class="far fa-copy"></i>'),
+            'title' => sprintf(__('%s Reviews','job-board-manager'),'<i class="far fa-comment-dots"></i>'),
             'priority' => 2,
             'active' => false,
         );
@@ -476,7 +545,72 @@ if(!function_exists('job_bm_company_single_tabs_content_jobs')){
 
 
 
+add_action('job_bm_company_single_tabs_content_reviews', 'job_bm_company_single_tabs_content_reviews');
 
+if(!function_exists('job_bm_company_single_tabs_content_reviews')){
+    function job_bm_company_single_tabs_content_reviews($company_id){
+
+        $company_post_data = get_post($company_id);
+
+        wp_enqueue_style('job-bm-job-submit');
+
+        if(!empty($_POST)){
+            do_action('job_bm_company_submit_reviews_data', $_POST);
+        }
+
+
+        ?>
+        <div class="company-reviews">
+            <form class="job-bm-job-submit" enctype="multipart/form-data" method="post" action="<?php echo str_replace( '%7E', '~', $_SERVER['REQUEST_URI']); ?>">
+
+
+                <div class="form-field-wrap">
+                    <div class="field-title"><?php esc_html_e('Ratting','job-board-manager'); ?></div>
+                    <div class="field-input">
+                        <select name="review_rate">
+                            <option value="5">Best</option>
+                            <option value="4">Pretty Good</option>
+                            <option value="3">Good</option>
+                            <option value="2">Poor</option>
+                            <option value="1">Very Poor</option>
+
+
+
+
+                        </select>
+                        <p class="field-details"><?php esc_html_e('Choose your ratting','job-board-manager');
+                            ?>
+                        </p>
+                    </div>
+                </div>
+
+
+                <div class="form-field-wrap">
+                    <div class="field-title"><?php esc_html_e('Write your feedback','job-board-manager'); ?></div>
+                    <div class="field-input">
+                        <textarea name="review_text"></textarea>
+                        <p class="field-details"><?php esc_html_e('Write your reviews here.','job-board-manager'); ?>
+                        </p>
+                    </div>
+                </div>
+
+
+                <div class="form-field-wrap">
+                    <div class="field-title"></div>
+                    <div class="field-input">
+                        <input type="submit" value="Submit" ></input>
+                    </div>
+                </div>
+
+
+
+            </form>
+        </div>
+        <?php
+
+
+    }
+}
 
 
 
