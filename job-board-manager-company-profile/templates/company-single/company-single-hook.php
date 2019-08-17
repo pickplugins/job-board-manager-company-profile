@@ -2,6 +2,11 @@
 if ( ! defined('ABSPATH')) exit;  // if direct access 
 
 
+
+
+
+
+
 function job_bm_single_company($content) {
 
     global $post;
@@ -13,7 +18,8 @@ function job_bm_single_company($content) {
 
         //wp_enqueue_style('job_bm_job_single');
         //wp_enqueue_style('font-awesome-5');
-        //wp_enqueue_script('jquery-ui-accordion');
+        wp_enqueue_script('job-bm-single-company');
+
 
         return ob_get_clean();
     }
@@ -23,6 +29,11 @@ function job_bm_single_company($content) {
 
 }
 add_filter( 'the_content', 'job_bm_single_company' );
+
+
+
+
+
 
 
 
@@ -92,7 +103,23 @@ if(!function_exists('job_bm_company_single_header')){
     }
 }
 
-add_action('job_bm_company_single', 'job_bm_company_single_reviews');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//add_action('job_bm_company_single', 'job_bm_company_single_reviews');
 
 if(!function_exists('job_bm_company_single_reviews')){
     function job_bm_company_single_reviews($company_id){
@@ -215,10 +242,108 @@ if(!function_exists('job_bm_company_single_meta')){
     function job_bm_company_single_meta($company_id){
 
 
+
+
+
+    }
+}
+
+
+
+
+
+
+add_action('job_bm_company_single', 'job_bm_company_single_tabs');
+
+if(!function_exists('job_bm_company_single_tabs')){
+    function job_bm_company_single_tabs($company_id){
+
+        $company_tabs = array();
+
+        $company_tabs[] = array(
+            'id' => 'description',
+            'title' => sprintf(__('%s Descriptions','job-board-manager'),'<i class="fas fa-list-ul"></i>'),
+            'priority' => 1,
+            'active' => true,
+        );
+
+        $company_tabs[] = array(
+            'id' => 'jobs',
+            'title' => sprintf(__('%s Jobs','job-board-manager'),'<i class="far fa-copy"></i>'),
+            'priority' => 2,
+            'active' => false,
+        );
+
+        $company_tabs[] = array(
+            'id' => 'reviews',
+            'title' => sprintf(__('%s Reviews','job-board-manager'),'<i class="far fa-copy"></i>'),
+            'priority' => 2,
+            'active' => false,
+        );
+
+
+        $company_tabs = apply_filters('job_bm_company_single_tabs', $company_tabs);
+
+        $tabs_sorted = array();
+        foreach ($company_tabs as $page_key => $tab) $tabs_sorted[$page_key] = isset( $tab['priority'] ) ? $tab['priority'] : 0;
+        array_multisort($tabs_sorted, SORT_ASC, $company_tabs);
+
+        ?>
+        <div class="company-tabs">
+            <ul class="tab-navs">
+                <?php
+                foreach ($company_tabs as $tab){
+                    $id = $tab['id'];
+                    $title = $tab['title'];
+                    $active = $tab['active'];
+                    $data_visible = isset($tab['data_visible']) ? $tab['data_visible'] : '';
+                    $hidden = isset($tab['hidden']) ? $tab['hidden'] : false;
+                    ?>
+                    <li <?php if(!empty($data_visible)):  ?> data_visible="<?php echo $data_visible; ?>" <?php endif; ?> class="tab-nav <?php if($hidden) echo 'hidden';?> <?php if($active) echo 'active';?>" data-id="<?php echo $id; ?>"><?php echo $title; ?></li>
+                    <?php
+                }
+                ?>
+            </ul>
+            <div class="clear"></div>
+
+            <?php
+            foreach ($company_tabs as $tab){
+                $id = $tab['id'];
+                $title = $tab['title'];
+                $active = $tab['active'];
+                ?>
+
+                <div class="tab-content <?php if($active) echo 'active';?>" id="<?php echo $id; ?>">
+                    <?php
+                    do_action('job_bm_company_single_tabs_content_'.$id, $company_id);
+                    ?>
+
+
+                </div>
+
+                <?php
+            }
+            ?>
+        </div>
+        <?php
+
+
+
+
+    }
+}
+
+
+
+
+
+add_action('job_bm_company_single_tabs_content_description', 'job_bm_company_single_tabs_content_description');
+
+if(!function_exists('job_bm_company_single_tabs_content_description')){
+    function job_bm_company_single_tabs_content_description($company_id){
+
         $company_post_data = get_post($company_id);
-
         $job_bm_cp_type = get_post_meta($company_id, 'job_bm_cp_type', true);
-
         $job_bm_cp_address = get_post_meta($company_id, 'job_bm_cp_address', true);
         $job_bm_cp_website = get_post_meta($company_id, 'job_bm_cp_website', true);
         $job_bm_cp_founded = get_post_meta($company_id, 'job_bm_cp_founded', true);
@@ -228,63 +353,120 @@ if(!function_exists('job_bm_company_single_meta')){
 
 
 
-        echo '<div class="meta-info">';
+        ?>
+        <div class="company-overview">
+            <h3><?php echo __('Quick overview','job-board-manager-company-profile'); ?></h3>
 
-        if(!empty($job_bm_cp_address)){
-            echo '<div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress" class="meta"><strong><i class="fa fa-map-marker"></i>'.__('Address:','job-board-manager-company-profile').'</strong> '.$job_bm_cp_address.'</div>';
-        }
+            <?php
 
-        if(!empty($job_bm_cp_website)){
-            echo '<div class="meta"><strong><i class="fa fa-link"></i>'.__('Website:', 'job-board-manager-company-profile').'</strong> '.$job_bm_cp_website.'</div>';
-        }
+            if(!empty($job_bm_cp_address)):
+                ?>
+                <div class="overview-item"><?php echo sprintf(__('%s Address: %s'),'<i class="fas fa-map-marked-alt"></i>', $job_bm_cp_address );?></div>
+            <?php
+            endif;
+
+            if(!empty($job_bm_cp_website)):
+                ?>
+                <div class="overview-item"><?php echo sprintf(__('%s Website: %s'),'<i class="fas fa-external-link-square-alt"></i>', $job_bm_cp_website );?></div>
+            <?php
+            endif;
+
+            if(!empty($job_bm_cp_founded)):
+                ?>
+                <div class="overview-item"><?php echo sprintf(__('%s Founded: %s'),'<i class="far fa-calendar-check"></i>', $job_bm_cp_founded );?></div>
+            <?php
+            endif;
+
+            if(!empty($job_bm_cp_size)):
+                ?>
+                <div class="overview-item"><?php echo sprintf(__('%s Size: %s'),'<i class="fas fa-users"></i>', $job_bm_cp_size );?></div>
+            <?php
+            endif;
+
+            if(!empty($job_bm_cp_revenue)):
+                ?>
+                <div class="overview-item"><?php echo sprintf(__('%s Revenue: %s'),'<i class="fas fa-money-check-alt"></i>', $job_bm_cp_revenue );?></div>
+            <?php
+            endif;
+
+            ?>
+            <?php
 
 
 
-        $company_type = '';
+            $company_type = '';
 
-        if(!empty($job_bm_cp_type)){
+            if(!empty($job_bm_cp_type)){
 
-            foreach($job_bm_cp_type as $type_key=>$type_name){
+                foreach($job_bm_cp_type as $type_key=>$type_name){
 
-                $company_type.= $type_name.', ';
+                    $company_type.= $type_name.', ';
+                }
+
+                if(!empty($company_type)):
+                    ?>
+                    <div class="overview-item"><?php echo sprintf(__('%s Type: %s'),'<i class="fas fa-code-branch"></i>', $company_type );?></div>
+                <?php
+                endif;
+
             }
 
 
-            echo '<div class="meta"><strong><i class="fa fa-flag-o"></i>'.__('Type:','job-board-manager-company-profile').'</strong> '.$company_type.'</div>';
-        }
-
-        if(!empty($job_bm_cp_founded)){
-
-            echo '<div class="meta"><strong><i class="fa fa-calendar-o"></i>'.__('Founded:','job-board-manager-company-profile').' </strong>'.$job_bm_cp_founded.'</div>';
-
-        }
-        if(!empty($job_bm_cp_size)){
-
-            echo '<div class="meta"><strong><i class="fa fa-users"></i>'.__('Size:','job-board-manager-company-profile').'</strong> '.$job_bm_cp_size.'</div>';
-        }
-        if(!empty($job_bm_cp_revenue)){
-
-            echo '<div class="meta"><strong><i class="fa fa-money"></i>'.__('Revenue:','job-board-manager-company-profile').'</strong> $'.$job_bm_cp_revenue.'</div>';
-        }
 
 
-        echo '</div>'; // .meta-info
+           ?>
+            </div>
+           <?php
 
 
 
 
-        if(!empty($job_bm_cp_mission)){
+        if(!empty($job_bm_cp_mission)):
 
-            echo '<div class="mission"><strong><i class="fa fa-rocket"></i>'.__('Mission:','job-board-manager-company-profile').'</strong> '.$job_bm_cp_mission.'</div>';
+            ?>
+            <div class="mission"><strong><i class="fa fa-rocket"></i>'.__('Mission:','job-board-manager-company-profile').'</strong> '.$job_bm_cp_mission.'</div>
+            <?php
 
-        }
+        endif;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         if(!empty($company_post_data->post_content)){
-            echo '<div  class="description">'.wpautop($company_post_data->post_content).'</div>';
+
+            ?>
+            <h3><?php echo __('Company Descriptions','job-board-manager-company-profile'); ?></h3>
+
+            <div  class="description">
+                <?php echo wpautop($company_post_data->post_content); ?>
+            </div>
+            <?php
         }
 
+    }
+}
 
 
+add_action('job_bm_company_single_tabs_content_jobs', 'job_bm_company_single_tabs_content_jobs');
+
+if(!function_exists('job_bm_company_single_tabs_content_jobs')){
+    function job_bm_company_single_tabs_content_jobs($company_id){
+
+        $company_post_data = get_post($company_id);
+
+
+            echo do_shortcode('[job_list display_search="no" company_name="'.$company_post_data->post_title.'"]');
 
 
 
@@ -294,16 +476,17 @@ if(!function_exists('job_bm_company_single_meta')){
 
 
 
-add_action('job_bm_company_single', 'job_bm_company_single_jobs');
-
-if(!function_exists('job_bm_company_single_jobs')){
-    function job_bm_company_single_jobs($company_id){
-
-        $company_post_data = get_post(get_the_ID());
 
 
-        echo '<h2 class="job-list-header">'.sprintf(__('Jobs available from - %s', ''), $company_post_data->post_title).'</h2>';
-        echo do_shortcode('[job_list display_search="no" company_name="'.$company_post_data->post_title.'"]');
 
-    }
-}
+
+
+
+
+
+
+
+
+
+
+

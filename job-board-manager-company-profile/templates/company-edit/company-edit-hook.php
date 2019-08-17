@@ -289,9 +289,28 @@ add_action('job_bm_company_edit_form', 'job_bm_company_edit_form_logo', 30);
 function job_bm_company_edit_form_logo($company_id){
 
     $job_bm_cp_logo = get_post_meta($company_id, 'job_bm_cp_logo', true);
-    $job_bm_cp_logo = !empty($job_bm_cp_logo) ? $job_bm_cp_logo : job_bm_plugin_url."assets/front/images/placeholder.png";
+    $job_bm_cp_logo = !empty($job_bm_cp_logo) ? $job_bm_cp_logo : job_bm_cp_plugin_url.'assets/global/images/company.png';
 
     $job_bm_cp_logo = isset($_POST['job_bm_cp_logo']) ? sanitize_text_field($_POST['job_bm_cp_logo']) : $job_bm_cp_logo;
+
+    if(is_serialized($job_bm_cp_logo)){
+
+        $job_bm_cp_logo = unserialize($job_bm_cp_logo);
+        if(!empty($job_bm_cp_logo[0])){
+            $job_bm_cp_logo = $job_bm_cp_logo[0];
+            $job_bm_cp_logo = wp_get_attachment_url($job_bm_cp_logo);
+
+            if($job_bm_cp_logo == false){
+                $job_bm_cp_logo = job_bm_cp_plugin_url.'assets/global/images/company.png';
+
+            }
+
+        }
+        else{
+            $job_bm_cp_logo = job_bm_cp_plugin_url.'assets/global/images/company.png';
+        }
+    }
+
 
     ?>
     <div class="form-field-wrap job-bm-media-upload">

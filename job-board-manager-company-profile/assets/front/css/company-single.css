@@ -229,21 +229,15 @@
   font-size: 12px;
 }
 
-
-
-
-.company-single .meta-info {
-  margin: 15px 0;
+.company-single .company-overview{
+    margin-bottom: 15px;
 }
-
-.company-single .meta-info .meta {
-  display: inline-block;
-  font-size: 12px;
-  margin: 0 25px 0 0;
-}
-
-.company-single .meta-info .meta i {
-  margin-right: 6px;
+.company-single .overview-item{
+    margin-right: 20px;
+    font-size: 14px;
+    width: 45%;
+    display: inline-block;
+    margin: 5px 0;
 }
 
 
@@ -294,8 +288,35 @@
 
 
 
+.company-tabs{}
+.company-tabs .tab-navs{}
+.company-tabs .tab-nav{
+    /* width: 200px; */
+    padding: 8px 15px;
+    background: #ececec;
+    margin: 0;
+    border-right: 1px solid #e6e6e6;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 13px;
+    float: left;
+}
+.company-tabs .tab-content{}
 
 
+.company-tabs .tab-nav.active{
+    background:#f5f5f5;
+}
+
+.company-tabs .tab-content{
+    padding: 15px;
+    background: #f5f5f5;
+    display: none;
+}
+
+.company-tabs .tab-content.active{
+    display: block;
+}
 
 
 

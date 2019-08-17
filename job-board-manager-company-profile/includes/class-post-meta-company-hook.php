@@ -118,7 +118,7 @@ function job_bm_metabox_company_salary_fixed($job_id){
     $args = array(
         'id'		=> 'job_bm_cp_city',
         //'parent'		=> '',
-        'title'		=> __('Company cit','job-board-manager'),
+        'title'		=> __('Company city','job-board-manager'),
         'details'	=> __('Write company city','job-board-manager'),
         'type'		=> 'text',
         'value'		=> $job_bm_cp_city,
@@ -169,6 +169,25 @@ function job_bm_metabox_company_content_company_info_logo($job_id){
 
     $job_bm_cp_logo = !empty($job_bm_cp_logo) ? $job_bm_cp_logo : job_bm_plugin_url."assets/front/images/placeholder.png";
 
+    if(is_serialized($job_bm_cp_logo)){
+
+        $job_bm_cp_logo = unserialize($job_bm_cp_logo);
+        if(!empty($job_bm_cp_logo[0])){
+            $job_bm_cp_logo = $job_bm_cp_logo[0];
+            $job_bm_cp_logo = wp_get_attachment_url($job_bm_cp_logo);
+
+            if($job_bm_cp_logo == false){
+                $job_bm_cp_logo = job_bm_cp_plugin_url.'assets/global/images/company.png';
+
+            }
+
+        }
+        else{
+            $job_bm_cp_logo = job_bm_cp_plugin_url.'assets/global/images/company.png';
+        }
+    }
+
+
 
     $args = array(
         'id'		=> 'job_bm_cp_logo',
@@ -201,7 +220,7 @@ function job_bm_metabox_company_content_company_info_website($job_id){
         'type'		=> 'text',
         'value'		=> $job_bm_cp_website,
         'default'		=> '',
-        'placeholder'		=> 'http://companywebsite',
+        'placeholder'		=> 'http://companywebsite.com',
     );
 
     $settings_tabs_field->generate_field($args);

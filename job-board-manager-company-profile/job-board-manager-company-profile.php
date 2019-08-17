@@ -130,6 +130,8 @@ class JobBoardManagerCompanyProfile{
 
         wp_register_style('job-bm-my-companies', job_bm_cp_plugin_url.'assets/front/css/my-companies.css');
         wp_register_script('job-bm-my-companies', job_bm_cp_plugin_url.'assets/front/js/scripts-my-companies.js');
+        wp_register_script('job-bm-single-company', job_bm_cp_plugin_url.'assets/front/js/scripts-single-company.js');
+
 
         wp_register_style('job-bm-company-list', job_bm_cp_plugin_url.'assets/front/css/company-list.css');
 
