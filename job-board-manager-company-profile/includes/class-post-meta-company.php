@@ -20,7 +20,7 @@ class class_job_bm_post_metabox_company{
 	
 	public function job_bm_post_meta_company($post_type){
 
-            add_meta_box('metabox-company-data',__('Company data', 'job-board-manager'), array($this, 'meta_box_company_data'), 'company', 'normal', 'high');
+            add_meta_box('metabox-company-data',__('Company data', 'job-board-manager-company-profile'), array($this, 'meta_box_company_data'), 'company', 'normal', 'high');
 
 		}
 
@@ -46,7 +46,7 @@ class class_job_bm_post_metabox_company{
 
         $job_bm_settings_tab[] = array(
             'id' => 'company_info',
-            'title' => sprintf(__('%s Company info','job-board-manager'),'<i class="far fa-building"></i>'),
+            'title' => sprintf(__('%s Company info','job-board-manager-company-profile'),'<i class="far fa-building"></i>'),
             'priority' => 1,
             'active' => true,
         );
@@ -54,7 +54,7 @@ class class_job_bm_post_metabox_company{
         if(current_user_can('manage_options')):
             $job_bm_settings_tab[] = array(
                 'id' => 'admin',
-                'title' => sprintf(__('%s Admin action','job-board-manager'),'<i class="fas fa-tools"></i>'),
+                'title' => sprintf(__('%s Admin action','job-board-manager-company-profile'),'<i class="fas fa-tools"></i>'),
                 'priority' => 3,
                 'active' => false,
             );

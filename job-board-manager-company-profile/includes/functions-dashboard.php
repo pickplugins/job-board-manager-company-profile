@@ -6,7 +6,7 @@ add_filter('job_bm_dashboard_tabs','job_bm_dashboard_tabs_companies');
 function job_bm_dashboard_tabs_companies($tabs){
 
     $tabs['my_companies'] =array(
-        'title'=>__('My companies', 'job-board-manager'),
+        'title'=>__('My companies', 'job-board-manager-company-profile'),
         'priority'=>5,
     );
 

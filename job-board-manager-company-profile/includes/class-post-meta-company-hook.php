@@ -12,7 +12,7 @@ function job_bm_metabox_company_content_company_info_title($job_id){
 
     ?>
     <div class="section">
-        <div class="section-title"><?php echo __('Company Information','job-board-manager'); ?></div>
+        <div class="section-title"><?php echo __('Company Information','job-board-manager-company-profile'); ?></div>
         <p class="section-description"></p>
     </div>
 
@@ -39,8 +39,8 @@ function job_bm_metabox_company_total_vacancies($job_id){
     $args = array(
         'id'		=> 'job_bm_cp_tagline',
         //'parent'		=> '',
-        'title'		=> __('Company tag-line','job-board-manager'),
-        'details'	=> __('Write your company tag-line','job-board-manager'),
+        'title'		=> __('Company tag-line','job-board-manager-company-profile'),
+        'details'	=> __('Write your company tag-line','job-board-manager-company-profile'),
         'type'		=> 'text',
         'value'		=> $job_bm_cp_tagline,
         'default'		=> '',
@@ -64,8 +64,8 @@ function job_bm_metabox_company_years_experience($job_id){
     $args = array(
         'id'		=> 'job_bm_cp_mission',
         //'parent'		=> '',
-        'title'		=> __('Company mission','job-board-manager'),
-        'details'	=> __('Write company mission.','job-board-manager'),
+        'title'		=> __('Company mission','job-board-manager-company-profile'),
+        'details'	=> __('Write company mission.','job-board-manager-company-profile'),
         'type'		=> 'text',
         'value'		=> $job_bm_cp_mission,
         'default'		=> '',
@@ -93,8 +93,8 @@ function job_bm_metabox_company_type($job_id){
     $args = array(
         'id'		=> 'job_bm_cp_country',
         //'parent'		=> '',
-        'title'		=> __('Country','job-board-manager'),
-        'details'	=> __('Select company country.','job-board-manager'),
+        'title'		=> __('Country','job-board-manager-company-profile'),
+        'details'	=> __('Select company country.','job-board-manager-company-profile'),
         'type'		=> 'select',
         'value'		=> $job_bm_cp_country,
         'default'		=> '',
@@ -118,8 +118,8 @@ function job_bm_metabox_company_salary_fixed($job_id){
     $args = array(
         'id'		=> 'job_bm_cp_city',
         //'parent'		=> '',
-        'title'		=> __('Company city','job-board-manager'),
-        'details'	=> __('Write company city','job-board-manager'),
+        'title'		=> __('Company city','job-board-manager-company-profile'),
+        'details'	=> __('Write company city','job-board-manager-company-profile'),
         'type'		=> 'text',
         'value'		=> $job_bm_cp_city,
         'default'		=> '',
@@ -144,8 +144,8 @@ function job_bm_metabox_company_salary_min($job_id){
     $args = array(
         'id'		=> 'job_bm_cp_address',
         //'parent'		=> '',
-        'title'		=> __('Company address','job-board-manager'),
-        'details'	=> __('Write company address','job-board-manager'),
+        'title'		=> __('Company address','job-board-manager-company-profile'),
+        'details'	=> __('Write company address','job-board-manager-company-profile'),
         'type'		=> 'text',
         'value'		=> $job_bm_cp_address,
         'default'		=> '',
@@ -192,8 +192,8 @@ function job_bm_metabox_company_content_company_info_logo($job_id){
     $args = array(
         'id'		=> 'job_bm_cp_logo',
         //'parent'		=> '',
-        'title'		=> __('Company logo','job-board-manager'),
-        'details'	=> __('Upload company logo','job-board-manager'),
+        'title'		=> __('Company logo','job-board-manager-company-profile'),
+        'details'	=> __('Upload company logo','job-board-manager-company-profile'),
         'type'		=> 'media_url',
         'value'		=> $job_bm_cp_logo,
         'default'		=> '',
@@ -215,8 +215,8 @@ function job_bm_metabox_company_content_company_info_website($job_id){
     $args = array(
         'id'		=> 'job_bm_cp_website',
         //'parent'		=> '',
-        'title'		=> __('Company website','job-board-manager'),
-        'details'	=> __('Write company website','job-board-manager'),
+        'title'		=> __('Company website','job-board-manager-company-profile'),
+        'details'	=> __('Write company website','job-board-manager-company-profile'),
         'type'		=> 'text',
         'value'		=> $job_bm_cp_website,
         'default'		=> '',
@@ -240,8 +240,8 @@ function job_bm_metabox_company_salary_max($job_id){
     $args = array(
         'id'		=> 'job_bm_cp_founded',
         //'parent'		=> '',
-        'title'		=> __('Company founded year','job-board-manager'),
-        'details'	=> __('Write company founded year','job-board-manager'),
+        'title'		=> __('Company founded year','job-board-manager-company-profile'),
+        'details'	=> __('Write company founded year','job-board-manager-company-profile'),
         'type'		=> 'text',
         'value'		=> $job_bm_cp_founded,
         'default'		=> '',
@@ -263,8 +263,8 @@ function job_bm_metabox_company_salary_currency($job_id){
     $args = array(
         'id'		=> 'job_bm_cp_size',
         //'parent'		=> '',
-        'title'		=> __('Company worker size','job-board-manager'),
-        'details'	=> __('Write company worker size','job-board-manager'),
+        'title'		=> __('Company worker size','job-board-manager-company-profile'),
+        'details'	=> __('Write company worker size','job-board-manager-company-profile'),
         'type'		=> 'text',
         'value'		=> $job_bm_cp_size,
         'default'		=> '',
@@ -308,12 +308,12 @@ function job_bm_metabox_company_content_admin_featured($job_id){
     $args = array(
         'id'		=> 'job_bm_cp_featured',
         //'parent'		=> '',
-        'title'		=> __('Featured company','job-board-manager'),
-        'details'	=> __('Choose company as featured','job-board-manager'),
+        'title'		=> __('Featured company','job-board-manager-company-profile'),
+        'details'	=> __('Choose company as featured','job-board-manager-company-profile'),
         'type'		=> 'select',
         'value'		=> $job_bm_cp_featured,
         'default'		=> '',
-        'args'		=> array('no'=>__('No', 'job-board-manager'),'yes'=>__('Yes', 'job-board-manager')),
+        'args'		=> array('no'=>__('No', 'job-board-manager-company-profile'),'yes'=>__('Yes', 'job-board-manager-company-profile')),
     );
 
     $settings_tabs_field->generate_field($args);

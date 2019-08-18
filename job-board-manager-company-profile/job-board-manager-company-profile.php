@@ -3,8 +3,10 @@
 Plugin Name: Job Board Manager - Company Profile
 Plugin URI: http://pickplugins.com
 Description: Awesome Company Profile for Job Board Manager.
-Version: 2.0.10
+Version: 1.0.7
 Author: pickplugins
+Text Domain: job-board-manager-company-profile
+Domain Path: /languages
 Author URI: http://pickplugins.com
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -20,39 +22,25 @@ class JobBoardManagerCompanyProfile{
 	define('job_bm_cp_plugin_url', plugins_url('/', __FILE__)  );
 	define('job_bm_cp_plugin_dir', plugin_dir_path( __FILE__ ) );
 	define('job_bm_cp_plugin_name', 'Job Board Manager - Company Profile' );
-	define('job_bm_cp_plugin_version', '2.0.10' );
+	define('job_bm_cp_plugin_version', '1.0.7' );
 
 
 	// Class
 	require_once( job_bm_cp_plugin_dir . 'includes/class-post-types.php');
-	require_once( job_bm_cp_plugin_dir . 'includes/class-post-meta.php');
 	require_once( job_bm_cp_plugin_dir . 'includes/class-shortcodes.php');
 	require_once( job_bm_cp_plugin_dir . 'includes/class-functions.php');
-	//require_once( job_bm_cp_plugin_dir . 'includes/class-settings.php');
-    //require_once( job_bm_cp_plugin_dir . 'includes/class-upgrade.php');
-
-
     require_once( job_bm_cp_plugin_dir . 'includes/class-post-meta-company.php');
     require_once( job_bm_cp_plugin_dir . 'includes/class-post-meta-company-hook.php');
-
-
-
 
     require_once( job_bm_cp_plugin_dir . 'templates/company-single/company-single-hook.php');
 
 
-
-	
-	//require_once( plugin_dir_path( __FILE__ ) . 'includes/class-frontend-form-edit-company.php');		
-	//require_once( plugin_dir_path( __FILE__ ) . 'includes/class-frontend-forms-input-company.php');		
-
 	// Function's
 	require_once( plugin_dir_path( __FILE__ ) . 'includes/functions.php');
-	//require_once( plugin_dir_path( __FILE__ ) . 'templates/company-single/company-single-template-functions.php');
 
 	require_once( plugin_dir_path( __FILE__ ) . 'includes/functions-dashboard.php');
     require_once( plugin_dir_path( __FILE__ ) . 'includes/functions-settings.php');
-        require_once( plugin_dir_path( __FILE__ ) . 'includes/functions-filter-hook.php');
+    require_once( plugin_dir_path( __FILE__ ) . 'includes/functions-filter-hook.php');
 
 
 
@@ -62,13 +50,13 @@ class JobBoardManagerCompanyProfile{
 	
 	register_activation_hook(__FILE__, array( $this, 'job_bm_cp_install' ));
 	
-	add_action( 'plugins_loaded', array( $this, 'load_textdomain' ));
+    add_action( 'init', array( $this, 'textdomain' ));
+
+
+    }
 	
 	
-	}
-	
-	
-	public function load_textdomain() {
+	public function textdomain() {
         $locale = apply_filters( 'plugin_locale', get_locale(), 'job-board-manager-company-profile' );
         load_textdomain('job-board-manager-company-profile', WP_LANG_DIR .'/job-board-manager-company-profile/job-board-manager-company-profile-'. $locale .'.mo' );
 
@@ -119,22 +107,13 @@ class JobBoardManagerCompanyProfile{
 		wp_enqueue_script('job_bm_cp_js', plugins_url( 'assets/front/js/scripts.js' , __FILE__ ) , array( 'jquery' ));
 		wp_localize_script( 'job_bm_cp_js', 'job_bm_cp_ajax', array( 'job_bm_cp_ajaxurl' => admin_url( 'admin-ajax.php')));
 
-		wp_enqueue_script('jquery.quote_rotator', plugins_url( 'assets/front/js/jquery.quote_rotator.js' , __FILE__ ) , array( 'jquery' ));
 
-
-		wp_enqueue_style('job_bm_cp_company-list', job_bm_cp_plugin_url.'assets/global/css/company-list-ajax.css');
-		wp_enqueue_style('job_bm_cp_style', job_bm_cp_plugin_url.'assets/front/css/style.css');		
-		
-		wp_enqueue_style('job_bm_cp_company_single', job_bm_cp_plugin_url.'assets/front/css/company-single.css');
-        wp_enqueue_style('my-comany-list', job_bm_cp_plugin_url.'assets/front/css/my-comany-list.css');
-
+        wp_register_style('job_bm_company_single', job_bm_cp_plugin_url.'assets/front/css/company-single.css');
         wp_register_style('job-bm-my-companies', job_bm_cp_plugin_url.'assets/front/css/my-companies.css');
-        wp_register_script('job-bm-my-companies', job_bm_cp_plugin_url.'assets/front/js/scripts-my-companies.js');
-        wp_register_script('job-bm-single-company', job_bm_cp_plugin_url.'assets/front/js/scripts-single-company.js');
-
-
         wp_register_style('job-bm-company-list', job_bm_cp_plugin_url.'assets/front/css/company-list.css');
 
+        wp_register_script('job-bm-my-companies', job_bm_cp_plugin_url.'assets/front/js/scripts-my-companies.js');
+        wp_register_script('job-bm-single-company', job_bm_cp_plugin_url.'assets/front/js/scripts-single-company.js');
 
 
     }
@@ -147,11 +126,11 @@ class JobBoardManagerCompanyProfile{
 		wp_localize_script( 'job_bm_cp_admin_js', 'job_bm_cp_ajax', array( 'job_bm_cp_ajaxurl' => admin_url( 'admin-ajax.php')));
 		
 
-		wp_enqueue_style('job_bm_cp_company-list', job_bm_cp_plugin_url.'assets/global/css/company-list-ajax.css');
-		wp_enqueue_style('job_bm_cp_style', job_bm_cp_plugin_url.'assets/admin/css/style.css');	
+		//wp_enqueue_style('job_bm_cp_company-list', job_bm_cp_plugin_url.'assets/global/css/company-list-ajax.css');
+		//wp_enqueue_style('job_bm_cp_style', job_bm_cp_plugin_url.'assets/admin/css/style.css');
 		
-		wp_enqueue_style( 'wp-color-picker' );
-		wp_enqueue_script( 'job_bm_cp_color_picker', plugins_url('/admin/js/color-picker.js', __FILE__ ), array( 'wp-color-picker' ), false, true );
+		//wp_enqueue_style( 'wp-color-picker' );
+		//wp_enqueue_script( 'job_bm_cp_color_picker', plugins_url('/admin/js/color-picker.js', __FILE__ ), array( 'wp-color-picker' ), false, true );
 		
 		}
 	

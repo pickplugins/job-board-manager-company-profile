@@ -55,7 +55,7 @@ class class_job_bm_cp_post_types{
 				'hierarchical' 			=> false,
 				'rewrite' 				=> true,
 				'query_var' 			=> true,
-				'supports' 				=> array('title','editor','thumbnail','custom-fields','author', 'comments'),
+				'supports' 				=> array('title','editor','author','comments','thumbnail'),
 				'show_in_nav_menus' 	=> false,
 				'show_in_menu' 	=> 'edit.php?post_type=job',				
 				'menu_icon' => 'dashicons-admin-users',

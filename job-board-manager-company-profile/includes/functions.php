@@ -20,7 +20,7 @@ function job_bm_ajax_delete_company_by_id() {
 
     if($job_bm_can_user_delete_jobs=='no'){
 
-        $html.= '<i class="fa fa-exclamation-circle"></i> '.__('You are not authorized to delete this job.','job-board-manager');
+        $html.= '<i class="fa fa-exclamation-circle"></i> '.__('You are not authorized to delete this job.','job-board-manager-company-profile');
 
     }
     else{
@@ -36,7 +36,7 @@ function job_bm_ajax_delete_company_by_id() {
         if( $current_user_id == $author_id ){
 
             if(wp_trash_post($company_id)){
-                $html.=	'<i class="fa fa-check"></i> '.__('Company Deleted.','job-board-manager');
+                $html.=	'<i class="fa fa-check"></i> '.__('Company Deleted.','job-board-manager-company-profile');
                 $response['is_deleted'] = 'yes';
 
                 do_action('job_bm_job_trash', $company_id);
@@ -67,168 +67,6 @@ function job_bm_ajax_delete_company_by_id() {
 add_action('wp_ajax_job_bm_ajax_delete_company_by_id', 'job_bm_ajax_delete_company_by_id');
 //add_action('wp_ajax_nopriv_job_bm_ajax_delete_job_by_id', 'job_bm_ajax_delete_job_by_id');
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function job_bm_cp_ajax_submit_reviews(){
-	
-	$post_id = (int)$_POST['post_id'];
-	$rate_value = (int)$_POST['rate_value'];	
-	$rate_comment = sanitize_text_field($_POST['rate_comment']);	
-	
-	
-	$current_user = wp_get_current_user();
-
-	$comment_author_email = $current_user->user_email;
-	$comment_author = $current_user->user_nicename;
-
-	$data = array(
-		'comment_post_ID' => $post_id,
-		'comment_author_email' => $comment_author_email,	
-		'comment_author_url' => '',	
-		'comment_author' => $comment_author,						
-		'comment_content' => $rate_comment,
-		'comment_type' => '',
-		'comment_parent' => 0,
-		'comment_author_IP' => $_SERVER['REMOTE_ADDR'],
-		'comment_agent' => $_SERVER['HTTP_USER_AGENT'],
-		'comment_date' => current_time('mysql'),
-		'comment_approved' => 1
-	);
-	
-	
-	$comments = get_comments( array( 'post_id' => $post_id, 'status' => 'all', 'author_email'=>$comment_author_email ) );
-	
-	
-	if(!empty($comments)){
-		
-		echo '<i class="fa fa-times"></i> '.__('You already submitted a reviews', 'job-board-manager-company-profile');
-
-		
-		}
-	else{
-		
-		$comment_id = wp_insert_comment( $data );
-		add_comment_meta( $comment_id, 'job_bm_review_rate', $rate_value );
-		
-		echo '<i class="fa fa-check" aria-hidden="true"></i> '.__('Review submitted.', 'job-board-manager-company-profile');
-		}
-	
-	
-	
-	
-	die();
-	}
-
-add_action('wp_ajax_job_bm_cp_ajax_submit_reviews', 'job_bm_cp_ajax_submit_reviews');
-add_action('wp_ajax_nopriv_job_bm_cp_ajax_submit_reviews', 'job_bm_cp_ajax_submit_reviews');
-
-
-
-function SetFeaturedImage( $image_url, $post_id  ){
-    $upload_dir = wp_upload_dir();
-    $image_data = file_get_contents($image_url);
-    $filename = basename($image_url);
-    if(wp_mkdir_p($upload_dir['path']))     $file = $upload_dir['path'] . '/' . $filename;
-    else                                    $file = $upload_dir['basedir'] . '/' . $filename;
-    file_put_contents($file, $image_data);
-
-    $wp_filetype = wp_check_filetype($filename, null );
-    $attachment = array(
-        'post_mime_type' => $wp_filetype['type'],
-        'post_title' => sanitize_file_name($filename),
-        'post_content' => '',
-        'post_status' => 'inherit'
-    );
-    $attach_id = wp_insert_attachment( $attachment, $file, $post_id );
-    require_once(ABSPATH . 'wp-admin/includes/image.php');
-    $attach_data = wp_generate_attachment_metadata( $attach_id, $file );
-    $res1= wp_update_attachment_metadata( $attach_id, $attach_data );
-    $res2= set_post_thumbnail( $post_id, $attach_id );
-}
-
-
-
-
-
-
-function job_bm_cp_ajax_company_single_header_extra($html){
-	
-	$company_id = get_the_ID();
-	$follower_id = get_current_user_id();
-	
-	global $wpdb;
-	$table = $wpdb->prefix . "job_bm_cp_follow";
-
-	
-	
-	$html.= '<div class="follow">';
-	
-	$is_follow_query = $wpdb->get_results("SELECT * FROM $table WHERE company_id = '$company_id' AND follower_id = '$follower_id'", ARRAY_A);
-	$is_follow = $wpdb->num_rows;
-	if($is_follow > 0 ){
-			
-			$follow_text = __('Unfollow', 'job-board-manager-company-profile');
-		}
-	else{
-			$follow_text = __('Follow', 'job-board-manager-company-profile');
-		}
-						
-						
-	$html.= '<span company_id="'.get_the_ID().'" class="follow-button">'.$follow_text.'</span>';	
-	
-	
-	
-	$follower_query = $wpdb->get_results("SELECT * FROM $table WHERE company_id = '$company_id' ORDER BY id DESC LIMIT 10");
-
-	$html.= '<div class="follower-list">';	
-	
-	foreach( $follower_query as $follower )
-		{
-			$follower_id = $follower->follower_id;
-			$user = get_user_by( 'id', $follower_id );
-			
-			//var_dump($user);
-			if(!empty($user->display_name)){
-				$html .= '<div title="'.$user->display_name.'" class="follower follower-'.$follower_id.'">';
-				$html .= get_avatar( $follower_id, 50 );
-				$html .= '</div>';
-			}
-
-
-		}
-	
-	$html.= '</div>';
-	
-	$html.= '<div class="status"></div>';		
-	$html.= '</div>';	
-	$html.= '<div class="clear"></div>';
-	
-	return $html;
-	
-	
-	}
-	
-add_filter('job_bm_cp_filter_company_single_header','job_bm_cp_ajax_company_single_header_extra');
 
 
 function job_bm_cp_ajax_company_folowing(){

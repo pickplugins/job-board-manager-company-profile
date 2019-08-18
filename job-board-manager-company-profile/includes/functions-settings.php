@@ -7,7 +7,7 @@ function job_bm_settings_tabs_companies($job_bm_settings_tab){
 
     $job_bm_settings_tab[] = array(
         'id' => 'company',
-        'title' => sprintf(__('%s Company','job-board-manager'),'<i class="fas fa-calendar-alt"></i>'),
+        'title' => sprintf(__('%s Company','job-board-manager-company-profile'),'<i class="fas fa-calendar-alt"></i>'),
         'priority' => 10,
         'active' => false,
     );
@@ -34,8 +34,8 @@ if(!function_exists('job_bm_settings_tabs_content_pages_company')) {
 
         ?>
         <div class="section">
-            <div class="section-title"><?php echo __('Company page settings', 'job-board-manager'); ?></div>
-            <p class="description section-description"><?php echo __('Choose option for pages.', 'job-board-manager'); ?></p>
+            <div class="section-title"><?php echo __('Company page settings', 'job-board-manager-company-profile'); ?></div>
+            <p class="description section-description"><?php echo __('Choose option for pages.', 'job-board-manager-company-profile'); ?></p>
 
             <?php
 
@@ -43,8 +43,8 @@ if(!function_exists('job_bm_settings_tabs_content_pages_company')) {
             $args = array(
                 'id'		=> 'job_bm_company_submit_page_id',
                 //'parent'		=> '',
-                'title'		=> __('Company submit page','job-board-manager'),
-                'details'	=> __('Choose the page for company submit page, where the shortcode <code>[job_bm_company_submit_form]</code> used.','job-board-manager'),
+                'title'		=> __('Company submit page','job-board-manager-company-profile'),
+                'details'	=> __('Choose the page for company submit page, where the shortcode <code>[job_bm_company_submit_form]</code> used.','job-board-manager-company-profile'),
                 'type'		=> 'select',
                 //'multiple'		=> true,
                 'value'		=> $job_bm_company_submit_page_id,
@@ -60,8 +60,8 @@ if(!function_exists('job_bm_settings_tabs_content_pages_company')) {
             $args = array(
                 'id'		=> 'job_bm_company_edit_page_id',
                 //'parent'		=> '',
-                'title'		=> __('Company edit page','job-board-manager'),
-                'details'	=> __('Choose the page for company edit page, where the shortcode <code>[job_bm_company_edit_form]</code> used.','job-board-manager'),
+                'title'		=> __('Company edit page','job-board-manager-company-profile'),
+                'details'	=> __('Choose the page for company edit page, where the shortcode <code>[job_bm_company_edit_form]</code> used.','job-board-manager-company-profile'),
                 'type'		=> 'select',
                 //'multiple'		=> true,
                 'value'		=> $job_bm_company_edit_page_id,
@@ -108,8 +108,8 @@ if(!function_exists('job_bm_settings_tabs_content_company')) {
 
         ?>
         <div class="section">
-            <div class="section-title"><?php echo __('Company submission', 'job-board-manager'); ?></div>
-            <p class="description section-description"><?php echo __('Customize option for company submit.', 'job-board-manager'); ?></p>
+            <div class="section-title"><?php echo __('Company submission', 'job-board-manager-company-profile'); ?></div>
+            <p class="description section-description"><?php echo __('Customize option for company submit.', 'job-board-manager-company-profile'); ?></p>
 
             <?php
 
@@ -117,13 +117,13 @@ if(!function_exists('job_bm_settings_tabs_content_company')) {
             $args = array(
                 'id'		=> 'job_bm_company_submit_account_required',
                 //'parent'		=> '',
-                'title'		=> __('Account required','job-board-manager'),
-                'details'	=> __('Account required to submit company.','job-board-manager'),
+                'title'		=> __('Account required','job-board-manager-company-profile'),
+                'details'	=> __('Account required to submit company.','job-board-manager-company-profile'),
                 'type'		=> 'select',
                 //'multiple'		=> true,
                 'value'		=> $job_bm_company_submit_account_required,
                 'default'		=> '',
-                'args'		=> array( 'yes'=>__('Yes','job-board-manager'), 'no'=>__('No','job-board-manager'),),
+                'args'		=> array( 'yes'=>__('Yes','job-board-manager-company-profile'), 'no'=>__('No','job-board-manager-company-profile'),),
             );
 
             $settings_tabs_field->generate_field($args);
@@ -132,13 +132,13 @@ if(!function_exists('job_bm_settings_tabs_content_company')) {
             $args = array(
                 'id'		=> 'job_bm_company_submit_recaptcha',
                 //'parent'		=> '',
-                'title'		=> __('reCAPTCHA enable','job-board-manager'),
-                'details'	=> __('Enable reCAPTCHA to protect spam on company submit form.','job-board-manager'),
+                'title'		=> __('reCAPTCHA enable','job-board-manager-company-profile'),
+                'details'	=> __('Enable reCAPTCHA to protect spam on company submit form.','job-board-manager-company-profile'),
                 'type'		=> 'select',
                 //'multiple'		=> true,
                 'value'		=> $job_bm_company_submit_recaptcha,
                 'default'		=> '',
-                'args'		=> array( 'yes'=>__('Yes','job-board-manager'), 'no'=>__('No','job-board-manager'),),
+                'args'		=> array( 'yes'=>__('Yes','job-board-manager-company-profile'), 'no'=>__('No','job-board-manager-company-profile'),),
             );
 
             $settings_tabs_field->generate_field($args);
@@ -149,13 +149,13 @@ if(!function_exists('job_bm_settings_tabs_content_company')) {
             $args = array(
                 'id'		=> 'job_bm_company_submit_post_status',
                 //'parent'		=> '',
-                'title'		=> __('Submitted company status','job-board-manager'),
-                'details'	=> __('Choose company status for newly submitted companies.','job-board-manager'),
+                'title'		=> __('Submitted company status','job-board-manager-company-profile'),
+                'details'	=> __('Choose company status for newly submitted companies.','job-board-manager-company-profile'),
                 'type'		=> 'select',
                 //'multiple'		=> true,
                 'value'		=> $job_bm_company_submit_post_status,
                 'default'		=> '',
-                'args'		=> array( 'draft'=>__('Draft','job-board-manager'), 'pending'=>__('Pending','job-board-manager'), 'publish'=>__('Published','job-board-manager'), 'private'=>__('Private','job-board-manager'), 'trash'=>__('Trash','job-board-manager')),
+                'args'		=> array( 'draft'=>__('Draft','job-board-manager-company-profile'), 'pending'=>__('Pending','job-board-manager-company-profile'), 'publish'=>__('Published','job-board-manager-company-profile'), 'private'=>__('Private','job-board-manager-company-profile'), 'trash'=>__('Trash','job-board-manager-company-profile')),
             );
 
             $settings_tabs_field->generate_field($args);
@@ -167,14 +167,14 @@ if(!function_exists('job_bm_settings_tabs_content_company')) {
             $page_list = job_bm_page_list_id();
             //$page_list = array_merge($page_list, array('job_preview'=>'Job Preview'));
 
-            $page_list['company_preview'] = __('-- Company Preview --', 'job-board-manager');
-            $page_list['company_link'] = __('-- Company Link --', 'job-board-manager');
+            $page_list['company_preview'] = __('-- Company Preview --', 'job-board-manager-company-profile');
+            $page_list['company_link'] = __('-- Company Link --', 'job-board-manager-company-profile');
 
             $args = array(
                 'id'		=> 'job_bm_company_submit_redirect',
                 //'parent'		=> '',
-                'title'		=> __('Redirect after company submit','job-board-manager'),
-                'details'	=> __('Redirect other link after company submitted','job-board-manager'),
+                'title'		=> __('Redirect after company submit','job-board-manager-company-profile'),
+                'details'	=> __('Redirect other link after company submitted','job-board-manager-company-profile'),
                 'type'		=> 'select',
                 //'multiple'		=> true,
                 'value'		=> $job_bm_company_submit_redirect,
@@ -197,8 +197,8 @@ if(!function_exists('job_bm_settings_tabs_content_company')) {
 
 
         <div class="section">
-            <div class="section-title"><?php echo __('Company Edit', 'job-board-manager'); ?></div>
-            <p class="description section-description"><?php echo __('Customize option for company edit.', 'job-board-manager'); ?></p>
+            <div class="section-title"><?php echo __('Company Edit', 'job-board-manager-company-profile'); ?></div>
+            <p class="description section-description"><?php echo __('Customize option for company edit.', 'job-board-manager-company-profile'); ?></p>
 
             <?php
 
@@ -207,13 +207,13 @@ if(!function_exists('job_bm_settings_tabs_content_company')) {
             $args = array(
                 'id'		=> 'job_bm_company_edit_recaptcha',
                 //'parent'		=> '',
-                'title'		=> __('reCAPTCHA enable','job-board-manager'),
-                'details'	=> __('Enable reCAPTCHA to protect spam on company edit form.','job-board-manager'),
+                'title'		=> __('reCAPTCHA enable','job-board-manager-company-profile'),
+                'details'	=> __('Enable reCAPTCHA to protect spam on company edit form.','job-board-manager-company-profile'),
                 'type'		=> 'select',
                 //'multiple'		=> true,
                 'value'		=> $job_bm_company_edit_recaptcha,
                 'default'		=> '',
-                'args'		=> array( 'yes'=>__('Yes','job-board-manager'), 'no'=>__('No','job-board-manager'),),
+                'args'		=> array( 'yes'=>__('Yes','job-board-manager-company-profile'), 'no'=>__('No','job-board-manager-company-profile'),),
             );
 
             $settings_tabs_field->generate_field($args);
@@ -224,13 +224,13 @@ if(!function_exists('job_bm_settings_tabs_content_company')) {
             $args = array(
                 'id'		=> 'job_bm_company_edit_post_status',
                 //'parent'		=> '',
-                'title'		=> __('Edited company status','job-board-manager'),
-                'details'	=> __('Choose company status for newly edited companies.','job-board-manager'),
+                'title'		=> __('Edited company status','job-board-manager-company-profile'),
+                'details'	=> __('Choose company status for newly edited companies.','job-board-manager-company-profile'),
                 'type'		=> 'select',
                 //'multiple'		=> true,
                 'value'		=> $job_bm_company_edit_post_status,
                 'default'		=> '',
-                'args'		=> array( 'draft'=>__('Draft','job-board-manager'), 'pending'=>__('Pending','job-board-manager'), 'publish'=>__('Published','job-board-manager'), 'private'=>__('Private','job-board-manager'), 'trash'=>__('Trash','job-board-manager')),
+                'args'		=> array( 'draft'=>__('Draft','job-board-manager-company-profile'), 'pending'=>__('Pending','job-board-manager-company-profile'), 'publish'=>__('Published','job-board-manager-company-profile'), 'private'=>__('Private','job-board-manager-company-profile'), 'trash'=>__('Trash','job-board-manager-company-profile')),
             );
 
             $settings_tabs_field->generate_field($args);
@@ -242,14 +242,14 @@ if(!function_exists('job_bm_settings_tabs_content_company')) {
             $page_list = job_bm_page_list_id();
             //$page_list = array_merge($page_list, array('job_preview'=>'Job Preview'));
 
-            $page_list['company_preview'] = __('-- Company Preview --', 'job-board-manager');
-            $page_list['company_link'] = __('-- Company Link --', 'job-board-manager');
+            $page_list['company_preview'] = __('-- Company Preview --', 'job-board-manager-company-profile');
+            $page_list['company_link'] = __('-- Company Link --', 'job-board-manager-company-profile');
 
             $args = array(
                 'id'		=> 'job_bm_company_edit_redirect',
                 //'parent'		=> '',
-                'title'		=> __('Redirect after company edit','job-board-manager'),
-                'details'	=> __('Redirect other link after company edited','job-board-manager'),
+                'title'		=> __('Redirect after company edit','job-board-manager-company-profile'),
+                'details'	=> __('Redirect other link after company edited','job-board-manager-company-profile'),
                 'type'		=> 'select',
                 //'multiple'		=> true,
                 'value'		=> $job_bm_company_edit_redirect,

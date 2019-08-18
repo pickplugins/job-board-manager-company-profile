@@ -1,247 +1,169 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Job Board Manager - Company Profile\n"
-"POT-Creation-Date: 2016-12-25 10:06+0600\n"
-"PO-Revision-Date: 2016-12-25 10:07+0600\n"
+"POT-Creation-Date: 2019-08-18 11:26+0600\n"
+"PO-Revision-Date: 2019-08-18 11:26+0600\n"
 "Last-Translator: \n"
 "Language-Team: PickPlugins\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 2.2.3\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Poedit-KeywordsList: __;_e\n"
 "X-Poedit-SearchPath-0: templates\n"
 "X-Poedit-SearchPath-1: includes\n"
 
-#: includes/class-frontend-form-edit-company.php:32
-#, php-format
-msgid "Please <a href=\"%s\">login</a> to continue !"
-msgstr ""
-
-#: includes/class-frontend-form-edit-company.php:89
-msgid "Company Submited"
-msgstr "Organisme soummise"
-
-#: includes/class-frontend-form-edit-company.php:90
-msgid "Submission Status: "
-msgstr "Etat de la soumission"
-
-#: includes/class-frontend-form-edit-company.php:156
-msgid "Something error"
-msgstr ""
-
-#: includes/class-frontend-form-edit-company.php:172
-#: includes/class-functions.php:26
-msgid "Company Title"
-msgstr "Nom de la compagnie"
-
-#: includes/class-frontend-form-edit-company.php:178
-msgid "Company Content"
+#: includes/class-post-meta-company-hook.php:15
+#: templates/company-edit/company-edit-hook.php:138
+#: templates/company-submit/company-submit-hook.php:127
+#, fuzzy
+#| msgid "Company Content"
+msgid "Company Information"
 msgstr "Description de la compagnie"
 
-#: includes/class-frontend-form-edit-company.php:337
-msgid "Upload"
-msgstr ""
-
-#: includes/class-frontend-form-edit-company.php:392
-#: templates/company-single-reviews.php:96 templates/company-submit.php:428
-msgid "Submit"
-msgstr "Soumettre"
-
-#: includes/class-functions.php:25
-msgid "Write company title here"
-msgstr ""
-
-#: includes/class-functions.php:27
-msgid "Company title here"
-msgstr ""
-
-#: includes/class-functions.php:39
-msgid "Company Descriptions"
-msgstr ""
-
-#: includes/class-functions.php:40
-msgid "Write company descriptions here"
-msgstr ""
-
-#: includes/class-functions.php:54
-msgid "Thumbnail"
-msgstr ""
-
-#: includes/class-functions.php:55
-msgid "Job Featured Image, uplaod single image only"
-msgstr ""
-
-#: includes/class-functions.php:72 includes/class-post-types.php:72
-msgid "Company Category"
-msgstr ""
-
-#: includes/class-functions.php:73
-msgid "Select company category."
-msgstr ""
-
-#: includes/class-functions.php:105
-msgid "reCaptcha"
-msgstr ""
-
-#: includes/class-functions.php:106
-msgid "reCaptcha test."
-msgstr ""
-
-#: includes/class-functions.php:119
-msgid "Company Info"
-msgstr ""
-
-#: includes/class-functions.php:120
-msgid "Company Information details"
-msgstr ""
-
-#: includes/class-functions.php:129 includes/class-post-meta.php:39
-msgid "Company Tagline"
+#: includes/class-post-meta-company-hook.php:42
+#, fuzzy
+#| msgid "Company Tagline"
+msgid "Company tag-line"
 msgstr "Slogan de la compagnie"
 
-#: includes/class-functions.php:130
-msgid "Company tagline here"
-msgstr ""
+#: includes/class-post-meta-company-hook.php:43
+#, fuzzy
+#| msgid "Company Tagline"
+msgid "Write your company tag-line"
+msgstr "Slogan de la compagnie"
 
-#: includes/class-functions.php:141 includes/class-post-meta.php:47
-msgid "Company Mission"
+#: includes/class-post-meta-company-hook.php:67
+#, fuzzy
+#| msgid "Company Mission"
+msgid "Company mission"
 msgstr "Mission de la compagnie"
 
-#: includes/class-functions.php:142
-msgid "Company mission details here"
-msgstr ""
+#: includes/class-post-meta-company-hook.php:68
+#, fuzzy
+#| msgid "Company Mission"
+msgid "Write company mission."
+msgstr "Mission de la compagnie"
 
-#: includes/class-functions.php:154 includes/class-post-meta.php:55
+#: includes/class-post-meta-company-hook.php:96
 msgid "Country"
 msgstr ""
 
-#: includes/class-functions.php:156 includes/class-post-meta.php:56
-msgid "Country, ex: Bangladesh"
+#: includes/class-post-meta-company-hook.php:97
+msgid "Select company country."
 msgstr ""
 
-#: includes/class-functions.php:168 includes/class-post-meta.php:64
-msgid "City"
-msgstr "Ville"
+#: includes/class-post-meta-company-hook.php:121
+#, fuzzy
+#| msgid "Company Title"
+msgid "Company city"
+msgstr "Nom de la compagnie"
 
-#: includes/class-functions.php:169 includes/class-post-meta.php:65
-msgid "Company City, ex: Dhaka"
+#: includes/class-post-meta-company-hook.php:122
+msgid "Write company city"
 msgstr ""
 
-#: includes/class-functions.php:180
-msgid "Headquarter Address"
+#: includes/class-post-meta-company-hook.php:147
+#, fuzzy
+#| msgid "Company Tagline"
+msgid "Company address"
+msgstr "Slogan de la compagnie"
+
+#: includes/class-post-meta-company-hook.php:148
+msgid "Write company address"
 msgstr ""
 
-#: includes/class-functions.php:181
-msgid "Headquarter address here"
+#: includes/class-post-meta-company-hook.php:195
+#, fuzzy
+#| msgid "Company Title"
+msgid "Company logo"
+msgstr "Nom de la compagnie"
+
+#: includes/class-post-meta-company-hook.php:196
+msgid "Upload company logo"
 msgstr ""
 
-#: includes/class-functions.php:194 includes/class-post-meta.php:80
-msgid "Address"
-msgstr "Adresse"
+#: includes/class-post-meta-company-hook.php:218
+#, fuzzy
+#| msgid "Company Title"
+msgid "Company website"
+msgstr "Nom de la compagnie"
 
-#: includes/class-functions.php:195 includes/class-post-meta.php:81
-msgid "Full Address, ex: House No: 254, Road: 5, Mirpur-12, Dhaka"
-msgstr "Adresse complete"
-
-#: includes/class-functions.php:206 includes/class-post-meta.php:89
-msgid "Company Logo"
+#: includes/class-post-meta-company-hook.php:219
+msgid "Write company website"
 msgstr ""
 
-#: includes/class-functions.php:207
-msgid "Add company logo."
+#: includes/class-post-meta-company-hook.php:243
+#, fuzzy
+#| msgid "Company Content"
+msgid "Company founded year"
+msgstr "Description de la compagnie"
+
+#: includes/class-post-meta-company-hook.php:244
+msgid "Write company founded year"
 msgstr ""
 
-#: includes/class-functions.php:219
-msgid "More Info"
+#: includes/class-post-meta-company-hook.php:266
+#, fuzzy
+#| msgid "Company Title"
+msgid "Company worker size"
+msgstr "Nom de la compagnie"
+
+#: includes/class-post-meta-company-hook.php:267
+msgid "Write company worker size"
 msgstr ""
 
-#: includes/class-functions.php:220
-msgid "More Information details."
+#: includes/class-post-meta-company-hook.php:311
+#, fuzzy
+#| msgid "Related Company"
+msgid "Featured company"
+msgstr "Organismes connexes"
+
+#: includes/class-post-meta-company-hook.php:312
+msgid "Choose company as featured"
 msgstr ""
 
-#: includes/class-functions.php:228 includes/class-post-meta.php:103
-msgid "Website"
+#: includes/class-post-meta-company-hook.php:316
+#: includes/functions-settings.php:126 includes/functions-settings.php:141
+#: includes/functions-settings.php:216
+msgid "No"
 msgstr ""
 
-#: includes/class-functions.php:229
-msgid "Company Website URL."
+#: includes/class-post-meta-company-hook.php:316
+#: includes/functions-settings.php:126 includes/functions-settings.php:141
+#: includes/functions-settings.php:216
+msgid "Yes"
 msgstr ""
 
-#: includes/class-functions.php:239 includes/class-post-meta.php:111
-msgid "Founded"
+#: includes/class-post-meta-company.php:23
+#, fuzzy
+#| msgid "Company Title"
+msgid "Company data"
+msgstr "Nom de la compagnie"
+
+#: includes/class-post-meta-company.php:49
+#, fuzzy, php-format
+#| msgid "Company Tagline"
+msgid "%s Company info"
+msgstr "Slogan de la compagnie"
+
+#: includes/class-post-meta-company.php:57
+#, php-format
+msgid "%s Admin action"
 msgstr ""
 
-#: includes/class-functions.php:240
-msgid "Company founded year."
-msgstr ""
-
-#: includes/class-functions.php:250 includes/class-post-meta.php:119
-msgid "Yearly Revenue"
-msgstr ""
-
-#: includes/class-functions.php:251
-msgid "Yearly Revenue ($)."
-msgstr ""
-
-#: includes/class-functions.php:261
-msgid "Total Emplyee"
-msgstr ""
-
-#: includes/class-functions.php:262
-msgid "Total Emplyee Size."
-msgstr ""
-
-#: includes/class-post-meta.php:72
-msgid "Headquarters Address"
-msgstr ""
-
-#: includes/class-post-meta.php:73
-msgid "Company City, ex: Dhaka, Bangladesh"
-msgstr ""
-
-#: includes/class-post-meta.php:88
-msgid "Logo"
-msgstr ""
-
-#: includes/class-post-meta.php:104
-msgid "Website URL"
-msgstr ""
-
-#: includes/class-post-meta.php:112
-msgid "founded"
-msgstr ""
-
-#: includes/class-post-meta.php:120
-msgid "Yearly Revenue ($)"
-msgstr ""
-
-#: includes/class-post-meta.php:127
-msgid "Size"
-msgstr ""
-
-#: includes/class-post-meta.php:128
-msgid "Emplyee Size"
-msgstr ""
-
-#: includes/class-post-meta.php:135
-msgid "Type"
-msgstr ""
-
-#: includes/class-post-meta.php:136
-msgid "Company Type"
-msgstr ""
-
-#: includes/class-post-meta.php:372
-msgid "Company Data"
-msgstr ""
-
-#: includes/class-post-types.php:25 includes/class-post-types.php:26
+#: includes/class-post-types.php:25
 msgid "Company"
 msgstr ""
+
+#: includes/class-post-types.php:26
+#, fuzzy
+#| msgid "Company Title"
+msgid "Companies"
+msgstr "Nom de la compagnie"
 
 #: includes/class-post-types.php:35 includes/class-post-types.php:87
 #, php-format
@@ -301,6 +223,10 @@ msgstr ""
 msgid "This is where you can create and manage %s."
 msgstr ""
 
+#: includes/class-post-types.php:72
+msgid "Company Category"
+msgstr ""
+
 #: includes/class-post-types.php:73
 msgid "Company Categories"
 msgstr ""
@@ -325,171 +251,459 @@ msgstr ""
 msgid "New %s Name"
 msgstr ""
 
-#: includes/class-settings.php:24
-msgid "Settings"
+#: includes/class-shortcodes.php:55
+#, php-format
+msgid ""
+"Company id is invalid. please go to %s » <a href=\"%s\">My Companies</a> see "
+"your companies."
 msgstr ""
 
-#: includes/class-settings.php:40
-msgid "Company Profile"
+#: includes/class-shortcodes.php:68
+#, php-format
+msgid "Please <a href=\"%s\">login</a> to edit job."
 msgstr ""
 
-#: includes/class-settings.php:45 includes/class-settings.php:46
-msgid "Default company logo"
+#: includes/class-shortcodes.php:77
+msgid "Sorry! you are not authorized to edit this company."
 msgstr ""
 
-#: includes/class-settings.php:56 includes/class-settings.php:57
-msgid "Company linked at archive page"
+#: includes/functions-dashboard.php:9
+msgid "My companies"
 msgstr ""
 
-#: includes/class-settings.php:60 includes/class-settings.php:69
-msgid "Yes"
+#: includes/functions-settings.php:10
+#, fuzzy, php-format
+#| msgid "Related Company"
+msgid "%s Company"
+msgstr "Organismes connexes"
+
+#: includes/functions-settings.php:37
+#, fuzzy
+#| msgid "Company Tagline"
+msgid "Company page settings"
+msgstr "Slogan de la compagnie"
+
+#: includes/functions-settings.php:38
+msgid "Choose option for pages."
 msgstr ""
 
-#: includes/class-settings.php:60 includes/class-settings.php:69
-msgid "No"
+#: includes/functions-settings.php:46
+#, fuzzy
+#| msgid "Company Submited"
+msgid "Company submit page"
+msgstr "Organisme soummise"
+
+#: includes/functions-settings.php:47
+msgid ""
+"Choose the page for company submit page, where the shortcode "
+"<code>[job_bm_company_submit_form]</code> used."
 msgstr ""
 
-#: includes/class-settings.php:65 includes/class-settings.php:66
-msgid "Company linked at single page"
+#: includes/functions-settings.php:63
+#, fuzzy
+#| msgid "Company Title"
+msgid "Company edit page"
+msgstr "Nom de la compagnie"
+
+#: includes/functions-settings.php:64
+msgid ""
+"Choose the page for company edit page, where the shortcode "
+"<code>[job_bm_company_edit_form]</code> used."
 msgstr ""
 
-#: includes/functions.php:17
-msgid "Company profile"
+#: includes/functions-settings.php:111
+#, fuzzy
+#| msgid "Company Mission"
+msgid "Company submission"
+msgstr "Mission de la compagnie"
+
+#: includes/functions-settings.php:112
+msgid "Customize option for company submit."
 msgstr ""
 
-#: includes/functions.php:21
-msgid "Remove input fields for company submit form"
+#: includes/functions-settings.php:120
+msgid "Account required"
 msgstr ""
 
-#: includes/functions.php:28
-msgid "Single company page showing 404 error"
+#: includes/functions-settings.php:121
+msgid "Account required to submit company."
 msgstr ""
 
-#: includes/functions.php:34
-msgid "Single company page style broken"
+#: includes/functions-settings.php:135 includes/functions-settings.php:210
+msgid "reCAPTCHA enable"
 msgstr ""
 
-#: includes/functions.php:104
-msgid "You already submitted a reviews"
+#: includes/functions-settings.php:136
+msgid "Enable reCAPTCHA to protect spam on company submit form."
 msgstr ""
 
-#: includes/functions.php:113
-msgid "Review submitted."
+#: includes/functions-settings.php:152
+#, fuzzy
+#| msgid "Submission Status: "
+msgid "Submitted company status"
+msgstr "Etat de la soumission"
+
+#: includes/functions-settings.php:153
+msgid "Choose company status for newly submitted companies."
 msgstr ""
 
-#: includes/functions.php:170
-msgid "Unfollow"
+#: includes/functions-settings.php:158 includes/functions-settings.php:233
+msgid "Draft"
 msgstr ""
 
-#: includes/functions.php:173
-msgid "Follow"
+#: includes/functions-settings.php:158 includes/functions-settings.php:233
+msgid "Pending"
 msgstr ""
 
-#: includes/functions.php:260
+#: includes/functions-settings.php:158 includes/functions-settings.php:233
+msgid "Published"
+msgstr ""
+
+#: includes/functions-settings.php:158 includes/functions-settings.php:233
+msgid "Private"
+msgstr ""
+
+#: includes/functions-settings.php:158 includes/functions-settings.php:233
+msgid "Trash"
+msgstr ""
+
+#: includes/functions-settings.php:170 includes/functions-settings.php:245
+msgid "-- Company Preview --"
+msgstr ""
+
+#: includes/functions-settings.php:171 includes/functions-settings.php:246
+#, fuzzy
+#| msgid "Company Tagline"
+msgid "-- Company Link --"
+msgstr "Slogan de la compagnie"
+
+#: includes/functions-settings.php:176
+msgid "Redirect after company submit"
+msgstr ""
+
+#: includes/functions-settings.php:177
+msgid "Redirect other link after company submitted"
+msgstr ""
+
+#: includes/functions-settings.php:200
+#, fuzzy
+#| msgid "Company Title"
+msgid "Company Edit"
+msgstr "Nom de la compagnie"
+
+#: includes/functions-settings.php:201
+msgid "Customize option for company edit."
+msgstr ""
+
+#: includes/functions-settings.php:211
+msgid "Enable reCAPTCHA to protect spam on company edit form."
+msgstr ""
+
+#: includes/functions-settings.php:227
+msgid "Edited company status"
+msgstr ""
+
+#: includes/functions-settings.php:228
+msgid "Choose company status for newly edited companies."
+msgstr ""
+
+#: includes/functions-settings.php:251
+msgid "Redirect after company edit"
+msgstr ""
+
+#: includes/functions-settings.php:252
+msgid "Redirect other link after company edited"
+msgstr ""
+
+#: includes/functions.php:23
+msgid "You are not authorized to delete this job."
+msgstr ""
+
+#: includes/functions.php:39
+#, fuzzy
+#| msgid "Company Title"
+msgid "Company Deleted."
+msgstr "Nom de la compagnie"
+
+#: includes/functions.php:46
+msgid "Something going wrong."
+msgstr ""
+
+#: includes/functions.php:53
+msgid "You are not authorized to delete this company."
+msgstr ""
+
+#: includes/functions.php:121
 msgid "Please login first."
 msgstr ""
 
-#: includes/functions.php:316 includes/functions.php:322
+#: includes/functions.php:177 includes/functions.php:183
 msgid "Nothing found"
 msgstr ""
 
-#: templates/company-single-job-list.php:11
+#: includes/menu/update-company-logo.php:106
+msgid "No company found"
+msgstr ""
+
+#: templates/company-edit/company-edit-hook.php:324
+#: templates/company-submit/company-submit-hook.php:281
+#: templates/company-submit/company-submit-hook.php:306
+msgid "Upload"
+msgstr ""
+
+#: templates/company-edit/company-edit-hook.php:372
+#: templates/company-submit/company-submit-hook.php:350
+msgid "1980"
+msgstr ""
+
+#: templates/company-edit/company-edit-hook.php:468
+#: templates/company-submit/company-submit-hook.php:444
+msgid "Submit"
+msgstr "Soumettre"
+
+#: templates/company-edit/company-edit-hook.php:504
+#: templates/company-submit/company-submit-hook.php:480
+msgid "ERROR: Company name is empty."
+msgstr ""
+
+#: templates/company-edit/company-edit-hook.php:509
+#: templates/company-submit/company-submit-hook.php:485
+msgid "ERROR: Company details is empty."
+msgstr ""
+
+#: templates/company-edit/company-edit-hook.php:514
+#: templates/company-submit/company-submit-hook.php:490
+msgid "ERROR: Company tag-line is empty."
+msgstr ""
+
+#: templates/company-edit/company-edit-hook.php:521
+#: templates/company-submit/company-submit-hook.php:497
+msgid "ERROR: Company size is empty."
+msgstr ""
+
+#: templates/company-edit/company-edit-hook.php:531
+#: templates/company-submit/company-submit-hook.php:507
+msgid "ERROR: Company logo is empty."
+msgstr ""
+
+#: templates/company-edit/company-edit-hook.php:536
+#: templates/company-submit/company-submit-hook.php:512
+msgid "ERROR: reCaptcha test failed."
+msgstr ""
+
+#: templates/company-edit/company-edit-hook.php:541
+#: templates/company-submit/company-submit-hook.php:517
 #, php-format
-msgid "Jobs available from - %s"
-msgstr "Emplois disponibles à partir de %s"
-
-#: templates/company-single-meta.php:36
-msgid "Address:"
+msgid ""
+"ERROR: Please <a target=\"_blank\" href=\"%s\">login</a> to submit question."
 msgstr ""
 
-#: templates/company-single-meta.php:40
-msgid "Website:"
+#: templates/company-edit/company-edit-hook.php:547
+#: templates/company-single/company-single-hook.php:623
+#: templates/company-submit/company-submit-hook.php:523
+msgid "ERROR: security test failed."
 msgstr ""
 
-#: templates/company-single-meta.php:55
-msgid "Type:"
+#: templates/company-edit/company-edit-hook.php:656
+msgid "Thanks for update your company."
 msgstr ""
 
-#: templates/company-single-meta.php:60
-msgid "Founded:"
+#: templates/company-single/company-single-hook.php:170
+msgid "Unfollow"
 msgstr ""
 
-#: templates/company-single-meta.php:65
-msgid "Size:"
+#: templates/company-single/company-single-hook.php:173
+msgid "Follow"
 msgstr ""
 
-#: templates/company-single-meta.php:69
-msgid "Revenue:"
-msgstr ""
-
-#: templates/company-single-meta.php:80
-msgid "Mission:"
-msgstr ""
-
-#: templates/company-single-reviews.php:80
-msgid "Rate"
-msgstr ""
-
-#: templates/company-single-reviews.php:92
-msgid "Comments"
-msgstr ""
-
-#: templates/company-single-reviews.php:104
+#: templates/company-single/company-single-hook.php:224
 #, php-format
-msgid "Please <a href=\"%s\">login</a> to submit reviews"
+msgid "%s Descriptions"
 msgstr ""
 
-#: templates/company-single-template-functions.php:79
-msgid "Related Company"
+#: templates/company-single/company-single-hook.php:231
+#, php-format
+msgid "%s Jobs"
+msgstr ""
+
+#: templates/company-single/company-single-hook.php:238
+#, php-format
+msgid "%s Reviews"
+msgstr ""
+
+#: templates/company-single/company-single-hook.php:317
+msgid "Quick overview"
+msgstr ""
+
+#: templates/company-single/company-single-hook.php:323
+#, fuzzy, php-format
+#| msgid "Address: "
+msgid "%s Address: %s"
+msgstr "Adresse: "
+
+#: templates/company-single/company-single-hook.php:329
+#, php-format
+msgid "%s Website: %s"
+msgstr ""
+
+#: templates/company-single/company-single-hook.php:335
+#, fuzzy, php-format
+#| msgid "Founded: "
+msgid "%s Founded: %s"
+msgstr "Fondé: "
+
+#: templates/company-single/company-single-hook.php:341
+#, php-format
+msgid "%s Size: %s"
+msgstr ""
+
+#: templates/company-single/company-single-hook.php:347
+#, fuzzy, php-format
+#| msgid "Revenue: "
+msgid "%s Revenue: %s"
+msgstr "Revenu: "
+
+#: templates/company-single/company-single-hook.php:367
+#, php-format
+msgid "%s Type: %s"
+msgstr ""
+
+#: templates/company-single/company-single-hook.php:384
+msgid "Company Descriptions"
+msgstr ""
+
+#: templates/company-single/company-single-hook.php:404
+msgid "Latest Jobs"
+msgstr ""
+
+#: templates/company-single/company-single-hook.php:437
+msgid "Latest Reviews"
+msgstr ""
+
+#: templates/company-single/company-single-hook.php:503
+msgid "No reviews yet. "
+msgstr ""
+
+#: templates/company-single/company-single-hook.php:513
+msgid "Write a reviews"
+msgstr ""
+
+#: templates/company-single/company-single-hook.php:602
+msgid "ERROR: Review rate is empty."
+msgstr ""
+
+#: templates/company-single/company-single-hook.php:607
+msgid "ERROR: Review text is empty."
+msgstr ""
+
+#: templates/company-single/company-single-hook.php:617
+#, php-format
+msgid ""
+"ERROR: Please <a target=\"_blank\" href=\"%s\">login</a> to submit reviews."
+msgstr ""
+
+#: templates/company-submit/company-submit-hook.php:630
+msgid "Thanks for submit your company, we will review soon."
+msgstr ""
+
+#: templates/my-companies/my-companies-hook.php:17
+#, fuzzy
+#| msgid "Company Title"
+msgid "My Companies"
+msgstr "Nom de la compagnie"
+
+#: templates/my-companies/my-companies-hook.php:18
+#, fuzzy
+#| msgid "Related Company"
+msgid "Add Company"
 msgstr "Organismes connexes"
 
-#: templates/company-submit.php:27
+#: templates/my-companies/my-companies-hook.php:142
 #, php-format
-msgid "Please <a href=\"%s\">login</a> to submit job."
+msgid "%s You haven't created any company."
 msgstr ""
 
-#: templates/company-submit.php:99 templates/company-submit.php:105
-#: templates/company-submit.php:112 templates/company-submit.php:125
-msgid "missing"
+#: templates/my-companies/my-companies-hook.php:152
+#, php-format
+msgid "Please <a href=\"%s\">login</a> to see your companies."
 msgstr ""
 
-#: templates/company-submit.php:172
-msgid "Company Submitted successfully."
+#: templates/my-companies/my-companies-hook.php:202
+#, fuzzy
+#| msgid "Company Title"
+msgid "Company id."
+msgstr "Nom de la compagnie"
+
+#: templates/my-companies/my-companies-hook.php:206
+#, fuzzy
+#| msgid "Company Title"
+msgid "Company edit."
+msgstr "Nom de la compagnie"
+
+#: templates/my-companies/my-companies-hook.php:212
+#, fuzzy
+#| msgid "Company Title"
+msgid "Company trash."
+msgstr "Nom de la compagnie"
+
+#: templates/my-companies/my-companies-hook.php:213
+#, fuzzy
+#| msgid "Related Company"
+msgid "Featured company."
+msgstr "Organismes connexes"
+
+#: templates/my-companies/my-companies-hook.php:215
+#, fuzzy
+#| msgid "Company Title"
+msgid "Company size."
+msgstr "Nom de la compagnie"
+
+#: templates/my-companies/my-companies-hook.php:251
+#, fuzzy
+#| msgid "Company Tagline"
+msgid "Company link."
+msgstr "Slogan de la compagnie"
+
+#: templates/my-companies/my-companies-hook.php:253
+msgid "Published:"
 msgstr ""
 
-#: templates/company-submit.php:387
-msgid "Cancel"
+#: templates/my-companies/my-companies-hook.php:254
+#, fuzzy
+#| msgid "Submission Status: "
+msgid "Publish Status:"
+msgstr "Etat de la soumission"
+
+#: templates/my-companies/my-companies-hook.php:255
+msgid "Featured:"
 msgstr ""
 
-#: templates/company-submit.php:388
-msgid "current step:"
-msgstr ""
+#~ msgid "Company Submited"
+#~ msgstr "Organisme soummise"
 
-#: templates/company-submit.php:389
-msgid "Pagination"
-msgstr ""
+#~ msgid "Submission Status: "
+#~ msgstr "Etat de la soumission"
 
-#: templates/company-submit.php:390
-msgid "Finish"
-msgstr ""
+#~ msgid "Company Title"
+#~ msgstr "Nom de la compagnie"
 
-#: templates/company-submit.php:391
-msgid "Next"
-msgstr ""
+#~ msgid "Company Content"
+#~ msgstr "Description de la compagnie"
 
-#: templates/company-submit.php:392
-msgid "Previous"
-msgstr ""
+#~ msgid "Company Tagline"
+#~ msgstr "Slogan de la compagnie"
 
-#: templates/company-submit.php:393
-msgid "Loading ..."
-msgstr ""
+#~ msgid "Company Mission"
+#~ msgstr "Mission de la compagnie"
 
-#~ msgid "Address: "
-#~ msgstr "Adresse: "
+#~ msgid "City"
+#~ msgstr "Ville"
 
-#~ msgid "Founded: "
-#~ msgstr "Fondé: "
+#~ msgid "Address"
+#~ msgstr "Adresse"
 
-#~ msgid "Revenue: "
-#~ msgstr "Revenu: "
+#~ msgid "Full Address, ex: House No: 254, Road: 5, Mirpur-12, Dhaka"
+#~ msgstr "Adresse complete"
+
+#~ msgid "Jobs available from - %s"
+#~ msgstr "Emplois disponibles à partir de %s"

@@ -16,7 +16,7 @@ function job_bm_single_company($content) {
         ob_start();
         include( job_bm_cp_plugin_dir . 'templates/company-single/company-single.php');
 
-        //wp_enqueue_style('job_bm_job_single');
+        wp_enqueue_style('job_bm_company_single');
         //wp_enqueue_style('font-awesome-5');
         wp_enqueue_script('job-bm-single-company');
 
@@ -30,6 +30,21 @@ function job_bm_single_company($content) {
 }
 add_filter( 'the_content', 'job_bm_single_company' );
 
+
+
+
+function job_bm_single_company_comment_template( $comment_template ) {
+    global $post;
+
+    if($post->post_type == 'company'){ // assuming there is a post type called business
+
+        return job_bm_cp_plugin_dir . 'templates/company-single/company-single-comments.php';
+    }else{
+        return $comment_template;
+    }
+}
+
+add_filter( "comments_template", "job_bm_single_company_comment_template", 100 );
 
 
 
@@ -106,7 +121,7 @@ if(!function_exists('job_bm_company_single_header')){
 
                 ?>
                 <div class="header-intro">
-                    <div class="company-name"><?php echo $company_post_data->post_title; ?></div>
+                    <div class="company-title"><?php echo $company_post_data->post_title; ?></div>
                     <div class="company-tagline"><?php echo $job_bm_cp_tagline; ?></div>
                     <div class="company-local"><?php echo $job_bm_cp_country; ?> <i class="fa fa-angle-right"></i> <?php echo $job_bm_cp_city; ?></div>
 
@@ -197,131 +212,6 @@ if(!function_exists('job_bm_company_single_header_top_follower')){
 
 
 
-
-
-
-
-
-
-
-//add_action('job_bm_company_single', 'job_bm_company_single_reviews');
-
-if(!function_exists('job_bm_company_single_reviews')){
-    function job_bm_company_single_reviews($company_id){
-
-
-
-        $company_post_data = get_post($company_id);
-
-
-        $job_bm_job_login_page_id = get_option('job_bm_job_login_page_id');
-
-
-        echo '<div  class="reviews">';
-
-
-        $comments = get_comments( array( 'post_id' => get_the_ID(), 'status' => 'approve', 'number' => 5,) );
-        //var_dump($comments);
-
-        if(empty($comments)){
-
-            $taotal_comments = 0;
-            $taotal_rate = 0;
-            $ratings = 0;
-
-        }
-        else{
-
-            //var_dump($comments);
-
-            foreach($comments as $comment){
-
-                $comment_ID = $comment->comment_ID;
-
-                $review_rate[] = get_comment_meta( $comment_ID, 'job_bm_review_rate', true );
-
-            }
-
-            $taotal_comments = count($review_rate);
-            $taotal_rate = array_sum($review_rate);
-            $ratings = ($taotal_rate/$taotal_comments)*20;
-
-        }
-
-        echo '<div title="'.sprintf("%u&#37; - Total: %u",$ratings, $taotal_comments).'"  class="ratings"><div class="rate" style=" width:'.($ratings).'%;"></div></div><div class="ratings-des">'.sprintf("%u&#37; - Total: %u",$ratings, $taotal_comments).'</div>';
-
-        echo '<ul  class="reviews-list">';
-
-        foreach($comments as $comment){
-            $comment_content = $comment->comment_content;
-            $comment_author_email = $comment->comment_author_email;
-            $comment_ID = $comment->comment_ID;
-            $rate = get_comment_meta( $comment_ID, 'job_bm_review_rate', true );
-
-
-            echo '<li class="review">';
-
-            echo '';
-            echo '<div class="comment"><div class="thumb">'.get_avatar( $comment_author_email, 50 ).'</div> <i class="fa fa-quote-left"></i> '.$comment_content.' <i class="fa fa-quote-right"></i></div>';
-            //echo '<div class="rate">'.__(sprintf('Rate: %u', $rate),job_bm_cp).'/5</div>';
-
-            echo '</li>';
-
-
-        }
-
-
-        echo '</ul>';
-
-
-        echo '<div  class="reviews-input">
-		
-		<div  class="input-form">
-		<span class="close"><i class="fa fa-times" aria-hidden="true"></i></span>';
-
-        if(is_user_logged_in()){
-
-            echo '<p>'.__('Rate','job-board-manager-company-profile').'<br/>';
-
-            echo '<select class="rate-value">';
-            echo '<option value="5">5</option>';
-            echo '<option value="4">4</option>';
-            echo '<option value="3">3</option>';
-            echo '<option value="2">2</option>';
-            echo '<option value="1">1</option>';
-            echo '</select>';
-
-            echo '</p>';
-
-            echo '<p>'.__('Comments', 'job-board-manager-company-profile').'<br/>';
-            echo '<textarea class="rate-comment">';
-            echo '</textarea>';
-            echo '</p>';
-            echo '<div post-id="'.get_the_ID().'" class="submit button">'.__('Submit', 'job-board-manager-company-profile').'</div>';
-            echo '<div class="message"></div>';
-
-
-
-        }
-        else{
-
-            echo '<div class="message"><i class="fa fa-times"></i> '.sprintf(__('Please <a href="%s">login</a> to submit reviews','job-board-manager-company-profile'), get_permalink($job_bm_job_login_page_id)).'</div>';
-        }
-
-
-        echo '</div>
-		</div>';
-
-        echo '</div>';
-
-
-
-    }
-}
-
-
-
-
 add_action('job_bm_company_single', 'job_bm_company_single_tabs');
 
 if(!function_exists('job_bm_company_single_tabs')){
@@ -331,21 +221,21 @@ if(!function_exists('job_bm_company_single_tabs')){
 
         $company_tabs[] = array(
             'id' => 'description',
-            'title' => sprintf(__('%s Descriptions','job-board-manager'),'<i class="fas fa-file-signature"></i>'),
+            'title' => sprintf(__('%s Descriptions','job-board-manager-company-profile'),'<i class="fas fa-file-signature"></i>'),
             'priority' => 1,
             'active' => true,
         );
 
         $company_tabs[] = array(
             'id' => 'jobs',
-            'title' => sprintf(__('%s Jobs','job-board-manager'),'<i class="fas fa-briefcase"></i>'),
+            'title' => sprintf(__('%s Jobs','job-board-manager-company-profile'),'<i class="fas fa-briefcase"></i>'),
             'priority' => 2,
             'active' => false,
         );
 
         $company_tabs[] = array(
             'id' => 'reviews',
-            'title' => sprintf(__('%s Reviews','job-board-manager'),'<i class="far fa-comment-dots"></i>'),
+            'title' => sprintf(__('%s Reviews','job-board-manager-company-profile'),'<i class="far fa-comment-dots"></i>'),
             'priority' => 2,
             'active' => false,
         );
@@ -430,31 +320,31 @@ if(!function_exists('job_bm_company_single_tabs_content_description')){
 
             if(!empty($job_bm_cp_address)):
                 ?>
-                <div class="overview-item"><?php echo sprintf(__('%s Address: %s'),'<i class="fas fa-map-marked-alt"></i>', $job_bm_cp_address );?></div>
+                <div class="overview-item"><?php echo sprintf(__('%s Address: %s', 'job-board-manager-company-profile'),'<i class="fas fa-map-marked-alt"></i>', $job_bm_cp_address );?></div>
             <?php
             endif;
 
             if(!empty($job_bm_cp_website)):
                 ?>
-                <div class="overview-item"><?php echo sprintf(__('%s Website: %s'),'<i class="fas fa-external-link-square-alt"></i>', $job_bm_cp_website );?></div>
+                <div class="overview-item"><?php echo sprintf(__('%s Website: %s', 'job-board-manager-company-profile'),'<i class="fas fa-external-link-square-alt"></i>', $job_bm_cp_website );?></div>
             <?php
             endif;
 
             if(!empty($job_bm_cp_founded)):
                 ?>
-                <div class="overview-item"><?php echo sprintf(__('%s Founded: %s'),'<i class="far fa-calendar-check"></i>', $job_bm_cp_founded );?></div>
+                <div class="overview-item"><?php echo sprintf(__('%s Founded: %s', 'job-board-manager-company-profile'),'<i class="far fa-calendar-check"></i>', $job_bm_cp_founded );?></div>
             <?php
             endif;
 
             if(!empty($job_bm_cp_size)):
                 ?>
-                <div class="overview-item"><?php echo sprintf(__('%s Size: %s'),'<i class="fas fa-users"></i>', $job_bm_cp_size );?></div>
+                <div class="overview-item"><?php echo sprintf(__('%s Size: %s', 'job-board-manager-company-profile'),'<i class="fas fa-users"></i>', $job_bm_cp_size );?></div>
             <?php
             endif;
 
             if(!empty($job_bm_cp_revenue)):
                 ?>
-                <div class="overview-item"><?php echo sprintf(__('%s Revenue: %s'),'<i class="fas fa-money-check-alt"></i>', $job_bm_cp_revenue );?></div>
+                <div class="overview-item"><?php echo sprintf(__('%s Revenue: %s', 'job-board-manager-company-profile'),'<i class="fas fa-money-check-alt"></i>', $job_bm_cp_revenue );?></div>
             <?php
             endif;
 
@@ -474,7 +364,7 @@ if(!function_exists('job_bm_company_single_tabs_content_description')){
 
                 if(!empty($company_type)):
                     ?>
-                    <div class="overview-item"><?php echo sprintf(__('%s Type: %s'),'<i class="fas fa-code-branch"></i>', $company_type );?></div>
+                    <div class="overview-item"><?php echo sprintf(__('%s Type: %s','job-board-manager-company-profile'),'<i class="fas fa-code-branch"></i>', $company_type );?></div>
                 <?php
                 endif;
 
@@ -486,30 +376,6 @@ if(!function_exists('job_bm_company_single_tabs_content_description')){
            ?>
             </div>
            <?php
-
-
-
-
-        if(!empty($job_bm_cp_mission)):
-
-            ?>
-            <div class="mission"><strong><i class="fa fa-rocket"></i>'.__('Mission:','job-board-manager-company-profile').'</strong> '.$job_bm_cp_mission.'</div>
-            <?php
-
-        endif;
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         if(!empty($company_post_data->post_content)){
@@ -534,8 +400,12 @@ if(!function_exists('job_bm_company_single_tabs_content_jobs')){
 
         $company_post_data = get_post($company_id);
 
+        ?>
+        <h3><?php echo __('Latest Jobs','job-board-manager-company-profile'); ?></h3>
 
-            echo do_shortcode('[job_list display_search="no" company_name="'.$company_post_data->post_title.'"]');
+        <?php
+
+            echo do_shortcode('[job_bm_archive display_search="no" display_pagination="no" per_page="-1" company_name="'.$company_post_data->post_title.'"]');
 
 
 
@@ -554,18 +424,107 @@ if(!function_exists('job_bm_company_single_tabs_content_reviews')){
 
         wp_enqueue_style('job-bm-job-submit');
 
-        if(!empty($_POST)){
-            do_action('job_bm_company_submit_reviews_data', $_POST);
-        }
+        $args = array(
+            'post_id' => $company_id, // use post_id, not post_ID
+            //'count' => true //return only the count
+            'number' => 5,
 
+        );
+        $comments = get_comments($args);
 
         ?>
         <div class="company-reviews">
-            <form class="job-bm-job-submit" enctype="multipart/form-data" method="post" action="<?php echo str_replace( '%7E', '~', $_SERVER['REQUEST_URI']); ?>">
+            <h3><?php echo __('Latest Reviews','job-board-manager-company-profile'); ?></h3>
+
+            <div class="reviews-list">
+
+                <?php
+
+                if(!empty($comments)):
+                    foreach ($comments as $comment){
+
+                        //var_dump($comment);
+
+
+                        $user_id = $comment->user_id;
+                        $comment_content = $comment->comment_content;
+                        $comment_date = $comment->comment_date;
+
+
+                        $comment_author = get_user_by("ID", $user_id);
+
+                        $review_rate = (int) get_comment_meta($comment->comment_ID, 'review_rate', true);
+
+
+                        //echo '<pre>'.var_export($review_rate, true).'</pre>';
+
+                        ?>
+                        <div class="review-item">
+                            <div class="comment-rate">
+                                <?php
+
+                                for($i=1; $i<= 5; $i++){
+
+                                    if($review_rate < $i){
+                                        ?>
+                                        <i class="far fa-star"></i>
+                                        <?php
+
+                                    }else{
+                                        ?>
+                                        <i class="fas fa-star"></i>
+                                        <?php
+                                    }
+
+
+
+                                }
+
+                                ?>
+
+                            </div>
+
+                            <div class="comment-author-avatar"><?php echo get_avatar($user_id, '60'); ?></div>
+
+                            <div class="comment-author">
+                                <?php echo $comment_author->display_name; ?>
+                                <div class="comment-date"><?php echo $comment_date; ?></div>
+                            </div>
+
+
+
+                            <div class="comment-content"><?php echo $comment_content; ?></div>
+
+                        </div>
+                        <?php
+                    }
+                else:
+                    ?>
+                    <div class="comment no-comment"><?php echo __('No reviews yet. ','job-board-manager-company-profile'); ?></div>
+
+                <?php
+                endif;
+
+                ?>
+
+            </div>
+
+
+            <h3><?php echo __('Write a reviews','job-board-manager-company-profile'); ?></h3>
+
+            <form class="job-bm-job-submit company-reviews-submit" enctype="multipart/form-data" method="post" action="<?php echo str_replace( '%7E', '~', $_SERVER['REQUEST_URI']); ?>">
+
+                <?php
+
+                if(!empty($_POST)){
+                    do_action('job_bm_company_submit_reviews_data',$company_id, $_POST);
+                }
+
+                ?>
 
 
                 <div class="form-field-wrap">
-                    <div class="field-title"><?php esc_html_e('Ratting','job-board-manager'); ?></div>
+                    <div class="field-title"><?php esc_html_e('Ratting','job-board-manager-company-profile'); ?></div>
                     <div class="field-input">
                         <select name="review_rate">
                             <option value="5">Best</option>
@@ -574,11 +533,8 @@ if(!function_exists('job_bm_company_single_tabs_content_reviews')){
                             <option value="2">Poor</option>
                             <option value="1">Very Poor</option>
 
-
-
-
                         </select>
-                        <p class="field-details"><?php esc_html_e('Choose your ratting','job-board-manager');
+                        <p class="field-details"><?php esc_html_e('Choose your ratting','job-board-manager-company-profile');
                             ?>
                         </p>
                     </div>
@@ -586,14 +542,15 @@ if(!function_exists('job_bm_company_single_tabs_content_reviews')){
 
 
                 <div class="form-field-wrap">
-                    <div class="field-title"><?php esc_html_e('Write your feedback','job-board-manager'); ?></div>
+                    <div class="field-title"><?php esc_html_e('Write your feedback','job-board-manager-company-profile'); ?></div>
                     <div class="field-input">
                         <textarea name="review_text"></textarea>
-                        <p class="field-details"><?php esc_html_e('Write your reviews here.','job-board-manager'); ?>
+                        <p class="field-details"><?php esc_html_e('Write your reviews here.','job-board-manager-company-profile'); ?>
                         </p>
                     </div>
                 </div>
 
+                <?php wp_nonce_field( 'job_bm_company_reviews_nonce','job_bm_company_reviews_nonce' ); ?>
 
                 <div class="form-field-wrap">
                     <div class="field-title"></div>
@@ -615,6 +572,113 @@ if(!function_exists('job_bm_company_single_tabs_content_reviews')){
 
 
 
+
+/* Process the submitted data  */
+
+add_action('job_bm_company_submit_reviews_data', 'job_bm_company_submit_reviews_data', 90, 2);
+
+function job_bm_company_submit_reviews_data($company_id, $post_data){
+
+    $job_bm_company_submit_recaptcha		    = get_option('job_bm_company_submit_recaptcha');
+    $job_bm_company_submit_account_required 	= get_option('job_bm_company_submit_account_required', 'yes');
+    $job_bm_company_submit_post_status 		= get_option('job_bm_company_submit_post_status', 'pending' );
+    $job_bm_job_login_page_id           = get_option('job_bm_job_login_page_id');
+    $dashboard_page_url                 = get_permalink($job_bm_job_login_page_id);
+
+
+    if ( is_user_logged_in() ) {
+        $user_id = get_current_user_id();
+    } else {
+        $user_id = 0;
+    }
+
+    $error = new WP_Error();
+
+
+
+
+    if(empty($post_data['review_rate'])){
+
+        $error->add( 'review_rate', __( 'ERROR: Review rate is empty.', 'job-board-manager-company-profile' ) );
+    }
+
+    if(empty($post_data['review_text'])){
+
+        $error->add( 'review_text', __( 'ERROR: Review text is empty.', 'job-board-manager-company-profile' ) );
+    }
+
+//    if(empty($post_data['g-recaptcha-response']) && $job_bm_company_submit_recaptcha =='yes'){
+//
+//        $error->add( 'g-recaptcha-response', __( 'ERROR: reCaptcha test failed.', 'job-board-manager-company-profile' ) );
+//    }
+
+    if( !is_user_logged_in()){
+
+        $error->add( 'login',  sprintf (__('ERROR: Please <a target="_blank" href="%s">login</a> to submit reviews.',
+            'job-board-manager-company-profile'), $dashboard_page_url ));
+    }
+
+    if(! isset( $_POST['job_bm_company_reviews_nonce'] ) || ! wp_verify_nonce( $_POST['job_bm_company_reviews_nonce'], 'job_bm_company_reviews_nonce' ) ){
+
+        $error->add( '_wpnonce', __( 'ERROR: security test failed.', 'job-board-manager-company-profile' ) );
+    }
+
+
+
+    $errors = apply_filters( 'job_bm_company_reviews_submit_errors', $error, $post_data );
+
+
+
+
+
+
+    if ( !$error->has_errors() ) {
+
+        $allowed_html = array();
+        $review_rate = isset($post_data['review_rate']) ? sanitize_text_field($post_data['review_rate']) : 5;
+        $review_text = isset($post_data['review_text']) ? wp_kses($post_data['review_text'], $allowed_html) : "";
+
+
+        $time = current_time('mysql');
+
+        $data = array(
+            'comment_post_ID' => $company_id,
+//        'comment_author' => '',
+//        'comment_author_email' => '',
+//        'comment_author_url' => '',
+            'comment_content' => $review_text,
+            'user_id' => $user_id,
+            'comment_date' => $time,
+        );
+
+        $comment_id = wp_insert_comment($data);
+
+        update_comment_meta($comment_id, 'review_rate', $review_rate);
+
+        //var_dump($review_rate);
+
+        do_action('job_bm_company_reviews_submitted', $comment_id, $post_data);
+
+    }
+    else{
+
+        $error_messages = $error->get_error_messages();
+
+        ?>
+        <div class="errors">
+            <?php
+
+            if(!empty($error_messages))
+                foreach ($error_messages as $message){
+                    ?>
+                    <div class="job-bm-error"><?php echo $message; ?></div>
+                    <?php
+                }
+            ?>
+        </div>
+        <?php
+    }
+}
 
 
 

@@ -14,8 +14,8 @@ if(!function_exists('job_bm_my_companies_title')):
 
         ?>
             <div class="nav-head">
-                <?php echo __('My Companies', 'job-board-manager'); ?>
-                <a target="_blank" title="<?php echo __('Add Company', 'job-board-manager'); ?>" class="submit-company" href="<?php echo $company_submit_page_url; ?>"><i class="far fa-plus-square"></i> Add Company</a>
+                <?php echo __('My Companies', 'job-board-manager-company-profile'); ?>
+                <a target="_blank" title="<?php echo __('Add Company', 'job-board-manager-company-profile'); ?>" class="submit-company" href="<?php echo $company_submit_page_url; ?>"><i class="far fa-plus-square"></i> Add Company</a>
             </div>
 
         <?php
@@ -139,7 +139,7 @@ if(!function_exists('job_bm_my_companies_list')):
 
                     else:
 
-                        echo sprintf(__('%s You haven\'t created any company.', 'job-board-manager'), '<i class="fa fa-exclamation-circle" aria-hidden="true"></i>');
+                        echo sprintf(__('%s You haven\'t created any company.', 'job-board-manager-company-profile'), '<i class="fa fa-exclamation-circle" aria-hidden="true"></i>');
 
                     endif;
 
@@ -149,7 +149,7 @@ if(!function_exists('job_bm_my_companies_list')):
                 <?php
             }
             else{
-                echo sprintf(__('Please <a href="%s">login</a> to see your companies.', 'job-board-manager' ), $job_bm_job_login_page_url );
+                echo sprintf(__('Please <a href="%s">login</a> to see your companies.', 'job-board-manager-company-profile' ), $job_bm_job_login_page_url );
 
             }
 
@@ -199,20 +199,20 @@ if(!function_exists('job_bm_my_companies_loop_header')){
         ?>
         <div class="card-top">
             <div class="card-action">
-                <a class="job-id" title="<?php echo __('Company id.', 'job-board-manager'); ?>" href="<?php echo get_permalink($company_id); ?>">#<?php echo
+                <a class="job-id" title="<?php echo __('Company id.', 'job-board-manager-company-profile'); ?>" href="<?php echo get_permalink($company_id); ?>">#<?php echo
                     $company_id; ?></a>
 
                 <?php if(!empty($job_bm_company_edit_page_id)): ?>
-                <a class="job-edit" title="<?php echo __('Company edit.', 'job-board-manager'); ?>" href="<?php echo
+                <a class="job-edit" title="<?php echo __('Company edit.', 'job-board-manager-company-profile'); ?>" href="<?php echo
                 $job_bm_company_edit_page_url; ?>?company_id=<?php echo $company_id; ?>" target="_blank"><i class="fas
                 fa-pencil-alt"></i></a>
                 <?php endif; ?>
 
 
-                <span class="company-delete" job-id="<?php echo $company_id; ?>" title="<?php echo __('Company trash.', 'job-board-manager'); ?>"><i class="far fa-trash-alt"></i></span>
-                <span class="job-featured <?php echo $featured_class; ?>" title="<?php echo ($featured=='yes') ?  __('Featured company.', 'job-board-manager') : 'Not featured'; ?>"><i class="fas fa-star"></i></span>
+                <span class="company-delete" job-id="<?php echo $company_id; ?>" title="<?php echo __('Company trash.', 'job-board-manager-company-profile'); ?>"><i class="far fa-trash-alt"></i></span>
+                <span class="job-featured <?php echo $featured_class; ?>" title="<?php echo ($featured=='yes') ?  __('Featured company.', 'job-board-manager-company-profile') : 'Not featured'; ?>"><i class="fas fa-star"></i></span>
 
-                <span class="job-hired" title="<?php echo __('Company size.', 'job-board-manager'); ?>"><i class="fas fa-user-tie"></i> <?php echo $job_bm_cp_size; ?></span>
+                <span class="job-hired" title="<?php echo __('Company size.', 'job-board-manager-company-profile'); ?>"><i class="fas fa-user-tie"></i> <?php echo $job_bm_cp_size; ?></span>
 
             </div>
 
@@ -248,11 +248,11 @@ if(!function_exists('job_bm_my_companies_loop_body')){
 
         ?>
         <div class="card-body">
-            <a title="<?php echo __('Company link.', 'job-board-manager'); ?>" class="job-link meta" href="<?php echo get_permalink($company_id); ?>"><i class="fas fa-external-link-square-alt"></i> <?php echo $job_title; ?></a>
+            <a title="<?php echo __('Company link.', 'job-board-manager-company-profile'); ?>" class="job-link meta" href="<?php echo get_permalink($company_id); ?>"><i class="fas fa-external-link-square-alt"></i> <?php echo $job_title; ?></a>
 
-            <span class="post-date meta"><b><?php echo __('Published:', 'job-board-manager'); ?></b> <?php echo date_i18n($date_format,strtotime($post_date)); ?></span>
-            <span class="publish-status meta"><b><?php echo __('Publish Status:', 'job-board-manager'); ?></b> <?php echo $publish_status; ?></span>
-            <span class="featured meta"><b><?php echo __('Featured:', 'job-board-manager'); ?></b> <?php echo $featured; ?></span>
+            <span class="post-date meta"><b><?php echo __('Published:', 'job-board-manager-company-profile'); ?></b> <?php echo date_i18n($date_format,strtotime($post_date)); ?></span>
+            <span class="publish-status meta"><b><?php echo __('Publish Status:', 'job-board-manager-company-profile'); ?></b> <?php echo $publish_status; ?></span>
+            <span class="featured meta"><b><?php echo __('Featured:', 'job-board-manager-company-profile'); ?></b> <?php echo $featured; ?></span>
             <?php
 
 

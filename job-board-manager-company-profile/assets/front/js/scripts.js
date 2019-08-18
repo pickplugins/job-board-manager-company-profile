@@ -1,55 +1,7 @@
 jQuery(document).ready(function($)
 	{
-		
-		$('.company-single .reviews-list').quote_rotator( {
-			rotation_speed: 5000   }
-		);
-		
-		
-		$(document).on('click', '.company-single .reviews .submit', function()
-			{
-				$(this).addClass('loading');
-				
-				var post_id = $(this).attr('post-id');				
-				var rate_value = $('.rate-value').val();
-				var rate_comment = $('.rate-comment').val();				
-				
-				
-				//alert(rate_comment);
-				
-				
-					$.ajax(
-						{
-					type: 'POST',
-					context: this,
-					url:job_bm_cp_ajax.job_bm_cp_ajaxurl,
-					data: {"action": "job_bm_cp_ajax_submit_reviews", "post_id":post_id,"rate_value":rate_value,"rate_comment":rate_comment,},
-					success: function(data)
-							{	
-								//alert(data);
-								$('.reviews .reviews-input .message').html(data);
-								$(this).removeClass('loading');
-								
-								//$(this).parent().parent().fadeOut(3000);
-							}
-						});				
-				
-				})	
-	
-	
-	
-		$(document).on('click', '.company-single .reviews .ratings', function()
-			{
-				$('.reviews-input').fadeIn();
-				
-				})
-	
-	
-		$(document).on('click', '.company-single .reviews .reviews-input .close', function()
-			{
-				$(this).parent().parent().fadeOut();
-				
-				})	
+
+
 	
 	
 	

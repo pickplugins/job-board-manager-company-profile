@@ -53,18 +53,5 @@ function job_bm_company_post_thumbnail($thumbnail){
 
 }
 
-add_filter( "comments_template", "job_bm_company_comment_template", 99 );
-function job_bm_company_comment_template( $comment_template ) {
-    global $post;
 
-    if ( !( is_singular() && ( have_comments() || 'open' == $post->comment_status ) ) ) {
-        return;
-    }
-    if($post->post_type == 'company'){
-
-        //var_dump(job_bm_cp_plugin_dir . 'templates/company-single/company-single-comments.php');
-
-        return job_bm_cp_plugin_dir . 'templates/company-single/company-single-comments.php';
-    }
-}
 
