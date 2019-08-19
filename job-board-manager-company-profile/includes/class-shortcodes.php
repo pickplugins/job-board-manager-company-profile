@@ -52,7 +52,7 @@ class class_job_bm_company_shortcodes{
 
 
         if(!isset($_GET['company_id'])):
-            return apply_filters('job_bm_company_edit_invalid_id_text', sprintf(__('Company id is invalid. please go to %s » <a href="%s">My Companies</a> see your companies.', 'job-board-manager'), '<strong>'.$dashboard_page_title.'</strong>',$dashboard_page_url.'?tabs=my_companies'));
+            return apply_filters('job_bm_company_edit_invalid_id_text', sprintf(__('Company id is invalid. please go to %s » <a href="%s">My Companies</a> see your companies.', 'job-board-manager-company-profile'), '<strong>'.$dashboard_page_title.'</strong>',$dashboard_page_url.'?tabs=my_companies'));
         endif;
 
         $company_id = sanitize_text_field($_GET['company_id']);
@@ -65,16 +65,19 @@ class class_job_bm_company_shortcodes{
         //var_dump($author_id);
 
         if(!is_user_logged_in()){
-            return apply_filters('job_bm_company_edit_login_required_text', sprintf(__('Please <a href="%s">login</a> to edit job.', 'job-board-manager'), $dashboard_page_url));
+
+            do_action('job_bm_company_edit_login_required');
+
+            return apply_filters('job_bm_company_edit_login_required_text', sprintf(__('Please <a href="%s">login</a> to edit job.', 'job-board-manager-company-profile'), $dashboard_page_url));
 
         }
 
 
         if($job_bm_can_user_edit_published_jobs != 'yes' || $userid != $author_id){
 
-            do_action('job_bm_company_edit_login_required');
+            do_action('job_bm_company_edit_unauthorized');
 
-            return apply_filters('job_bm_company_edit_unauthorized_text', __('Sorry! you are not authorized to edit this company.', 'job-board-manager'));
+            return apply_filters('job_bm_company_edit_unauthorized_text', __('Sorry! you are not authorized to edit this company.', 'job-board-manager-company-profile'));
 
         }
 

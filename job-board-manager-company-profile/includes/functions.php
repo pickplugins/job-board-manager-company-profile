@@ -1,12 +1,5 @@
 <?php
-/*
-* @Author 		ParaTheme
-* @Folder	 	job-board-manager/includes
-* Copyright: 	2015 ParaTheme
-*/
-
 if ( ! defined('ABSPATH')) exit;  // if direct access 
-
 
 
 
@@ -43,14 +36,14 @@ function job_bm_ajax_delete_company_by_id() {
 
             }
             else{
-                $html.=	'<i class="fa fa-exclamation-circle"></i> '.__('Something going wrong.','job-board-manager');
+                $html.=	'<i class="fa fa-exclamation-circle"></i> '.__('Something going wrong.','job-board-manager-company-profile');
                 $response['is_deleted'] = 'no';
             }
         }
 
         else{
 
-            $html.=	'<i class="fa fa-exclamation-circle"></i> '.__('You are not authorized to delete this company.','job-board-manager');
+            $html.=	'<i class="fa fa-exclamation-circle"></i> '.__('You are not authorized to delete this company.','job-board-manager-company-profile');
             $response['is_deleted'] = 'no';
         }
     }

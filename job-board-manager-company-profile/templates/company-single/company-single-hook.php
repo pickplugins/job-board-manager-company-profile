@@ -7,6 +7,7 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 
 
 
+
 function job_bm_single_company($content) {
 
     global $post;
@@ -32,6 +33,7 @@ add_filter( 'the_content', 'job_bm_single_company' );
 
 
 
+add_filter( "comments_template", "job_bm_single_company_comment_template", 90 );
 
 function job_bm_single_company_comment_template( $comment_template ) {
     global $post;
@@ -44,7 +46,24 @@ function job_bm_single_company_comment_template( $comment_template ) {
     }
 }
 
-add_filter( "comments_template", "job_bm_single_company_comment_template", 100 );
+
+
+
+add_filter( "respond_link", "job_bm_single_company_respond_link", 100, 2 );
+
+function job_bm_single_company_respond_link( $respond_link, $id ) {
+    global $post;
+
+    if($post->post_type == 'company'){ // assuming there is a post type called business
+
+        return '';
+    }else{
+        return $respond_link;
+    }
+}
+
+
+
 
 
 
@@ -516,49 +535,14 @@ if(!function_exists('job_bm_company_single_tabs_content_reviews')){
 
                 <?php
 
-                if(!empty($_POST)){
+                if(!empty($_POST) && isset($_POST['job_bm_company_reviews_hide'])){
                     do_action('job_bm_company_submit_reviews_data',$company_id, $_POST);
                 }
 
+
+                do_action('job_bm_company_reviews_form', $company_id);
+
                 ?>
-
-
-                <div class="form-field-wrap">
-                    <div class="field-title"><?php esc_html_e('Ratting','job-board-manager-company-profile'); ?></div>
-                    <div class="field-input">
-                        <select name="review_rate">
-                            <option value="5">Best</option>
-                            <option value="4">Pretty Good</option>
-                            <option value="3">Good</option>
-                            <option value="2">Poor</option>
-                            <option value="1">Very Poor</option>
-
-                        </select>
-                        <p class="field-details"><?php esc_html_e('Choose your ratting','job-board-manager-company-profile');
-                            ?>
-                        </p>
-                    </div>
-                </div>
-
-
-                <div class="form-field-wrap">
-                    <div class="field-title"><?php esc_html_e('Write your feedback','job-board-manager-company-profile'); ?></div>
-                    <div class="field-input">
-                        <textarea name="review_text"></textarea>
-                        <p class="field-details"><?php esc_html_e('Write your reviews here.','job-board-manager-company-profile'); ?>
-                        </p>
-                    </div>
-                </div>
-
-                <?php wp_nonce_field( 'job_bm_company_reviews_nonce','job_bm_company_reviews_nonce' ); ?>
-
-                <div class="form-field-wrap">
-                    <div class="field-title"></div>
-                    <div class="field-input">
-                        <input type="submit" value="Submit" ></input>
-                    </div>
-                </div>
-
 
 
             </form>
@@ -568,6 +552,80 @@ if(!function_exists('job_bm_company_single_tabs_content_reviews')){
 
     }
 }
+
+
+
+
+add_action('job_bm_company_reviews_form', 'job_bm_company_reviews_form_rating');
+
+function job_bm_company_reviews_form_rating($company_id){
+
+    ?>
+    <div class="form-field-wrap">
+        <div class="field-title"><?php echo __('Rating','job-board-manager-company-profile'); ?></div>
+        <div class="field-input">
+            <select name="review_rate">
+                <option value="5"><?php echo __('Best','job-board-manager-company-profile'); ?></option>
+                <option value="4"><?php echo __('Pretty Good','job-board-manager-company-profile'); ?></option>
+                <option value="3"><?php echo __('Good','job-board-manager-company-profile'); ?></option>
+                <option value="2"><?php echo __('Poor','job-board-manager-company-profile'); ?></option>
+                <option value="1"><?php echo __('Very Poor','job-board-manager-company-profile'); ?></option>
+
+            </select>
+            <p class="field-details"><?php echo __('Choose your rating','job-board-manager-company-profile');
+                ?>
+            </p>
+        </div>
+    </div>
+    <?php
+}
+
+add_action('job_bm_company_reviews_form', 'job_bm_company_reviews_form_review_text');
+
+function job_bm_company_reviews_form_review_text($company_id){
+
+    ?>
+    <div class="form-field-wrap">
+        <div class="field-title"><?php echo __('Write your feedback','job-board-manager-company-profile'); ?></div>
+        <div class="field-input">
+            <textarea name="review_text"></textarea>
+            <p class="field-details"><?php echo __('Write your reviews here.','job-board-manager-company-profile'); ?>
+            </p>
+        </div>
+    </div>
+    <?php
+}
+
+
+
+add_action('job_bm_company_reviews_form', 'job_bm_company_reviews_form_submit', 99);
+
+function job_bm_company_reviews_form_submit($company_id){
+
+    ?>
+
+    <div class="form-field-wrap">
+        <div class="field-title"></div>
+        <div class="field-input">
+            <input type="hidden" name="job_bm_company_reviews_hide" value="Y">
+            <?php wp_nonce_field( 'job_bm_company_reviews_nonce','job_bm_company_reviews_nonce' ); ?>
+            <input type="submit" value="<?php echo __('Submit','job-board-manager-company-profile'); ?>" ></input>
+        </div>
+    </div>
+    <?php
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -684,7 +742,17 @@ function job_bm_company_submit_reviews_data($company_id, $post_data){
 
 
 
+add_action('job_bm_company_reviews_submitted', 'job_bm_company_reviews_submitted', 99, 2);
 
+function job_bm_company_reviews_submitted($comment_id, $post_data){
+
+    ?>
+    <div class="reviews-done success">
+        <?php echo __('Thanks for submit reviews.','job-board-manager-company-profile'); ?>
+    </div>
+    <?php
+
+}
 
 
 

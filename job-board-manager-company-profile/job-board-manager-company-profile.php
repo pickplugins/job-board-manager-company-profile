@@ -3,7 +3,7 @@
 Plugin Name: Job Board Manager - Company Profile
 Plugin URI: http://pickplugins.com
 Description: Awesome Company Profile for Job Board Manager.
-Version: 1.0.7
+Version: 1.0.8
 Author: pickplugins
 Text Domain: job-board-manager-company-profile
 Domain Path: /languages
@@ -22,7 +22,7 @@ class JobBoardManagerCompanyProfile{
 	define('job_bm_cp_plugin_url', plugins_url('/', __FILE__)  );
 	define('job_bm_cp_plugin_dir', plugin_dir_path( __FILE__ ) );
 	define('job_bm_cp_plugin_name', 'Job Board Manager - Company Profile' );
-	define('job_bm_cp_plugin_version', '1.0.7' );
+	define('job_bm_cp_plugin_version', '1.0.8' );
 
 
 	// Class

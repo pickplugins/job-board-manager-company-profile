@@ -12,26 +12,39 @@
 .job-bm-company-list .list-item{
   margin-bottom: 20px;
 }
-.company-thumbnail{
+.job-bm-company-list .company-thumbnail{
   width: 50px;
   height: 50px;
   float: left;
 }
 
-.company-details {
+.job-bm-company-list .company-details {
   margin-left: 70px;
 }
 
-.company-name{}
+.job-bm-company-list .company-name{}
 
 
-.company-jobs{}
+.job-bm-company-list .company-jobs{}
 
-.company-jobs li{
+.job-bm-company-list .company-jobs li{
   margin-left: 15px;
 }
 
 
 
+.job-bm-company-list  .paginate {
+  margin: 30px 0;
+  text-align: center;
+}
+.job-bm-company-list  .paginate .page-numbers,
+.job-bm-company-list  .paginate .page-numbers {
+  font-size: 17px;
+  padding: 7px 13px;
+  text-decoration: none;
+}
 
+.job-bm-company-list  .paginate .current {
+  border: medium none;
+}
 

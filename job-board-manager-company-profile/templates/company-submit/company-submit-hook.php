@@ -13,10 +13,10 @@ function job_bm_company_submit_form_title(){
 
     ?>
     <div class="form-field-wrap">
-        <div class="field-title"><?php esc_html_e('Company name','job-board-manager'); ?></div>
+        <div class="field-title"><?php echo __('Company name','job-board-manager-company-profile'); ?></div>
         <div class="field-input">
             <input placeholder="" type="text" value="<?php echo $post_title; ?>" name="post_title">
-            <p class="field-details"><?php esc_html_e('Write your company name','job-board-manager');
+            <p class="field-details"><?php echo __('Write your company name','job-board-manager-company-profile');
             ?></p>
         </div>
     </div>
@@ -37,7 +37,7 @@ function job_bm_company_submit_form_content(){
 
     ?>
     <div class="form-field-wrap">
-        <div class="field-title"><?php esc_html_e('Company description','job-board-manager'); ?></div>
+        <div class="field-title"><?php echo __('Company description','job-board-manager-company-profile'); ?></div>
         <div class="field-input">
             <?php
             ob_start();
@@ -47,7 +47,7 @@ function job_bm_company_submit_form_content(){
 
             ?>
 
-            <p class="field-details"><?php esc_html_e('Write your company details.','job-board-manager'); ?></p>
+            <p class="field-details"><?php echo __('Write your company details.','job-board-manager-company-profile'); ?></p>
 
         </div>
     </div>
@@ -87,9 +87,9 @@ function job_bm_company_submit_form_categories(){
 
     ?>
     <div class="form-field-wrap">
-        <div class="field-title"><?php esc_html_e('Company category','job-board-manager'); ?></div>
+        <div class="field-title"><?php echo __('Company category','job-board-manager-company-profile'); ?></div>
         <div class="field-input">
-            <select name="company_category" >
+            <select name="company_category">
                 <?php
                 if(!empty($terms)):
                     foreach ($terms as $term_id => $term_name){
@@ -104,7 +104,7 @@ function job_bm_company_submit_form_categories(){
                 endif;
                 ?>
             </select>
-            <p class="field-details"><?php esc_html_e('Select company category.','job-board-manager'); ?></p>
+            <p class="field-details"><?php echo __('Select company category.','job-board-manager-company-profile'); ?></p>
 
         </div>
     </div>
@@ -124,7 +124,7 @@ function job_bm_company_submit_form_job_info_title(){
 
     ?>
     <div class="form-field-wrap ">
-        <div class="field-separator"><?php echo __('Company Information','job-board-manager'); ?></div>
+        <div class="field-separator"><?php echo __('Company Information','job-board-manager-company-profile'); ?></div>
     </div>
     <?php
 }
@@ -150,10 +150,10 @@ function job_bm_company_submit_form_tagline(){
 
     ?>
     <div class="form-field-wrap">
-        <div class="field-title"><?php esc_html_e('Company tag-line','job-board-manager'); ?></div>
+        <div class="field-title"><?php echo __('Company tag-line','job-board-manager-company-profile'); ?></div>
         <div class="field-input">
             <input placeholder="" type="text" value="<?php echo $job_bm_cp_tagline; ?>" name="job_bm_cp_tagline">
-            <p class="field-details"><?php esc_html_e('Write your company tag-line','job-board-manager');
+            <p class="field-details"><?php echo __('Write your company tag-line','job-board-manager-company-profile');
                 ?></p>
         </div>
     </div>
@@ -173,10 +173,10 @@ function job_bm_company_submit_form_mission(){
 
     ?>
     <div class="form-field-wrap">
-        <div class="field-title"><?php esc_html_e('Company mission','job-board-manager'); ?></div>
+        <div class="field-title"><?php echo __('Company mission','job-board-manager-company-profile'); ?></div>
         <div class="field-input">
             <input placeholder="" type="text" value="<?php echo $job_bm_cp_mission; ?>" name="job_bm_cp_mission">
-            <p class="field-details"><?php esc_html_e('Write company mission.','job-board-manager');
+            <p class="field-details"><?php echo __('Write company mission.','job-board-manager-company-profile');
                 ?></p>
         </div>
     </div>
@@ -199,7 +199,7 @@ function job_bm_company_submit_form_country(){
 
     ?>
     <div class="form-field-wrap">
-        <div class="field-title"><?php esc_html_e('Country','job-board-manager'); ?></div>
+        <div class="field-title"><?php echo __('Country','job-board-manager-company-profile'); ?></div>
         <div class="field-input">
             <select name="job_bm_cp_country" >
                 <?php
@@ -216,7 +216,7 @@ function job_bm_company_submit_form_country(){
                 endif;
                 ?>
             </select>
-            <p class="field-details"><?php esc_html_e('Select company country.','job-board-manager'); ?></p>
+            <p class="field-details"><?php echo __('Select company country.','job-board-manager-company-profile'); ?></p>
 
         </div>
     </div>
@@ -232,10 +232,10 @@ function job_bm_company_submit_form_city(){
 
     ?>
     <div class="form-field-wrap ">
-        <div class="field-title"><?php esc_html_e('Company city','job-board-manager'); ?></div>
+        <div class="field-title"><?php echo __('Company city','job-board-manager-company-profile'); ?></div>
         <div class="field-input">
             <input placeholder="" type="text" value="<?php echo $job_bm_cp_city; ?>" name="job_bm_cp_city">
-            <p class="field-details"><?php esc_html_e('Write company city','job-board-manager');
+            <p class="field-details"><?php echo __('Write company city','job-board-manager-company-profile');
                 ?></p>
         </div>
     </div>
@@ -252,10 +252,10 @@ function job_bm_company_submit_form_address(){
 
     ?>
     <div class="form-field-wrap " >
-        <div class="field-title"><?php esc_html_e('Company address','job-board-manager'); ?></div>
+        <div class="field-title"><?php echo __('Company address','job-board-manager-company-profile'); ?></div>
         <div class="field-input">
             <input placeholder="" type="text" value="<?php echo $job_bm_cp_address; ?>" name="job_bm_cp_address">
-            <p class="field-details"><?php esc_html_e('Write company address','job-board-manager');
+            <p class="field-details"><?php echo __('Write company address','job-board-manager-company-profile');
                 ?></p>
         </div>
     </div>
@@ -271,17 +271,17 @@ function job_bm_company_submit_form_logo(){
 
     ?>
     <div class="form-field-wrap job-bm-media-upload">
-        <div class="field-title"><?php esc_html_e('Company logo','job-board-manager'); ?></div>
+        <div class="field-title"><?php echo __('Company logo','job-board-manager-company-profile'); ?></div>
         <div class="field-input">
             <div class="media-preview-wrap" style="">
                 <img class="media-preview" src="<?php echo $job_bm_cp_logo; ?>" style="width:100%;box-shadow: none;"/>
             </div>
 
             <input placeholder="" type="text" value="<?php echo $job_bm_cp_logo; ?>" name="job_bm_cp_logo">
-            <span class="media-upload " id=""><?php echo __('Upload','job-board-manager');?></span>
-            <!--            <span class="media-clear" id="">--><?php //echo __('Clear','job-board-manager');?><!--</span>-->
+            <span class="media-upload " id=""><?php echo __('Upload','job-board-manager-company-profile');?></span>
+            <!--            <span class="media-clear" id="">--><?php //echo __('Clear','job-board-manager-company-profile');?><!--</span>-->
 
-            <p class="field-details"><?php esc_html_e('Upload company logo','job-board-manager');
+            <p class="field-details"><?php echo __('Upload company logo','job-board-manager-company-profile');
                 ?></p>
         </div>
     </div>
@@ -296,17 +296,17 @@ function job_bm_company_submit_form_cover(){
 
     ?>
     <div class="form-field-wrap job-bm-media-upload">
-        <div class="field-title"><?php esc_html_e('Company cover image','job-board-manager'); ?></div>
+        <div class="field-title"><?php echo __('Company cover image','job-board-manager-company-profile'); ?></div>
         <div class="field-input">
             <div class="media-preview-wrap" style="">
                 <img class="media-preview" src="<?php echo $job_bm_company_cover; ?>" style="width:100%;box-shadow: none;"/>
             </div>
 
             <input placeholder="" type="text" value="<?php echo $job_bm_company_cover; ?>" name="job_bm_cp_logo">
-            <span class="media-upload " id=""><?php echo __('Upload','job-board-manager');?></span>
-            <!--            <span class="media-clear" id="">--><?php //echo __('Clear','job-board-manager');?><!--</span>-->
+            <span class="media-upload " id=""><?php echo __('Upload','job-board-manager-company-profile');?></span>
+            <!--            <span class="media-clear" id="">--><?php //echo __('Clear','job-board-manager-company-profile');?><!--</span>-->
 
-            <p class="field-details"><?php esc_html_e('Upload company cover image','job-board-manager');
+            <p class="field-details"><?php echo __('Upload company cover image','job-board-manager-company-profile');
                 ?></p>
         </div>
     </div>
@@ -325,10 +325,10 @@ function job_bm_company_submit_form_website(){
 
     ?>
     <div class="form-field-wrap " >
-        <div class="field-title"><?php esc_html_e('Company website','job-board-manager'); ?></div>
+        <div class="field-title"><?php echo __('Company website','job-board-manager-company-profile'); ?></div>
         <div class="field-input">
             <input placeholder="" type="text" value="<?php echo $job_bm_cp_website; ?>" name="job_bm_cp_website">
-            <p class="field-details"><?php esc_html_e('Write company website ','job-board-manager');
+            <p class="field-details"><?php echo __('Write company website ','job-board-manager-company-profile');
                 ?></p>
         </div>
     </div>
@@ -345,10 +345,10 @@ function job_bm_company_submit_form_founded(){
 
     ?>
     <div class="form-field-wrap" >
-        <div class="field-title"><?php esc_html_e('Company founded year','job-board-manager'); ?></div>
+        <div class="field-title"><?php echo __('Company founded year','job-board-manager-company-profile'); ?></div>
         <div class="field-input">
-            <input placeholder="<?php echo __('1980','job-board-manager'); ?>" type="text" value="<?php echo $job_bm_cp_founded; ?>" name="job_bm_cp_founded">
-            <p class="field-details"><?php esc_html_e('Write company founded year','job-board-manager');
+            <input placeholder="<?php echo __('1980','job-board-manager-company-profile'); ?>" type="text" value="<?php echo $job_bm_cp_founded; ?>" name="job_bm_cp_founded">
+            <p class="field-details"><?php echo __('Write company founded year','job-board-manager-company-profile');
                 ?></p>
         </div>
     </div>
@@ -367,10 +367,10 @@ function job_bm_company_submit_form_size(){
 
     ?>
     <div class="form-field-wrap">
-        <div class="field-title"><?php esc_html_e('Company worker size','job-board-manager'); ?></div>
+        <div class="field-title"><?php echo __('Company worker size','job-board-manager-company-profile'); ?></div>
         <div class="field-input">
             <input placeholder="12" type="text" value="<?php echo $job_bm_cp_size; ?>" name="job_bm_cp_size">
-            <p class="field-details"><?php esc_html_e('Write company worker size','job-board-manager');
+            <p class="field-details"><?php echo __('Write company worker size','job-board-manager-company-profile');
                 ?></p>
         </div>
     </div>
@@ -404,7 +404,7 @@ function job_bm_company_submit_form_recaptcha(){
         <div class="field-input">
             <div class="g-recaptcha" data-sitekey="<?php echo $job_bm_reCAPTCHA_site_key; ?>"></div>
             <script src="https://www.google.com/recaptcha/api.js"></script>
-            <p class="field-details"><?php esc_html_e('Please prove you are human.','job-board-manager'); ?></p>
+            <p class="field-details"><?php echo __('Please prove you are human.','job-board-manager-company-profile'); ?></p>
 
         </div>
     </div>
@@ -441,7 +441,7 @@ function job_bm_company_submit_form_submit(){
     <div class="form-field-wrap">
         <div class="field-title"></div>
         <div class="field-input">
-            <input type="submit"  name="submit" value="<?php _e('Submit', 'job-board-manager'); ?>" />
+            <input type="submit"  name="submit" value="<?php _e('Submit', 'job-board-manager-company-profile'); ?>" />
         </div>
     </div>
     <?php
@@ -477,24 +477,24 @@ function job_bm_company_submit_data($post_data){
 
     if(empty($post_data['post_title'])){
 
-        $error->add( 'post_title', __( 'ERROR: Company name is empty.', 'job-board-manager' ) );
+        $error->add( 'post_title', __( 'ERROR: Company name is empty.', 'job-board-manager-company-profile' ) );
     }
 
     if(empty($post_data['post_content'])){
 
-        $error->add( 'post_content', __( 'ERROR: Company details is empty.', 'job-board-manager' ) );
+        $error->add( 'post_content', __( 'ERROR: Company details is empty.', 'job-board-manager-company-profile' ) );
     }
 
     if(empty($post_data['job_bm_cp_tagline'])){
 
-        $error->add( 'job_bm_cp_tagline', __( 'ERROR: Company tag-line is empty.', 'job-board-manager' ) );
+        $error->add( 'job_bm_cp_tagline', __( 'ERROR: Company tag-line is empty.', 'job-board-manager-company-profile' ) );
     }
 
 
 
     if(empty($post_data['job_bm_cp_size'])){
 
-        $error->add( 'job_bm_cp_size', __( 'ERROR: Company size is empty.', 'job-board-manager' ) );
+        $error->add( 'job_bm_cp_size', __( 'ERROR: Company size is empty.', 'job-board-manager-company-profile' ) );
     }
 
 
@@ -504,23 +504,23 @@ function job_bm_company_submit_data($post_data){
 
     if(empty($post_data['job_bm_cp_logo'])){
 
-        $error->add( 'job_bm_cp_logo', __( 'ERROR: Company logo is empty.', 'job-board-manager' ) );
+        $error->add( 'job_bm_cp_logo', __( 'ERROR: Company logo is empty.', 'job-board-manager-company-profile' ) );
     }
 
     if(empty($post_data['g-recaptcha-response']) && $job_bm_company_submit_recaptcha =='yes'){
 
-        $error->add( 'g-recaptcha-response', __( 'ERROR: reCaptcha test failed.', 'job-board-manager' ) );
+        $error->add( 'g-recaptcha-response', __( 'ERROR: reCaptcha test failed.', 'job-board-manager-company-profile' ) );
     }
 
     if($job_bm_company_submit_account_required == 'yes' && !is_user_logged_in()){
 
         $error->add( 'login',  sprintf (__('ERROR: Please <a target="_blank" href="%s">login</a> to submit question.',
-            'job-board-manager'), $dashboard_page_url ));
+            'job-board-manager-company-profile'), $dashboard_page_url ));
     }
 
     if(! isset( $_POST['job_bm_company_submit_nonce'] ) || ! wp_verify_nonce( $_POST['job_bm_company_submit_nonce'], 'job_bm_company_submit_nonce' ) ){
 
-        $error->add( '_wpnonce', __( 'ERROR: security test failed.', 'job-board-manager' ) );
+        $error->add( '_wpnonce', __( 'ERROR: security test failed.', 'job-board-manager-company-profile' ) );
     }
 
 
@@ -627,7 +627,7 @@ function job_bm_company_submitted_message($company_id, $post_data){
 
     ?>
     <div class="job-submitted success">
-        <?php echo apply_filters('job_bm_company_submitted_thank_you', _e('Thanks for submit your company, we will review soon.', 'job-board-manager')); ?>
+        <?php echo apply_filters('job_bm_company_submitted_thank_you', _e('Thanks for submit your company, we will review soon.', 'job-board-manager-company-profile')); ?>
     </div>
     <?php
 

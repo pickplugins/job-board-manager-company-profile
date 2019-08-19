@@ -89,6 +89,10 @@ Plugin is translation ready, you can contribute in translation here https://tran
 
 == Changelog ==
 
+	= 1.0.8 =
+    * 19/11/2016 - update - update documentation.
+
+
 	= 1.0.7 =
     * 18/11/2016 - remove - removed unnecessary files and code
 
