@@ -2,12 +2,6 @@
 if ( ! defined('ABSPATH')) exit;  // if direct access 
 
 
-
-
-
-
-
-
 function job_bm_single_company($content) {
 
     global $post;
@@ -16,6 +10,7 @@ function job_bm_single_company($content) {
 
         ob_start();
         include( job_bm_cp_plugin_dir . 'templates/company-single/company-single.php');
+
 
         wp_enqueue_style('job_bm_company_single');
         //wp_enqueue_style('font-awesome-5');

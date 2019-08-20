@@ -35,7 +35,7 @@ if(!function_exists('job_bm_settings_tabs_content_pages_company')) {
         ?>
         <div class="section">
             <div class="section-title"><?php echo __('Company page settings', 'job-board-manager-company-profile'); ?></div>
-            <p class="description section-description"><?php echo __('Choose option for pages.', 'job-board-manager-company-profile'); ?></p>
+            <p class="description section-description"><?php echo __('Choose option for company pages.', 'job-board-manager-company-profile'); ?></p>
 
             <?php
 
