@@ -32,7 +32,7 @@ class class_job_bm_company_shortcodes{
         wp_enqueue_style('job-bm-media-upload');
         // For media uploader in front-end
         wp_enqueue_media();
-        wp_enqueue_style('common');
+        //wp_enqueue_style('common');
 
         return ob_get_clean();
 
@@ -95,7 +95,7 @@ class class_job_bm_company_shortcodes{
         wp_enqueue_style('job-bm-media-upload');
         // For media uploader in front-end
         wp_enqueue_media();
-        wp_enqueue_style('common');
+        //wp_enqueue_style('common');
 
         return ob_get_clean();
 

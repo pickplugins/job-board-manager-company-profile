@@ -4,7 +4,7 @@
 	Tags:  Company Profile, Job Board Manager, Job Board, Job, Job Poster, job manager, job, job list, job listing, Job Listings, job lists, job management, job manager,
 	Requires at least: 4.1
 	Tested up to: 5.2
-	Stable tag: 1.0.7
+	Stable tag: 1.0.10
 	License: GPLv2 or later
 	License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -88,6 +88,12 @@ Plugin is translation ready, you can contribute in translation here https://tran
 
 
 == Changelog ==
+
+    = 1.0.10 =
+    * 13/09/2019 - remove - remove common.css
+
+	= 1.0.9 =
+    * 19/11/2016 - fix - company address save issue fixed.
 
 	= 1.0.8 =
     * 19/11/2016 - update - update documentation.

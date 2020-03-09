@@ -137,7 +137,7 @@ if(!function_exists('job_bm_settings_tabs_content_company')) {
                 'type'		=> 'select',
                 //'multiple'		=> true,
                 'value'		=> $job_bm_company_submit_recaptcha,
-                'default'		=> '',
+                'default'		=> 'yes',
                 'args'		=> array( 'yes'=>__('Yes','job-board-manager-company-profile'), 'no'=>__('No','job-board-manager-company-profile'),),
             );
 

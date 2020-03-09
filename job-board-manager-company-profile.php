@@ -3,7 +3,7 @@
 Plugin Name: Job Board Manager - Company Profile
 Plugin URI: http://pickplugins.com
 Description: Awesome Company Profile for Job Board Manager.
-Version: 1.0.8
+Version: 1.0.10
 Author: pickplugins
 Text Domain: job-board-manager-company-profile
 Domain Path: /languages
@@ -22,7 +22,7 @@ class JobBoardManagerCompanyProfile{
 	define('job_bm_cp_plugin_url', plugins_url('/', __FILE__)  );
 	define('job_bm_cp_plugin_dir', plugin_dir_path( __FILE__ ) );
 	define('job_bm_cp_plugin_name', 'Job Board Manager - Company Profile' );
-	define('job_bm_cp_plugin_version', '1.0.8' );
+	define('job_bm_cp_plugin_version', '1.0.10' );
 
 
 	// Class
@@ -104,8 +104,8 @@ class JobBoardManagerCompanyProfile{
 		
 		wp_enqueue_script('jquery');
 		
-		wp_enqueue_script('job_bm_cp_js', plugins_url( 'assets/front/js/scripts.js' , __FILE__ ) , array( 'jquery' ));
-		wp_localize_script( 'job_bm_cp_js', 'job_bm_cp_ajax', array( 'job_bm_cp_ajaxurl' => admin_url( 'admin-ajax.php')));
+		//wp_enqueue_script('job_bm_cp_js', plugins_url( 'assets/front/js/scripts.js' , __FILE__ ) , array( 'jquery' ));
+		//wp_localize_script( 'job_bm_cp_js', 'job_bm_cp_ajax', array( 'job_bm_cp_ajaxurl' => admin_url( 'admin-ajax.php')));
 
 
         wp_register_style('job_bm_company_single', job_bm_cp_plugin_url.'assets/front/css/company-single.css');

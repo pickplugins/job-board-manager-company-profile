@@ -139,7 +139,7 @@ add_action('job_bm_metabox_company_content_company_info','job_bm_metabox_company
 function job_bm_metabox_company_salary_min($job_id){
 
     $settings_tabs_field = new settings_tabs_field();
-    $job_bm_cp_address = get_post_meta($job_id, 'job_bm_cp_city', true);
+    $job_bm_cp_address = get_post_meta($job_id, 'job_bm_cp_address', true);
 
     $args = array(
         'id'		=> 'job_bm_cp_address',

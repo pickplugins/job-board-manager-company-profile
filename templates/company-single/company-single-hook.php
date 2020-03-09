@@ -6,7 +6,7 @@ function job_bm_single_company($content) {
 
     global $post;
 
-    if ($post->post_type == 'company'){
+    if (is_singular('company') && $post->post_type == 'company'){
 
         ob_start();
         include( job_bm_cp_plugin_dir . 'templates/company-single/company-single.php');
@@ -33,7 +33,7 @@ add_filter( "comments_template", "job_bm_single_company_comment_template", 90 );
 function job_bm_single_company_comment_template( $comment_template ) {
     global $post;
 
-    if($post->post_type == 'company'){ // assuming there is a post type called business
+    if(is_singular('company') && $post->post_type == 'company'){ // assuming there is a post type called business
 
         return job_bm_cp_plugin_dir . 'templates/company-single/company-single-comments.php';
     }else{
@@ -49,7 +49,7 @@ add_filter( "respond_link", "job_bm_single_company_respond_link", 100, 2 );
 function job_bm_single_company_respond_link( $respond_link, $id ) {
     global $post;
 
-    if($post->post_type == 'company'){ // assuming there is a post type called business
+    if(is_singular('company') && $post->post_type == 'company'){ // assuming there is a post type called business
 
         return '';
     }else{
