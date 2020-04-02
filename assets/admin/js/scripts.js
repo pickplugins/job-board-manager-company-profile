@@ -6,7 +6,7 @@ jQuery(document).ready(function($)
 		
 		$("#company-name-wrapper").append("<div id='company-list'></div>");		
 
-		$(document).on('keyup', '#job_bm_company_name', function()
+		$(document).on('keyup', '#job_bm_company_name]', function()
 			{
 				
 				var name = $(this).val();

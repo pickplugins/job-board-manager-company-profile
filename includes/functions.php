@@ -136,7 +136,7 @@ add_action('wp_ajax_nopriv_job_bm_cp_ajax_company_folowing', 'job_bm_cp_ajax_com
 
 function job_bm_cp_ajax_job_company_list(){
 	
-	$name = $_POST['name'];
+	$name = isset($_POST['name']) ? sanitize_text_field($_POST['name']) : '';
 	$company_name = '';
 	
   
